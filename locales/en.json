@@ -30,7 +30,8 @@
     "none": "No Vault profiles yet.",
     "sharedBadge": "shared",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "deleteConfirm": "Delete the Vault profile {{name}}?"
   },
   "hosts": {
     "filterAuthVault": "Vault"

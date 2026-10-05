@@ -6,7 +6,7 @@ import {
   useToast,
   useTranslation,
 } from "@termix/plugin-sdk/frontend";
-import { Button, Input, Select2 } from "@termix/plugin-sdk/ui";
+import { Button, Input, Select2, useConfirm } from "@termix/plugin-sdk/ui";
 import {
   errorMessage,
   type VaultProfile,
@@ -71,6 +71,7 @@ export function VaultProfileManager({
   onClose: () => void;
 }) {
   const { t } = useTranslation();
+  const confirm = useConfirm();
   const api = usePluginApi();
   const toast = useToast();
   const canShare = usePermission("share");
@@ -117,6 +118,11 @@ export function VaultProfileManager({
   };
 
   const handleDelete = async (profile: VaultProfile) => {
+    const ok = await confirm({
+      title: t("profiles.deleteConfirm", { name: profile.name }),
+      confirmLabel: t("common.delete"),
+    });
+    if (!ok) return;
     try {
       await api.delete(`/profiles/${profile.id}`);
       toast.success(t("profiles.deleted"));

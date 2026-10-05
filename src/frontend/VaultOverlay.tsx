@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AlertCircle, KeyRound, Loader2 } from "lucide-react";
 import { useTranslation } from "@termix/plugin-sdk/frontend";
-import { Button } from "@termix/plugin-sdk/ui";
+import { PanePrompt, PROMPT_BUTTON } from "@termix/plugin-sdk/ui";
 
 /** What the ssh-terminal plugin hands a "terminal.overlay" component. */
 export interface TerminalOverlayProps {
@@ -26,9 +26,6 @@ interface DialogState {
 
 /** How long the dialog waits before giving up on the connection. */
 const DIALOG_TIMEOUT_MS = 300_000;
-
-const footerButton =
-  "rounded-none text-[10px] font-bold uppercase tracking-widest";
 
 /**
  * Runs the Vault OIDC sign-in for a terminal: asks the server to start it,
@@ -178,68 +175,52 @@ export function VaultOverlay({
   };
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center z-500 animate-in fade-in duration-200">
-      <div
-        className="absolute inset-0 bg-canvas"
-        style={{ backgroundColor: backgroundColor || undefined }}
-      />
-      <div className="bg-card border border-border w-full max-w-md mx-4 relative z-10">
-        <div className="p-4 border-b border-border">
-          <div className="flex items-center gap-2">
-            <KeyRound className="size-4 text-accent-brand" />
-            <h3 className="text-xs font-bold uppercase tracking-widest">
-              {dialog.stage === "error"
-                ? t("dialog.failed")
-                : t("dialog.title")}
-            </h3>
-          </div>
-        </div>
-        <div className="p-4 flex flex-col gap-4">
-          {dialog.stage === "waiting" ? (
-            <div className="flex items-center gap-3 py-2">
-              <Loader2 className="size-4 animate-spin text-accent-brand shrink-0" />
-              <p className="text-xs text-muted-foreground">
-                {t("dialog.description")}
-              </p>
-            </div>
-          ) : (
-            <div className="flex items-start gap-3 p-3 border border-destructive/20 bg-destructive/10">
-              <AlertCircle className="size-4 text-destructive shrink-0 mt-0.5" />
-              <p className="text-xs text-destructive/90 whitespace-pre-wrap break-words">
-                {dialog.error || t("dialog.failed")}
-              </p>
-            </div>
-          )}
-          <div className="flex justify-end gap-2">
-            {dialog.stage === "waiting" && (
-              <Button
-                type="button"
-                variant="outline"
-                className={footerButton}
-                onClick={() => {
-                  try {
-                    popupRef.current?.focus();
-                  } catch {
-                    // popup gone
-                  }
-                }}
-              >
-                {t("dialog.reopen")}
-              </Button>
-            )}
-            <Button
+    <PanePrompt
+      open
+      layer="connection"
+      backgroundColor={backgroundColor}
+      tone={dialog.stage === "error" ? "destructive" : "default"}
+      icon={<KeyRound className="size-4" />}
+      title={dialog.stage === "error" ? t("dialog.failed") : t("dialog.title")}
+      className="max-w-md"
+      actions={
+        <>
+          {dialog.stage === "waiting" && (
+            <button
               type="button"
-              variant="ghost"
-              className={footerButton}
-              onClick={close}
+              className={PROMPT_BUTTON}
+              onClick={() => {
+                try {
+                  popupRef.current?.focus();
+                } catch {
+                  // popup gone
+                }
+              }}
             >
-              {dialog.stage === "error"
-                ? t("common.close")
-                : t("common.cancel")}
-            </Button>
-          </div>
+              {t("dialog.reopen")}
+            </button>
+          )}
+          <button type="button" className={PROMPT_BUTTON} onClick={close}>
+            {dialog.stage === "error" ? t("common.close") : t("common.cancel")}
+          </button>
+        </>
+      }
+    >
+      {dialog.stage === "waiting" ? (
+        <div className="flex items-center gap-3 py-1">
+          <Loader2 className="size-4 animate-spin text-accent-brand shrink-0" />
+          <p className="text-xs text-muted-foreground">
+            {t("dialog.description")}
+          </p>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div className="flex items-start gap-3 p-3 border border-destructive/20 bg-destructive/10">
+          <AlertCircle className="size-4 text-destructive shrink-0 mt-0.5" />
+          <p className="text-xs text-destructive/90 whitespace-pre-wrap break-words">
+            {dialog.error || t("dialog.failed")}
+          </p>
+        </div>
+      )}
+    </PanePrompt>
   );
 }
