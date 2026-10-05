@@ -56,10 +56,6 @@
       "label": "Yönlendirme URI'si",
       "description": "Termix'in oturum açtığı her Vault OIDC rolündeki allowed_redirect_uris alanına bu URL'yi ekleyin."
     },
-    "legacyCallback": {
-      "label": "Eski yönlendirme URI'sini kullanın.",
-      "description": "2.9 öncesinde kullanılan yönlendirme URI'si olan /vault/oidc/callback'i göndermeye devam edin. Vault rolleriniz yeni URI'ye izin verdiğinde bunu kapatın."
-    },
     "host": {
       "profileId": {
         "label": "Kasa imzalayıcı profili"

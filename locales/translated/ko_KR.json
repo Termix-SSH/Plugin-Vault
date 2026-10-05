@@ -56,10 +56,6 @@
       "label": "리디렉션 URI",
       "description": "Termix가 로그인하는 각 Vault OIDC 역할의 allowed_redirect_uris에 이 URL을 추가하세요."
     },
-    "legacyCallback": {
-      "label": "이전 리디렉션 URI를 사용하세요",
-      "description": "2.9 이전 버전에서 사용했던 리디렉션 URI인 /vault/oidc/callback을 계속 전송하세요. Vault 역할에서 새 URI를 허용하면 이 기능을 비활성화하십시오."
-    },
     "host": {
       "profileId": {
         "label": "Vault 서명자 프로필"

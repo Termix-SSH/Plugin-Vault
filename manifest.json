@@ -46,13 +46,6 @@
           "key": "redirectUri",
           "type": "custom",
           "component": "redirectUri"
-        },
-        {
-          "key": "legacyCallback",
-          "type": "boolean",
-          "labelKey": "settings.legacyCallback.label",
-          "descriptionKey": "settings.legacyCallback.description",
-          "default": false
         }
       ],
       "host": {
@@ -67,14 +60,6 @@
           }
         ]
       }
-    },
-    "http": {
-      "legacyRedirects": [
-        {
-          "from": "/vault/oidc/callback",
-          "to": "/oidc/callback"
-        }
-      ]
     },
     "syncEntities": ["vaultProfiles"],
     "uses": ["terminal.overlay"]

@@ -56,10 +56,6 @@
       "label": "Umleitungs-URI",
       "description": "Fügen Sie diese URL in jeder Vault OIDC-Rolle, mit der sich Termix anmeldet, zu allowed_redirect_uris hinzu."
     },
-    "legacyCallback": {
-      "label": "Verwenden Sie die alte Umleitungs-URI.",
-      "description": "Senden Sie weiterhin /vault/oidc/callback, die Umleitungs-URI, die vor Version 2.9 verwendet wurde. Deaktivieren Sie diese Funktion, sobald Ihre Vault-Rollen die Verwendung der neuen URI zulassen."
-    },
     "host": {
       "profileId": {
         "label": "Vault-Signer-Profil"

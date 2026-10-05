@@ -56,10 +56,6 @@
       "label": "Omdirigerings-URI",
       "description": "Legg til denne URL-en i allowed_redirect_uris i hver Vault OIDC-rolle som Termix logger på med."
     },
-    "legacyCallback": {
-      "label": "Bruk den gamle omdirigerings-URI-en",
-      "description": "Fortsett å sende /vault/oidc/callback, omdirigerings-URI-en som ble brukt før 2.9. Slå av dette når Vault-rollene dine tillater den nye."
-    },
     "host": {
       "profileId": {
         "label": "Profil for arkivsigner"

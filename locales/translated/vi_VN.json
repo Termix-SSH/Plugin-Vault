@@ -56,10 +56,6 @@
       "label": "URI chuyển hướng",
       "description": "Thêm URL này vào allowed_redirect_uris trong mỗi vai trò Vault OIDC mà Termix sử dụng để đăng nhập."
     },
-    "legacyCallback": {
-      "label": "Sử dụng URI chuyển hướng cũ.",
-      "description": "Tiếp tục gửi /vault/oidc/callback, URI chuyển hướng được sử dụng trước phiên bản 2.9. Tắt chức năng này khi các vai trò Vault của bạn cho phép sử dụng URI mới."
-    },
     "host": {
       "profileId": {
         "label": "Hồ sơ người ký Vault"

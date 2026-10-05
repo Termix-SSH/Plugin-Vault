@@ -56,10 +56,6 @@
       "label": "URI การเปลี่ยนเส้นทาง",
       "description": "เพิ่ม URL นี้ลงใน allowed_redirect_uris ในแต่ละบทบาท OIDC ของ Vault ที่ Termix ใช้เข้าสู่ระบบ"
     },
-    "legacyCallback": {
-      "label": "ใช้ URI การเปลี่ยนเส้นทางแบบเดิม",
-      "description": "ส่ง /vault/oidc/callback ต่อไป ซึ่งเป็น URI สำหรับการเปลี่ยนเส้นทางที่ใช้ก่อนเวอร์ชัน 2.9 ปิดใช้งานเมื่อบทบาท Vault ของคุณอนุญาตให้ใช้ URI ใหม่แล้ว"
-    },
     "host": {
       "profileId": {
         "label": "โปรไฟล์ผู้ลงนาม Vault"

@@ -313,19 +313,6 @@ describe("signing a certificate", () => {
     expect(callback.text).toContain("access_denied");
   });
 
-  it("sends the 2.8 redirect URI while legacyCallback is on", async () => {
-    const vault = createFakeVault();
-    server = await startServer({
-      fetch: vault.fetch,
-      settings: { legacyCallback: true },
-    });
-    await profileOnHost();
-    await startSignIn();
-    expect(JSON.parse(String(vault.calls[0].init?.body)).redirect_uri).toBe(
-      "https://termix.test/vault/oidc/callback",
-    );
-  });
-
   it("lets a pending sign-in be cancelled", async () => {
     const vault = createFakeVault();
     server = await startServer({ fetch: vault.fetch });

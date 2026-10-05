@@ -56,10 +56,6 @@
       "label": "重定向 URI",
       "description": "将此 URL 添加到 Termix 登录的每个 Vault OIDC 角色的 allowed_redirect_uris 中。"
     },
-    "legacyCallback": {
-      "label": "使用旧的重定向 URI",
-      "description": "继续发送 /vault/oidc/callback，这是 2.9 版本之前使用的重定向 URI。一旦您的 Vault 角色允许使用新的重定向 URI，就将其关闭。"
-    },
     "host": {
       "profileId": {
         "label": "Vault 签名者个人资料"

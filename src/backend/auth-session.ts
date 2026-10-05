@@ -8,8 +8,6 @@ import {
   type VaultProfileConfig,
 } from "./vault-client.js";
 
-/** The redirect URI 2.8 had Vault roles allow. */
-export const LEGACY_CALLBACK_PATH = "/vault/oidc/callback";
 export const CALLBACK_PATH = "/plugin-api/vault/oidc/callback";
 
 const AUTH_TIMEOUT_MS = 5 * 60 * 1000;
@@ -72,17 +70,12 @@ export function createAuthSessions(ctx: PluginContext, tokens: TokenStore) {
     sessions.delete(session.state);
   }
 
-  async function callbackPath(): Promise<string> {
-    const legacy = await ctx.settings.get<boolean>("legacyCallback");
-    return legacy ? LEGACY_CALLBACK_PATH : CALLBACK_PATH;
-  }
-
   return {
     /** Asks Vault for an auth URL and sends it to the terminal. */
     async start(request: StartRequest): Promise<void> {
       try {
         const keyPair = generateEphemeralKeyPair(request.profile.keyType);
-        const redirectUri = `${request.requestOrigin}${await callbackPath()}`;
+        const redirectUri = `${request.requestOrigin}${CALLBACK_PATH}`;
         const { authUrl, state, clientNonce } = await startVaultOidc(
           ctx.fetch,
           request.profile,

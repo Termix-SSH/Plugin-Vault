@@ -56,10 +56,6 @@
       "label": "Uudelleenohjauksen URI",
       "description": "Lisää tämä URL-osoite allowed_redirect_uris-kohtaan jokaisessa Vault OIDC -roolissa, jolla Termix kirjautuu sisään."
     },
-    "legacyCallback": {
-      "label": "Käytä vanhaa uudelleenohjaus-URI:ta",
-      "description": "Lähetä edelleen /vault/oidc/callback-osoitetta, joka on ennen versiota 2.9 käytetty uudelleenohjaus-URI. Poista tämä käytöstä, kun Vault-roolisi sallivat uuden osoitteen."
-    },
     "host": {
       "profileId": {
         "label": "Varaston allekirjoittajan profiili"

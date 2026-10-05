@@ -56,10 +56,6 @@
       "label": "Herlei URI",
       "description": "Voeg hierdie URL by allowed_redirect_uris in elke Vault OIDC-rol waarmee Termix aanmeld."
     },
-    "legacyCallback": {
-      "label": "Gebruik die ou aanstuur-URI",
-      "description": "Hou aan om /vault/oidc/callback te stuur, die aanstuur-URI wat voor 2.9 gebruik is. Skakel dit af sodra jou Vault-rolle die nuwe een toelaat."
-    },
     "host": {
       "profileId": {
         "label": "Kluisondertekenaarprofiel"

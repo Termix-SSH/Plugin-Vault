@@ -56,10 +56,6 @@
       "label": "URI přesměrování",
       "description": "Přidejte tuto URL adresu do allowed_redirect_uris v každé roli OIDC úložiště, se kterou se Termix přihlašuje."
     },
-    "legacyCallback": {
-      "label": "Použít starý identifikátor URI pro přesměrování",
-      "description": "Pokračujte v odesílání /vault/oidc/callback, což je URI pro přesměrování používané před verzí 2.9. Jakmile vaše role v úložišti povolí použití nového URI, vypněte tuto funkci."
-    },
     "host": {
       "profileId": {
         "label": "Profil podepisujícího v trezoru"

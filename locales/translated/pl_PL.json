@@ -56,10 +56,6 @@
       "label": "Przekieruj URI",
       "description": "Dodaj ten adres URL do allowed_redirect_uris w każdej roli Vault OIDC, za pomocą której loguje się Termix."
     },
-    "legacyCallback": {
-      "label": "Użyj starego adresu URI przekierowania",
-      "description": "Nadal wysyłaj /vault/oidc/callback, czyli przekierowanie URI używane przed wersją 2.9. Wyłącz tę opcję, gdy Twoje role Vaulta pozwolą na nową."
-    },
     "host": {
       "profileId": {
         "label": "Profil sygnatariusza Vault"

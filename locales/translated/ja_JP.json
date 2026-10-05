@@ -56,10 +56,6 @@
       "label": "リダイレクトURI",
       "description": "Termixがサインインする各Vault OIDCロールのallowed_redirect_urisに、このURLを追加してください。"
     },
-    "legacyCallback": {
-      "label": "古いリダイレクトURIを使用する",
-      "description": "バージョン2.9以前に使用されていたリダイレクトURIである/vault/oidc/callbackを送信し続けてください。Vaultロールで新しいURIが許可されたら、この設定を無効にしてください。"
-    },
     "host": {
       "profileId": {
         "label": "Vault署名者プロフィール"

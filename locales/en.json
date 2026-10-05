@@ -56,10 +56,6 @@
       "label": "Redirect URI",
       "description": "Add this URL to allowed_redirect_uris in each Vault OIDC role that Termix signs in with."
     },
-    "legacyCallback": {
-      "label": "Use the old redirect URI",
-      "description": "Keep sending /vault/oidc/callback, the redirect URI used before 2.9. Turn this off once your Vault roles allow the new one."
-    },
     "host": {
       "profileId": {
         "label": "Vault signer profile"

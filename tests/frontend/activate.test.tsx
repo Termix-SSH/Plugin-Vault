@@ -71,12 +71,9 @@ describe("vault activate", () => {
 });
 
 describe("redirectUri", () => {
-  it("names the plugin callback, or the 2.8 one", () => {
-    expect(redirectUri(false, "https://t.example/app/")).toBe(
+  it("names the plugin callback", () => {
+    expect(redirectUri("https://t.example/app/")).toBe(
       "https://t.example/app/plugin-api/vault/oidc/callback",
-    );
-    expect(redirectUri(true, "https://t.example/")).toBe(
-      "https://t.example/vault/oidc/callback",
     );
   });
 });

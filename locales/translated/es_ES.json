@@ -56,10 +56,6 @@
       "label": "URI de redirección",
       "description": "Agregue esta URL a allowed_redirect_uris en cada rol OIDC de Vault con el que Termix inicie sesión."
     },
-    "legacyCallback": {
-      "label": "Utilice la URI de redireccionamiento antigua",
-      "description": "Sigue enviando /vault/oidc/callback, la URI de redireccionamiento que se usaba antes de la versión 2.9. Desactívala una vez que tus roles de Vault permitan la nueva."
-    },
     "host": {
       "profileId": {
         "label": "Perfil del firmante de Vault"

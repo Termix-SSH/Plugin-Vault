@@ -56,10 +56,6 @@
       "label": "URI Pengalihan",
       "description": "Tambahkan URL ini ke allowed_redirect_uris di setiap peran Vault OIDC yang digunakan Termix untuk masuk."
     },
-    "legacyCallback": {
-      "label": "Gunakan URI pengalihan lama.",
-      "description": "Tetap kirimkan /vault/oidc/callback, URI pengalihan yang digunakan sebelum versi 2.9. Matikan ini setelah peran Vault Anda mengizinkan yang baru."
-    },
     "host": {
       "profileId": {
         "label": "Profil penandatangan Vault"

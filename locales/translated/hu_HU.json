@@ -56,10 +56,6 @@
       "label": "Átirányítási URI",
       "description": "Adja hozzá ezt az URL-címet az allowed_redirect_uris paraméterhez minden olyan Vault OIDC szerepkörben, amellyel a Termix bejelentkezik."
     },
-    "legacyCallback": {
-      "label": "Használja a régi átirányítási URI-t",
-      "description": "Továbbra is küldje el a /vault/oidc/callback átirányítási URI-t, amely a 2.9 előtt használt. Kapcsolja ki ezt, amint a Vault szerepkörei engedélyezik az újat."
-    },
     "host": {
       "profileId": {
         "label": "Vault aláírói profil"

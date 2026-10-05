@@ -56,10 +56,6 @@
       "label": "כתובת URL להפניה מחדש",
       "description": "הוסף כתובת URL זו ל- allowed_redirect_uris בכל תפקיד OIDC של Vault שאיתו Termix מתחבר."
     },
-    "legacyCallback": {
-      "label": "השתמש ב-URI להפניה הישן",
-      "description": "המשך לשלוח את /vault/oidc/callback, URI ההפניה שהיה בשימוש לפני גרסה 2.9. כבה אפשרות זו לאחר שתפקידי הכספת שלך יאפשרו את ה-URI החדש."
-    },
     "host": {
       "profileId": {
         "label": "פרופיל חותם בכספת"

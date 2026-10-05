@@ -56,10 +56,6 @@
       "label": "URI за преусмеравање",
       "description": "Додајте ову URL адресу у allowed_redirect_uris у свакој Vault OIDC улози са којом се Termix пријављује."
     },
-    "legacyCallback": {
-      "label": "Користите стари URI за преусмеравање",
-      "description": "Наставите да шаљете /vault/oidc/callback, URI за преусмеравање који је коришћен пре верзије 2.9. Искључите ово када ваше Vault улоге дозволе нови."
-    },
     "host": {
       "profileId": {
         "label": "Профил потписника трезора"

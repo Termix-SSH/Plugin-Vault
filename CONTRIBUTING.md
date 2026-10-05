@@ -15,7 +15,6 @@ npm run format     # format the code with Prettier
 ### Admin
 
 - **Redirect URI:** add `<base URL>/plugin-api/vault/oidc/callback` to `allowed_redirect_uris` in each Vault OIDC role
-- **Use the old redirect URI:** keep sending the 2.8 URI `<base URL>/vault/oidc/callback`. Upgraded installs keep this on until you turn it off
 
 ### Host
 

@@ -78,7 +78,7 @@ export function registerRoutes(
    * /plugin-api/vault/oidc/callback:
    *   get:
    *     summary: Vault OIDC callback
-   *     description: Public. The redirect URI a Vault OIDC role allows. Matches the sign-in by the state Vault issued, has Vault sign the ephemeral key and tells the terminal to reconnect. The 2.8 URI /vault/oidc/callback redirects here.
+   *     description: Public. The redirect URI a Vault OIDC role allows. Matches the sign-in by the state Vault issued, has Vault sign the ephemeral key and tells the terminal to reconnect.
    *     tags: [Vault]
    *     parameters:
    *       - in: query
