@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { desc, eq, or } from "drizzle-orm";
-import type { PluginContext } from "@termix/plugin-sdk/backend";
+import type { PluginContext } from "@termix-ssh/plugin-sdk/backend";
 import type { VaultProfileConfig } from "./vault-client.js";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

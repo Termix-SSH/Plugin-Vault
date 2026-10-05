@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { PluginCapabilityError } from "@termix/plugin-sdk/backend";
-import { createMockCtx, createTestDb } from "@termix/plugin-sdk/testing";
+import { PluginCapabilityError } from "@termix-ssh/plugin-sdk/backend";
+import { createMockCtx, createTestDb } from "@termix-ssh/plugin-sdk/testing";
 import {
   HOST,
   PROFILE,
@@ -16,7 +16,7 @@ import {
 } from "./helpers.js";
 
 const certs = vi.hoisted(() => ({ applyCertificateAuth: vi.fn() }));
-vi.mock("@termix/plugin-sdk/ssh-certs", () => certs);
+vi.mock("@termix-ssh/plugin-sdk/ssh-certs", () => certs);
 
 let server: TestServer | null = null;
 

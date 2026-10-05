@@ -2,8 +2,8 @@ import type {
   PluginContext,
   PluginSshAuthProvider,
   PluginSshHost,
-} from "@termix/plugin-sdk/backend";
-import { applyCertificateAuth } from "@termix/plugin-sdk/ssh-certs";
+} from "@termix-ssh/plugin-sdk/backend";
+import { applyCertificateAuth } from "@termix-ssh/plugin-sdk/ssh-certs";
 import type { AuthSessions, SignInSocket } from "./auth-session.js";
 import {
   toConfig,

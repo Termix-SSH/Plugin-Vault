@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import ssh2Pkg from "ssh2";
-import type { PluginFetch } from "@termix/plugin-sdk/backend";
+import type { PluginFetch } from "@termix-ssh/plugin-sdk/backend";
 
 const { utils: ssh2Utils } = ssh2Pkg;
 

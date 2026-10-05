@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import type { TermixApp } from "@termix/plugin-sdk/frontend";
+import type { TermixApp } from "@termix-ssh/plugin-sdk/frontend";
 import { VaultAuthEditor } from "./VaultAuthEditor";
 import { VaultOverlay } from "./VaultOverlay";
 import { RedirectUriSetting } from "./RedirectUriSetting";

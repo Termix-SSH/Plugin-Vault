@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AlertCircle, KeyRound, Loader2 } from "lucide-react";
-import { useTranslation } from "@termix/plugin-sdk/frontend";
-import { PanePrompt, PROMPT_BUTTON } from "@termix/plugin-sdk/ui";
+import { useTranslation } from "@termix-ssh/plugin-sdk/frontend";
+import { PanePrompt, PROMPT_BUTTON } from "@termix-ssh/plugin-sdk/ui";
 
 /** What the ssh-terminal plugin hands a "terminal.overlay" component. */
 export interface TerminalOverlayProps {

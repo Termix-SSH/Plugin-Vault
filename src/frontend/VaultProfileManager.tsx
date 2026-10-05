@@ -5,8 +5,8 @@ import {
   usePluginApi,
   useToast,
   useTranslation,
-} from "@termix/plugin-sdk/frontend";
-import { Button, Input, Select2, useConfirm } from "@termix/plugin-sdk/ui";
+} from "@termix-ssh/plugin-sdk/frontend";
+import { Button, Input, Select2, useConfirm } from "@termix-ssh/plugin-sdk/ui";
 import {
   errorMessage,
   type VaultProfile,

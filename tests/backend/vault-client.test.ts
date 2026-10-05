@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import ssh2Pkg from "ssh2";
-import type { PluginFetchInit } from "@termix/plugin-sdk/backend";
+import type { PluginFetchInit } from "@termix-ssh/plugin-sdk/backend";
 import {
   allowedHosts,
   completeVaultOidc,

@@ -1,5 +1,5 @@
 import { and, eq } from "drizzle-orm";
-import type { PluginContext } from "@termix/plugin-sdk/backend";
+import type { PluginContext } from "@termix-ssh/plugin-sdk/backend";
 import { parseCertValidBefore } from "./vault-client.js";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

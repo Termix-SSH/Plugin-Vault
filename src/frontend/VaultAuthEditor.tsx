@@ -4,8 +4,8 @@ import {
   usePluginApi,
   useTranslation,
   type SshAuthEditorProps,
-} from "@termix/plugin-sdk/frontend";
-import { Select2 } from "@termix/plugin-sdk/ui";
+} from "@termix-ssh/plugin-sdk/frontend";
+import { Select2 } from "@termix-ssh/plugin-sdk/ui";
 import { VaultProfileManager } from "./VaultProfileManager";
 import type { VaultProfile } from "./types";
 

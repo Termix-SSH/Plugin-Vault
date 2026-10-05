@@ -7,7 +7,7 @@ import {
   refUser,
   text,
   varchar,
-} from "@termix/plugin-sdk/db";
+} from "@termix-ssh/plugin-sdk/db";
 
 /**
  * Vault signer profiles: connection settings only, no secrets. A shared
