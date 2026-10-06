@@ -6,7 +6,13 @@ import {
   useToast,
   useTranslation,
 } from "@termix-ssh/plugin-sdk/frontend";
-import { Button, Input, Select2, useConfirm } from "@termix-ssh/plugin-sdk/ui";
+import {
+  Button,
+  Input,
+  Select2,
+  useConfirm,
+  Checkbox,
+} from "@termix-ssh/plugin-sdk/ui";
 import {
   errorMessage,
   type VaultProfile,
@@ -255,10 +261,11 @@ export function VaultProfileManager({
           </div>
           {canShare && (
             <label className="flex items-center gap-2 text-xs text-foreground">
-              <input
-                type="checkbox"
+              <Checkbox
                 checked={form.shared}
-                onChange={(e) => setField("shared", e.target.checked)}
+                onCheckedChange={(checked) =>
+                  setField("shared", checked === true)
+                }
               />
               {t("profiles.shareWithAll")}
             </label>
