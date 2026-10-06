@@ -8,7 +8,7 @@ import {
   type VaultProfileConfig,
 } from "./vault-client.js";
 
-export const CALLBACK_PATH = "/plugin-api/vault/oidc/callback";
+const CALLBACK_PATH = "/plugin-api/vault/oidc/callback";
 
 const AUTH_TIMEOUT_MS = 5 * 60 * 1000;
 

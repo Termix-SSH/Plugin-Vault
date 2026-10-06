@@ -12,7 +12,7 @@ import {
 } from "./profile-store.js";
 import type { TokenStore } from "./token-store.js";
 
-export const AUTH_TYPE = "vault";
+const AUTH_TYPE = "vault";
 
 const REQUIRED_MESSAGE =
   "Vault SSH signer authentication required. Please open a Terminal connection first.";
@@ -20,7 +20,7 @@ const REQUIRED_MESSAGE =
 const AUTH_FAILED_PATTERN = /All configured authentication methods failed/i;
 
 /** The profile a host points at, from its host settings. */
-export async function profileForHost(
+async function profileForHost(
   ctx: PluginContext,
   profiles: ProfileStore,
   hostId: number,

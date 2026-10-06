@@ -13,7 +13,7 @@ import type {
  */
 export const PUBLIC_PATHS = ["/oidc/callback"];
 
-export function escapeHtml(value: string): string {
+function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -22,7 +22,7 @@ export function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-export function resultPage(ok: boolean, message: string): string {
+function resultPage(ok: boolean, message: string): string {
   return `<!doctype html><html><head><meta charset="utf-8"><title>Termix</title>
 <style>body{font-family:system-ui,sans-serif;background:#111;color:#eee;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
 main{max-width:28rem;padding:2rem;border:1px solid #333;background:#181818}h1{font-size:1.1rem;margin:0 0 .5rem}p{margin:0;color:#aaa}</style></head>

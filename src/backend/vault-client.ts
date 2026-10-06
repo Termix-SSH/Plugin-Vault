@@ -31,14 +31,11 @@ export interface EphemeralKeyPair {
 type VaultJson = any;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-export function normalizeAddr(addr: string): string {
+function normalizeAddr(addr: string): string {
   return addr.trim().replace(/\/+$/, "");
 }
 
-export function trimMount(
-  mount: string | null | undefined,
-  fallback: string,
-): string {
+function trimMount(mount: string | null | undefined, fallback: string): string {
   return (mount?.trim() || fallback).replace(/^\/+|\/+$/g, "");
 }
 
