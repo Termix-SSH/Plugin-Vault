@@ -10,6 +10,12 @@
   "repository": "https://github.com/Termix-SSH/Plugin-Vault",
   "category": "Access & Security",
   "icon": "KeyRound",
+  "features": [
+    "Adds the Vault auth type to hosts",
+    "Sign in to Vault with OIDC when you connect",
+    "Never stores a Vault token or long-lived key",
+    "Reusable signer profiles you can share with everyone"
+  ],
   "engine": {
     "termix": ">=26.10.0",
     "api": "1"
