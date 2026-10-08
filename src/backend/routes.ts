@@ -34,6 +34,15 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isHttpUrl(value: string): boolean {
+  try {
+    const { protocol } = new URL(value.trim());
+    return protocol === "http:" || protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 function optional(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim() : null;
 }
@@ -190,6 +199,11 @@ export function registerRoutes(
         .status(400)
         .json({ error: "name, vaultAddr and sshRole are required" });
     }
+    if (!isHttpUrl(body.vaultAddr)) {
+      return res
+        .status(400)
+        .json({ error: "vaultAddr must be an http or https URL" });
+    }
     const shared = !!body.shared;
     if (shared && !(await ctx.rbac.has("share"))) {
       return res
@@ -271,8 +285,14 @@ export function registerRoutes(
           ? body.tags
           : "";
     }
-    if (isNonEmptyString(body.vaultAddr))
+    if (isNonEmptyString(body.vaultAddr)) {
+      if (!isHttpUrl(body.vaultAddr)) {
+        return res
+          .status(400)
+          .json({ error: "vaultAddr must be an http or https URL" });
+      }
       fields.vaultAddr = body.vaultAddr.trim();
+    }
     if (body.vaultNamespace !== undefined)
       fields.vaultNamespace = optional(body.vaultNamespace);
     if (body.oidcMount !== undefined)

@@ -11,6 +11,7 @@ import {
   type ProfileStore,
 } from "./profile-store.js";
 import type { TokenStore } from "./token-store.js";
+import { normalizeAddr } from "./vault-client.js";
 
 const AUTH_TYPE = "vault";
 
@@ -29,6 +30,32 @@ async function profileForHost(
   const id = Number(raw);
   if (!Number.isInteger(id) || id <= 0) return null;
   return profiles.findById(id);
+}
+
+/**
+ * Whether a profile may point at a private or loopback Vault: a shared
+ * profile, one whose owner may share profiles (admins by default), or one
+ * whose host an admin listed in the private hosts setting. Anyone else could
+ * otherwise aim the server at internal addresses.
+ */
+export async function mayReachPrivateVault(
+  ctx: PluginContext,
+  profile: Pick<ProfileRow, "userId" | "shared" | "vaultAddr">,
+): Promise<boolean> {
+  if (profile.shared) return true;
+  if (await ctx.rbac.hasFor(profile.userId, "share")) return true;
+  const raw = (await ctx.settings.getAll("admin")).privateHosts;
+  if (typeof raw !== "string" || !raw.trim()) return false;
+  let host: string;
+  try {
+    host = new URL(normalizeAddr(profile.vaultAddr)).hostname.toLowerCase();
+  } catch {
+    return false;
+  }
+  return raw
+    .split(/[\r\n,]+/)
+    .map((entry) => entry.trim().toLowerCase())
+    .includes(host);
 }
 
 /**
@@ -112,7 +139,10 @@ export function createVaultProvider(
       await sessions.start({
         userId: request.userId,
         hostId: request.hostId,
-        profile: toConfig(profile),
+        profile: {
+          ...toConfig(profile),
+          allowPrivate: await mayReachPrivateVault(ctx, profile),
+        },
         socket: request.socket as SignInSocket,
         requestOrigin: request.requestOrigin,
       });

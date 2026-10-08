@@ -57,6 +57,10 @@
       "label": "Redirect URI",
       "description": "Add this URL to allowed_redirect_uris in each Vault OIDC role that Termix signs in with."
     },
+    "privateHosts": {
+      "label": "Allowed private Vault hosts",
+      "description": "Private or loopback Vault hostnames/IPs that anyone's own profile may use. Shared profiles and profiles made by people who can share already may. Separate entries with commas or newlines."
+    },
     "host": {
       "profileId": {
         "label": "Vault signer profile"

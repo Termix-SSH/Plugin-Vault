@@ -114,9 +114,17 @@ describe("the Vault HTTP flow", () => {
     return { fetch, calls };
   }
 
-  it("allows only the profile's own Vault host past the private address guard", () => {
-    expect(allowedHosts(profile)).toEqual(["vault.example.com"]);
-    expect(allowedHosts({ ...profile, vaultAddr: "not a url" })).toEqual([]);
+  it("lets a cleared profile's own Vault host past the private address guard", () => {
+    const cleared = { ...profile, allowPrivate: true };
+    expect(allowedHosts(cleared)).toEqual(["vault.example.com"]);
+    expect(allowedHosts({ ...cleared, vaultAddr: "not a url" })).toEqual([]);
+  });
+
+  it("gives an uncleared profile no private hosts", () => {
+    expect(allowedHosts(profile)).toEqual([]);
+    expect(
+      allowedHosts({ ...profile, vaultAddr: "http://169.254.169.254/" }),
+    ).toEqual([]);
   });
 
   it("startVaultOidc posts auth_url and reads the state", async () => {

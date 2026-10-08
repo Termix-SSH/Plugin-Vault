@@ -52,6 +52,13 @@
           "key": "redirectUri",
           "type": "custom",
           "component": "redirectUri"
+        },
+        {
+          "key": "privateHosts",
+          "type": "textarea",
+          "labelKey": "settings.privateHosts.label",
+          "descriptionKey": "settings.privateHosts.description",
+          "default": ""
         }
       ],
       "host": {

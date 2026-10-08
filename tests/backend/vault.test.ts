@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { PluginCapabilityError } from "@termix-ssh/plugin-sdk/backend";
 import { createMockCtx, createTestDb } from "@termix-ssh/plugin-sdk/testing";
+import { mayReachPrivateVault } from "../../src/backend/provider.js";
 import {
   HOST,
   PROFILE,
@@ -140,6 +141,16 @@ describe("profiles", () => {
         .prepare("SELECT COUNT(*) AS n FROM p_vault_tokens")
         .get(),
     ).toEqual({ n: 0 });
+  });
+
+  it("refuses a Vault address that is not an http or https URL", async () => {
+    server = await startServer();
+    for (const vaultAddr of ["file:///etc/passwd", "not a url"]) {
+      const response = await server.request("POST", "/profiles", {
+        body: { ...PROFILE, vaultAddr },
+      });
+      expect(response.status).toBe(400);
+    }
   });
 
   it("requires name, address and signer role", async () => {
@@ -446,5 +457,36 @@ describe("the vault provider", () => {
         methodNotAvailable: false,
       }),
     ).toBeUndefined();
+  });
+});
+
+describe("mayReachPrivateVault", () => {
+  function fakeCtx(canShare: boolean, privateHosts = "") {
+    return {
+      rbac: { hasFor: async () => canShare },
+      settings: { getAll: async () => ({ privateHosts }) },
+    } as never;
+  }
+  const personal = {
+    userId: "user-2",
+    shared: false,
+    vaultAddr: "http://10.0.0.5:8200",
+  };
+
+  it("refuses a personal profile from someone who cannot share", async () => {
+    expect(await mayReachPrivateVault(fakeCtx(false), personal)).toBe(false);
+  });
+
+  it("allows shared profiles, sharers and allowlisted hosts", async () => {
+    expect(
+      await mayReachPrivateVault(fakeCtx(false), { ...personal, shared: true }),
+    ).toBe(true);
+    expect(await mayReachPrivateVault(fakeCtx(true), personal)).toBe(true);
+    expect(
+      await mayReachPrivateVault(
+        fakeCtx(false, "vault.lan,\n10.0.0.5"),
+        personal,
+      ),
+    ).toBe(true);
   });
 });

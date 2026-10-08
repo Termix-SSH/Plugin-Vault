@@ -20,6 +20,8 @@ export interface VaultProfileConfig {
   sshRole: string;
   validPrincipals?: string | null;
   keyType?: string | null;
+  /** May reach a private or loopback Vault address. See mayReachPrivateVault. */
+  allowPrivate?: boolean;
 }
 
 export interface EphemeralKeyPair {
@@ -31,7 +33,7 @@ export interface EphemeralKeyPair {
 type VaultJson = any;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-function normalizeAddr(addr: string): string {
+export function normalizeAddr(addr: string): string {
   return addr.trim().replace(/\/+$/, "");
 }
 
@@ -48,16 +50,19 @@ function vaultHeaders(profile: VaultProfileConfig): Record<string, string> {
 }
 
 /**
- * The profile's own Vault server may be private: someone configured it by
- * name, which 2.8 allowed too. Nothing else private is reachable.
+ * The profile's own Vault server may be private only when the profile was
+ * cleared for it. Nothing else private is ever reachable.
  */
 export function allowedHosts(profile: VaultProfileConfig): string[] {
+  if (!profile.allowPrivate) return [];
   try {
     return [new URL(normalizeAddr(profile.vaultAddr)).hostname];
   } catch {
     return [];
   }
 }
+
+const MAX_ERROR_LENGTH = 300;
 
 async function vaultRequest(
   fetch: PluginFetch,
@@ -101,7 +106,9 @@ async function vaultRequest(
       json && Array.isArray(json.errors) && json.errors.length
         ? json.errors.join("; ")
         : text || `HTTP ${response.status}`;
-    throw new Error(`Vault request failed (${response.status}): ${errs}`);
+    throw new Error(
+      `Vault request failed (${response.status}): ${errs.slice(0, MAX_ERROR_LENGTH)}`,
+    );
   }
   return json;
 }
