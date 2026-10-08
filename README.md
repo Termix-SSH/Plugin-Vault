@@ -14,6 +14,8 @@
 
 HashiCorp Vault lets you connect to hosts with SSH certificates signed by Vault, after signing in to Vault with OIDC.
 
+Read the [docs](https://docs.termix.site/plugins/vault) to set it up and use it.
+
 <br />
 
 ## Features

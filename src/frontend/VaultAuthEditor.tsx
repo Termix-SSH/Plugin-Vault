@@ -8,9 +8,10 @@ import {
 import { Select2 } from "@termix-ssh/plugin-sdk/ui";
 import { VaultProfileManager } from "./VaultProfileManager";
 import type { VaultProfile } from "./types";
+import { docsUrl } from "./docs";
 
 const PLUGIN_ID = "vault";
-const DOCS_URL = "https://docs.termix.site/features/authentication/vault";
+const DOCS_URL = docsUrl();
 
 type PluginSettingsBag = Record<string, Record<string, unknown>>;
 

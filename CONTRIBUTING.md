@@ -10,17 +10,6 @@ npm run validate   # check manifest.json
 npm run format     # format the code with Prettier
 ```
 
-## Settings
+## Docs
 
-### Admin
-
-- **Redirect URI:** add `<base URL>/plugin-api/vault/oidc/callback` to `allowed_redirect_uris` in each Vault OIDC role
-
-### Host
-
-- **Vault signer profile:** the profile this host uses
-
-## Permissions
-
-- `vault.use`: create signer profiles and connect to hosts that use Vault. Admins and users have it by default.
-- `vault.share`: share a profile so every user can pick it. Only admins have it by default.
+The docs for this plugin are in [docs/](docs/) and are published at https://docs.termix.site/plugins/vault. Settings, permissions, services, environment variables and the API reference are made from `manifest.json` and the `@openapi` comments in the code, so keep those up to date instead of writing them by hand. See [writing docs](https://docs.termix.site/develop/docs).
