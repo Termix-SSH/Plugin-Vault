@@ -20,16 +20,25 @@ const REQUIRED_MESSAGE =
 
 const AUTH_FAILED_PATTERN = /All configured authentication methods failed/i;
 
-/** The profile a host points at, from its host settings. */
+/**
+ * The profile a host points at, from its host settings. Only a shared
+ * profile or one the host's owner owns counts, so a host cannot borrow
+ * someone else's private profile by its id.
+ */
 async function profileForHost(
   ctx: PluginContext,
   profiles: ProfileStore,
-  hostId: number,
+  host: Pick<PluginSshHost, "id" | "userId">,
 ): Promise<ProfileRow | null> {
-  const raw = await ctx.settings.getHost<number | string>(hostId, "profileId");
+  const raw = await ctx.settings.getHost<number | string>(host.id, "profileId");
   const id = Number(raw);
   if (!Number.isInteger(id) || id <= 0) return null;
-  return profiles.findById(id);
+  const profile = await profiles.findById(id);
+  if (!profile) return null;
+  if (host.userId && !profile.shared && profile.userId !== host.userId) {
+    return null;
+  }
+  return profile;
 }
 
 /**
@@ -76,7 +85,7 @@ export function createVaultProvider(
     supportsBackground: false,
     interaction: AUTH_TYPE,
     prepare: async (config, host: PluginSshHost, env) => {
-      const profile = await profileForHost(ctx, profiles, host.id);
+      const profile = await profileForHost(ctx, profiles, host);
       if (!profile) {
         return {
           status: "error",
@@ -119,7 +128,7 @@ export function createVaultProvider(
     onAuthFailed: (host, env, context) => {
       if (!AUTH_FAILED_PATTERN.test(context.error.message)) return undefined;
       ctx.log.warn("Vault certificate authentication failed, forgetting it");
-      void profileForHost(ctx, profiles, host.id)
+      void profileForHost(ctx, profiles, host)
         .then((profile) =>
           profile ? tokens.remove(env.userId, profile.id) : undefined,
         )
@@ -132,7 +141,10 @@ export function createVaultProvider(
       };
     },
     startInteraction: async (request) => {
-      const profile = await profileForHost(ctx, profiles, request.hostId);
+      // prepare already checked the profile against the host's owner.
+      const profile = await profileForHost(ctx, profiles, {
+        id: request.hostId,
+      });
       if (!profile) {
         throw new Error("No Vault signer profile configured for this host");
       }

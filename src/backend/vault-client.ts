@@ -85,7 +85,7 @@ async function vaultRequest(
     });
   } catch (e) {
     throw new Error(
-      `Failed to reach Vault at ${url}: ${
+      `Failed to reach Vault at ${url.split("?")[0]}: ${
         e instanceof Error ? e.message : String(e)
       }`,
     );

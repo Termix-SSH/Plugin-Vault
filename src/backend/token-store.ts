@@ -11,6 +11,7 @@ type Drizzle = any;
 const EXPIRY_SKEW_MS = 60 * 1000;
 // When the certificate's expiry cannot be read.
 const FALLBACK_TTL_MS = 5 * 60 * 1000;
+const MAX_DATE_MS = 8_640_000_000_000_000;
 
 export interface CachedCertificate {
   privateKey: string;
@@ -50,8 +51,11 @@ export function createTokenStore(ctx: PluginContext, table: Table) {
       sshCert: string,
     ): Promise<string> {
       const validBefore = parseCertValidBefore(sshCert);
+      // A certificate valid "forever" is past what a Date can hold.
       const expiresAt = new Date(
-        validBefore > 0 ? validBefore * 1000 : Date.now() + FALLBACK_TTL_MS,
+        validBefore > 0
+          ? Math.min(validBefore * 1000, MAX_DATE_MS)
+          : Date.now() + FALLBACK_TTL_MS,
       ).toISOString();
       const values = {
         sshCert: await ctx.secrets.seal(sshCert),

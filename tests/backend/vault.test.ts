@@ -352,6 +352,25 @@ describe("the vault provider", () => {
     });
   });
 
+  it("ignores another user's private profile on a host", async () => {
+    server = await startServer();
+    await profileOnHost();
+    const host = { ...HOST, userId: "user-2" };
+    expect(await server.provider().prepare({}, host, env())).toMatchObject({
+      status: "error",
+      message: "Host has no Vault signer profile configured",
+    });
+  });
+
+  it("allows a shared profile on another user's host", async () => {
+    server = await startServer();
+    await profileOnHost({ shared: true });
+    const host = { ...HOST, userId: "user-2" };
+    expect((await server.provider().prepare({}, host, env())).status).toBe(
+      "interaction-required",
+    );
+  });
+
   it("asks for a sign-in without a certificate", async () => {
     server = await startServer();
     await profileOnHost();
