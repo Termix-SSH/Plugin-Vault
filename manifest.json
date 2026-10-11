@@ -31,27 +31,20 @@
   ],
   "contributes": {
     "auth": {
-      "sshAuthTypes": [
-        "vault"
-      ]
+      "sshAuthTypes": ["vault"]
     },
     "permissions": [
       {
         "name": "use",
         "titleKey": "permissions.use.title",
         "descriptionKey": "permissions.use.description",
-        "defaultRoles": [
-          "admin",
-          "user"
-        ]
+        "defaultRoles": ["admin", "user"]
       },
       {
         "name": "share",
         "titleKey": "permissions.share.title",
         "descriptionKey": "permissions.share.description",
-        "defaultRoles": [
-          "admin"
-        ]
+        "defaultRoles": ["admin"]
       }
     ],
     "settings": {
@@ -77,25 +70,14 @@
             "labelKey": "settings.host.profileId.label",
             "hidden": true,
             "ownerOnly": true,
-            "defaultLevels": [
-              "user",
-              "folder"
-            ]
+            "defaultLevels": ["user", "folder"]
           }
         ]
       }
     },
-    "syncEntities": [
-      "vaultProfiles"
-    ],
-    "uses": [
-      "terminal.overlay"
-    ]
+    "syncEntities": ["vaultProfiles"],
+    "uses": ["terminal.overlay"]
   },
   "locales": "locales",
-  "platforms": [
-    "linux",
-    "win32",
-    "darwin"
-  ]
+  "platforms": ["linux", "win32", "darwin"]
 }
