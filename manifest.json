@@ -1,7 +1,7 @@
 {
   "id": "vault",
   "name": "HashiCorp Vault",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault.",
   "author": {
     "name": "Termix"
@@ -31,20 +31,27 @@
   ],
   "contributes": {
     "auth": {
-      "sshAuthTypes": ["vault"]
+      "sshAuthTypes": [
+        "vault"
+      ]
     },
     "permissions": [
       {
         "name": "use",
         "titleKey": "permissions.use.title",
         "descriptionKey": "permissions.use.description",
-        "defaultRoles": ["admin", "user"]
+        "defaultRoles": [
+          "admin",
+          "user"
+        ]
       },
       {
         "name": "share",
         "titleKey": "permissions.share.title",
         "descriptionKey": "permissions.share.description",
-        "defaultRoles": ["admin"]
+        "defaultRoles": [
+          "admin"
+        ]
       }
     ],
     "settings": {
@@ -70,14 +77,25 @@
             "labelKey": "settings.host.profileId.label",
             "hidden": true,
             "ownerOnly": true,
-            "defaultLevels": ["user", "folder"]
+            "defaultLevels": [
+              "user",
+              "folder"
+            ]
           }
         ]
       }
     },
-    "syncEntities": ["vaultProfiles"],
-    "uses": ["terminal.overlay"]
+    "syncEntities": [
+      "vaultProfiles"
+    ],
+    "uses": [
+      "terminal.overlay"
+    ]
   },
   "locales": "locales",
-  "platforms": ["linux", "win32", "darwin"]
+  "platforms": [
+    "linux",
+    "win32",
+    "darwin"
+  ]
 }
