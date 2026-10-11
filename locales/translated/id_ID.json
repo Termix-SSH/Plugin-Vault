@@ -3,58 +3,63 @@
     "profile": "Profil Penandatangan Vault",
     "selectProfile": "Pilih profil Vault...",
     "hint": "Pengaturan berasal dari profil bersama; Anda akan masuk ke Vault melalui OIDC saat terhubung. Tidak ada rahasia yang disimpan.",
-    "docs": "Lihat dokumen",
-    "sharedProfile": "{{name}} (dibagikan)"
+    "docs": "Lihat dokumentasi",
+    "sharedProfile": "{{name}} (bersama)"
   },
   "profiles": {
     "new": "Profil baru",
     "manage": "Kelola profil Vault",
-    "name": "Nama yang Ramah",
-    "vaultAddr": "Alamat Brankas",
-    "namespace": "Ruang nama",
-    "oidcMount": "OIDC Otorisasi Pemasangan",
+    "name": "Nama Ramah",
+    "vaultAddr": "Alamat Vault",
+    "namespace": "Ruang Nama",
+    "oidcMount": "Mount Autentikasi OIDC",
     "oidcRole": "Peran OIDC",
-    "sshMount": "Pemasangan Rahasia SSH",
+    "sshMount": "Mount Rahasia SSH",
     "sshRole": "Peran Penandatangan SSH",
-    "validPrincipals": "Prinsip-prinsip yang Sah",
-    "keyType": "Jenis Kunci Sementara",
+    "validPrincipals": "Prinsipal Valid",
+    "keyType": "Tipe Kunci Sementara",
     "shareWithAll": "Bagikan dengan semua pengguna",
     "create": "Buat profil",
-    "created": "Profil Vault telah dibuat.",
-    "saved": "Profil Vault tersimpan",
+    "created": "Profil Vault dibuat",
+    "saved": "Profil Vault disimpan",
     "deleted": "Profil Vault dihapus",
     "saveFailed": "Gagal menyimpan profil Vault",
     "deleteFailed": "Gagal menghapus profil Vault",
     "save": "Simpan profil",
-    "validationError": "Nama, alamat Vault, dan peran penandatangan SSH wajib diisi.",
+    "validationError": "Nama, alamat Vault, dan peran penandatangan SSH wajib diisi",
     "none": "Belum ada profil Vault.",
-    "sharedBadge": "dibagikan",
-    "edit": "Edit",
-    "delete": "Menghapus"
+    "sharedBadge": "bersama",
+    "edit": "Sunting",
+    "delete": "Hapus",
+    "deleteConfirm": "Hapus profil Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Kubah"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Login ke Vault diperlukan.",
-    "description": "Jendela telah terbuka untuk masuk ke HashiCorp Vault. Selesaikan proses masuk di sana; koneksi ini akan berlanjut secara otomatis.",
+    "title": "Masuk Vault diperlukan",
+    "description": "Jendela telah terbuka untuk masuk ke HashiCorp Vault. Selesaikan proses masuk di sana; koneksi ini akan dilanjutkan secara otomatis.",
     "failed": "Autentikasi Vault gagal. Silakan coba lagi.",
-    "reopen": "Buka kembali jendela masuk"
+    "reopen": "Buka ulang jendela masuk"
   },
   "permissions": {
     "use": {
-      "title": "Gunakan penandatanganan SSH Vault.",
-      "description": "Buat profil penandatangan Vault dan hubungkan ke host yang menggunakan Vault."
+      "title": "Gunakan penandatanganan SSH Vault",
+      "description": "Buat profil penandatangan Vault dan terhubung ke host yang menggunakan Vault."
     },
     "share": {
       "title": "Bagikan profil Vault",
-      "description": "Tandai profil penandatangan Vault sebagai profil yang dibagikan agar setiap pengguna dapat memilihnya."
+      "description": "Tandai profil penandatangan Vault sebagai bersama agar setiap pengguna dapat memilihnya."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI Pengalihan",
-      "description": "Tambahkan URL ini ke allowed_redirect_uris di setiap peran Vault OIDC yang digunakan Termix untuk masuk."
+      "description": "Tambahkan URL ini ke allowed_redirect_uris di setiap peran OIDC Vault yang digunakan Termix untuk masuk."
+    },
+    "privateHosts": {
+      "label": "Host Vault pribadi yang diizinkan",
+      "description": "Nama host/IP Vault pribadi atau loopback yang dapat digunakan oleh profil pribadi siapa pun. Profil bersama dan profil yang dibuat oleh orang yang memiliki izin berbagi sudah dapat menggunakannya. Pisahkan entri dengan koma atau baris baru."
     },
     "host": {
       "profileId": {

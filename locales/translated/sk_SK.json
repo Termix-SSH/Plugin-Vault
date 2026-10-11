@@ -1,0 +1,73 @@
+{
+  "editor": {
+    "profile": "Profil Vault Signer",
+    "selectProfile": "Vyberte profil Vault...",
+    "hint": "Nastavenia pochádzajú zo zdieľaného profilu; pri pripojení sa prihlásite do Vault prostredníctvom OIDC. Žiadne tajomstvá sa neukladajú.",
+    "docs": "Zobraziť dokumentáciu",
+    "sharedProfile": "{{name}} (zdieľaný)"
+  },
+  "profiles": {
+    "new": "Nový profil",
+    "manage": "Spravovať profily Vault",
+    "name": "Používateľské meno",
+    "vaultAddr": "Adresa Vault",
+    "namespace": "Menový priestor",
+    "oidcMount": "Mount OIDC Auth",
+    "oidcRole": "Rola OIDC",
+    "sshMount": "Mount SSH Secrets",
+    "sshRole": "Rola SSH Signer",
+    "validPrincipals": "Platné subjekty",
+    "keyType": "Typ dočasného kľúča",
+    "shareWithAll": "Zdieľať so všetkými používateľmi",
+    "create": "Vytvoriť profil",
+    "created": "Profil Vault bol vytvorený",
+    "saved": "Profil Vault bol uložený",
+    "deleted": "Profil Vault bol odstránený",
+    "saveFailed": "Nepodarilo sa uložiť profil Vault",
+    "deleteFailed": "Nepodarilo sa odstrániť profil Vault",
+    "save": "Uložiť profil",
+    "validationError": "Meno, adresa Vault a rola SSH Signer sú povinné",
+    "none": "Zatiaľ žiadne profily Vault.",
+    "sharedBadge": "zdieľaný",
+    "edit": "Upraviť",
+    "delete": "Odstrániť",
+    "deleteConfirm": "Odstrániť profil Vault {{name}}?"
+  },
+  "hosts": {
+    "filterAuthVault": "Vault"
+  },
+  "dialog": {
+    "title": "Vyžaduje sa prihlásenie do Vault",
+    "description": "Otvorilo sa okno na prihlásenie do HashiCorp Vault. Dokončite prihlásenie tam; toto pripojenie sa automaticky pokračuje.",
+    "failed": "Overenie Vault zlyhalo. Skúste to znova.",
+    "reopen": "Znova otvoriť okno na prihlásenie"
+  },
+  "permissions": {
+    "use": {
+      "title": "Používať Vault SSH signing",
+      "description": "Vytvárajte profily Vault Signer a pripájajte sa k hostiteľom, ktoré používajú Vault."
+    },
+    "share": {
+      "title": "Zdieľať profily Vault",
+      "description": "Označte profil Vault Signer ako zdieľaný, aby ho mohol vybrať každý používateľ."
+    }
+  },
+  "settings": {
+    "redirectUri": {
+      "label": "URI presmerovania",
+      "description": "Pridajte túto URL do allowed_redirect_uris v každej roly Vault OIDC, s ktorou sa Termix prihlasuje."
+    },
+    "privateHosts": {
+      "label": "Povolené súkromné hostiteľské servery Vault",
+      "description": "Súkromné alebo loopback názvy hostiteľov/IP adresy Vault, ktoré môže použiť vlastný profil kohokoľvek. Zdieľané profily a profily vytvorené ľuďmi, ktorí môžu zdieľať, už môžu. Oddelte položky čiarkami alebo novými riadkami."
+    },
+    "host": {
+      "profileId": {
+        "label": "Profil Vault Signer"
+      }
+    }
+  },
+  "plugin": {
+    "name": "HashiCorp Vault"
+  }
+}

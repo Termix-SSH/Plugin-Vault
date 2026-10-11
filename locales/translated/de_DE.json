@@ -1,10 +1,10 @@
 {
   "editor": {
     "profile": "Vault-Signer-Profil",
-    "selectProfile": "Vault-Profil auswählen...",
-    "hint": "Die Einstellungen stammen aus dem freigegebenen Profil; Sie melden sich beim Verbinden per OIDC bei Vault an. Es werden keine Geheimnisse gespeichert.",
-    "docs": "Dokumentation ansehen",
-    "sharedProfile": "{{name}} (gemeinsam genutzt)"
+    "selectProfile": "Wählen Sie ein Vault-Profil aus...",
+    "hint": "Die Einstellungen stammen aus dem gemeinsamen Profil. Sie melden sich bei Vault über OIDC an, wenn Sie eine Verbindung herstellen. Es werden keine Geheimnisse gespeichert.",
+    "docs": "Dokumentation anzeigen",
+    "sharedProfile": "{{name}} (gemeinsam)"
   },
   "profiles": {
     "new": "Neues Profil",
@@ -16,9 +16,9 @@
     "oidcRole": "OIDC-Rolle",
     "sshMount": "SSH-Secrets-Mount",
     "sshRole": "SSH-Signer-Rolle",
-    "validPrincipals": "Gültige Principals",
-    "keyType": "Ephemerer Schlüsseltyp",
-    "shareWithAll": "Mit allen Benutzern teilen",
+    "validPrincipals": "Gültige Prinzipale",
+    "keyType": "Typ des temporären Schlüssels",
+    "shareWithAll": "Mit allen Nutzern teilen",
     "create": "Profil erstellen",
     "created": "Vault-Profil erstellt",
     "saved": "Vault-Profil gespeichert",
@@ -27,34 +27,39 @@
     "deleteFailed": "Fehler beim Löschen des Vault-Profils",
     "save": "Profil speichern",
     "validationError": "Name, Vault-Adresse und SSH-Signer-Rolle sind erforderlich",
-    "none": "Noch keine Vault-Profile.",
-    "sharedBadge": "geteilt",
+    "none": "Es gibt noch keine Vault-Profile.",
+    "sharedBadge": "gemeinsam",
     "edit": "Bearbeiten",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "deleteConfirm": "Vault-Profil {{name}} löschen?"
   },
   "hosts": {
-    "filterAuthVault": "Gewölbe"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "Vault-Anmeldung erforderlich",
-    "description": "Ein Fenster zur Anmeldung bei HashiCorp Vault wurde geöffnet. Schließen Sie die Anmeldung dort ab; diese Verbindung wird automatisch fortgesetzt.",
+    "description": "Ein Fenster wurde geöffnet, um sich bei HashiCorp Vault anzumelden. Schließen Sie die Anmeldung dort ab; diese Verbindung wird automatisch fortgesetzt.",
     "failed": "Vault-Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
-    "reopen": "Anmeldefenster erneut öffnen"
+    "reopen": "Anmeldungsfenster erneut öffnen"
   },
   "permissions": {
     "use": {
       "title": "Vault-SSH-Signierung verwenden",
-      "description": "Erstellen Sie Vault-Signaturprofile und stellen Sie eine Verbindung zu Hosts her, die Vault verwenden."
+      "description": "Erstellen Sie Vault-Signer-Profile und stellen Sie Verbindungen zu Hosts her, die Vault verwenden."
     },
     "share": {
       "title": "Vault-Profile teilen",
-      "description": "Markieren Sie ein Vault-Signaturprofil als freigegeben, damit es jeder Benutzer auswählen kann."
+      "description": "Markieren Sie ein Vault-Signer-Profil als gemeinsam, damit jeder Nutzer es auswählen kann."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "Umleitungs-URI",
-      "description": "Fügen Sie diese URL in jeder Vault OIDC-Rolle, mit der sich Termix anmeldet, zu allowed_redirect_uris hinzu."
+      "label": "Weiterleitungs-URI",
+      "description": "Fügen Sie diese URL zu allowed_redirect_uris in jeder Vault-OIDC-Rolle hinzu, mit der sich Termix anmeldet."
+    },
+    "privateHosts": {
+      "label": "Erlaubte private Vault-Hosts",
+      "description": "Private oder Loopback-Vault-Hostnamen/IPs, die vom eigenen Profil jedes Nutzers verwendet werden dürfen. Gemeinsame Profile und Profile von Nutzern mit Teilungsrechten dürfen dies bereits. Trennen Sie Einträge durch Kommas oder Zeilenumbrüche."
     },
     "host": {
       "profileId": {

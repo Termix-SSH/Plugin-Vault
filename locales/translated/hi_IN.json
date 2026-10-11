@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "Vault साइनर प्रोफ़ाइल",
-    "selectProfile": "एक Vault प्रोफ़ाइल चुनें...",
-    "hint": "सेटिंग साझा प्रोफ़ाइल से आती हैं; कनेक्ट करते समय आप OIDC के माध्यम से Vault में साइन इन करेंगे। कोई सीक्रेट संग्रहीत नहीं किए जाते।",
+    "profile": "Vault Signer Profile",
+    "selectProfile": "Vault प्रोफ़ाइल चुनें...",
+    "hint": "सेटिंग्स साझा प्रोफ़ाइल से आती हैं; कनेक्ट करने पर आप OIDC के माध्यम से Vault में साइन इन करेंगे। कोई भी गुप्त जानकारी संग्रहीत नहीं की जाती।",
     "docs": "दस्तावेज़ देखें",
     "sharedProfile": "{{name}} (साझा)"
   },
   "profiles": {
     "new": "नई प्रोफ़ाइल",
-    "manage": "Vault प्रोफ़ाइल प्रबंधित करें",
-    "name": "अनुकूल नाम",
+    "manage": "Vault प्रोफ़ाइलें प्रबंधित करें",
+    "name": "उपयोगकर्ता नाम",
     "vaultAddr": "Vault पता",
     "namespace": "नेमस्पेस",
-    "oidcMount": "OIDC ऑथ माउंट",
-    "oidcRole": "OIDC रोल",
-    "sshMount": "SSH सीक्रेट माउंट",
-    "sshRole": "SSH साइनर रोल",
-    "validPrincipals": "मान्य प्रिंसिपल",
-    "keyType": "एफेमरल कुंजी प्रकार",
+    "oidcMount": "OIDC Auth Mount",
+    "oidcRole": "OIDC भूमिका",
+    "sshMount": "SSH Secrets Mount",
+    "sshRole": "SSH Signer भूमिका",
+    "validPrincipals": "मान्य Principals",
+    "keyType": "अस्थायी Key प्रकार",
     "shareWithAll": "सभी उपयोगकर्ताओं के साथ साझा करें",
-    "create": "प्रोफ़ाइल बनाएँ",
+    "create": "प्रोफ़ाइल बनाएं",
     "created": "Vault प्रोफ़ाइल बनाई गई",
     "saved": "Vault प्रोफ़ाइल सहेजी गई",
     "deleted": "Vault प्रोफ़ाइल हटाई गई",
     "saveFailed": "Vault प्रोफ़ाइल सहेजने में विफल",
     "deleteFailed": "Vault प्रोफ़ाइल हटाने में विफल",
     "save": "प्रोफ़ाइल सहेजें",
-    "validationError": "नाम, Vault पता और SSH हस्ताक्षरकर्ता भूमिका आवश्यक हैं",
-    "none": "अभी तक कोई Vault प्रोफ़ाइल नहीं है।",
+    "validationError": "नाम, Vault पता और SSH signer भूमिका आवश्यक हैं",
+    "none": "अभी तक कोई Vault प्रोफ़ाइल नहीं।",
     "sharedBadge": "साझा",
     "edit": "संपादित करें",
-    "delete": "हटाएँ"
+    "delete": "हटाएं",
+    "deleteConfirm": "क्या Vault प्रोफ़ाइल {{name}} हटानी है?"
   },
   "hosts": {
-    "filterAuthVault": "मेहराब"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "Vault साइन-इन आवश्यक है",
-    "description": "HashiCorp Vault में साइन इन करने के लिए एक विंडो खुल गई है। वहाँ साइन-इन पूरा करें; यह कनेक्शन स्वचालित रूप से जारी रहेगा।",
-    "failed": "Vault प्रमाणीकरण विफल। कृपया पुनः प्रयास करें।",
-    "reopen": "साइन-इन विंडो फिर से खोलें"
+    "description": "HashiCorp Vault में साइन इन करने के लिए एक विंडो खुली है। वहां साइन-इन पूरा करें; यह कनेक्शन स्वचालित रूप से जारी रहेगा।",
+    "failed": "Vault प्रमाणीकरण विफल रहा। कृपया पुनः प्रयास करें।",
+    "reopen": "साइन-इन विंडो पुनः खोलें"
   },
   "permissions": {
     "use": {
       "title": "Vault SSH साइनिंग का उपयोग करें",
-      "description": "वॉल्ट साइनर प्रोफाइल बनाएं और वॉल्ट का उपयोग करने वाले होस्ट से कनेक्ट करें।"
+      "description": "Vault signer प्रोफ़ाइलें बनाएं और उन होस्ट से कनेक्ट करें जो Vault का उपयोग करते हैं।"
     },
     "share": {
-      "title": "वॉल्ट प्रोफाइल साझा करें",
-      "description": "वॉल्ट साइनर प्रोफाइल को साझा के रूप में चिह्नित करें ताकि हर उपयोगकर्ता इसे चुन सके।"
+      "title": "Vault प्रोफ़ाइलें साझा करें",
+      "description": "Vault signer प्रोफ़ाइल को साझा के रूप में चिह्नित करें ताकि हर उपयोगकर्ता उसे चुन सके।"
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "रीडायरेक्ट यूआरआई",
-      "description": "टर्मिक्स द्वारा साइन इन किए जाने वाले प्रत्येक वॉल्ट ओआईडीसी रोल में allowed_redirect_uris में इस URL को जोड़ें।"
+      "label": "Redirect URI",
+      "description": "Termix जिस Vault OIDC भूमिका के साथ साइन इन करता है, उसमें allowed_redirect_uris में यह URL जोड़ें।"
+    },
+    "privateHosts": {
+      "label": "अनुमत प्राइवेट Vault होस्ट",
+      "description": "प्राइवेट या लूपबैक Vault होस्टनेम/IP जो किसी भी उपयोगकर्ता की अपनी प्रोफ़ाइल द्वारा उपयोग किए जा सकते हैं। साझा प्रोफ़ाइलें और वे प्रोफ़ाइलें जो पहले से साझा करने वाले लोगों द्वारा बनाई गई हैं, वे पहले से ही अनुमत हैं। प्रविष्टियों को अल्पविराम या नई पंक्तियों से अलग करें।"
     },
     "host": {
       "profileId": {
-        "label": "वॉल्ट हस्ताक्षरकर्ता प्रोफ़ाइल"
+        "label": "Vault signer प्रोफ़ाइल"
       }
     }
   },

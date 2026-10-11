@@ -1,60 +1,65 @@
 {
   "editor": {
     "profile": "Vault 簽署者設定檔",
-    "selectProfile": "選取 Vault 設定檔...",
-    "hint": "設定來自共用設定檔；連線時您將透過 OIDC 登入 Vault。不會儲存任何機密。",
-    "docs": "檢視文件",
-    "sharedProfile": "{{name}} （共享）"
+    "selectProfile": "選擇 Vault 設定檔...",
+    "hint": "設定來自共用設定檔；連線時您將透過 OIDC 登入 Vault。不會儲存任何機密資訊。",
+    "docs": "查看說明文件",
+    "sharedProfile": "{{name}}（共用）"
   },
   "profiles": {
     "new": "新增設定檔",
     "manage": "管理 Vault 設定檔",
-    "name": "易記名稱",
+    "name": "顯示名稱",
     "vaultAddr": "Vault 位址",
     "namespace": "命名空間",
-    "oidcMount": "OIDC 驗證掛載",
+    "oidcMount": "OIDC 驗證掛載點",
     "oidcRole": "OIDC 角色",
-    "sshMount": "SSH 機密掛載",
+    "sshMount": "SSH 機密掛載點",
     "sshRole": "SSH 簽署者角色",
     "validPrincipals": "有效主體",
-    "keyType": "暫時金鑰類型",
+    "keyType": "臨時金鑰類型",
     "shareWithAll": "與所有使用者共用",
     "create": "建立設定檔",
     "created": "Vault 設定檔已建立",
     "saved": "Vault 設定檔已儲存",
     "deleted": "Vault 設定檔已刪除",
-    "saveFailed": "無法儲存 Vault 設定檔",
-    "deleteFailed": "無法刪除 Vault 設定檔",
+    "saveFailed": "儲存 Vault 設定檔失敗",
+    "deleteFailed": "刪除 Vault 設定檔失敗",
     "save": "儲存設定檔",
-    "validationError": "名稱、Vault 位址和 SSH 簽署者角色為必填",
+    "validationError": "名稱、Vault 位址與 SSH 簽署者角色為必填欄位",
     "none": "尚無 Vault 設定檔。",
-    "sharedBadge": "已共用",
+    "sharedBadge": "共用",
     "edit": "編輯",
-    "delete": "刪除"
+    "delete": "刪除",
+    "deleteConfirm": "確定要刪除 Vault 設定檔 {{name}} 嗎？"
   },
   "hosts": {
-    "filterAuthVault": "保險庫"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "需要 Vault 登入",
-    "description": "已開啟視窗以登入 HashiCorp Vault。在該處完成登入；此連線將自動繼續。",
+    "description": "已開啟視窗以登入 HashiCorp Vault。請在該視窗完成登入；此連線將自動繼續。",
     "failed": "Vault 驗證失敗。請再試一次。",
     "reopen": "重新開啟登入視窗"
   },
   "permissions": {
     "use": {
-      "title": "使用 Vault SSH 簽名",
-      "description": "建立 Vault 簽署者設定檔並連接到使用 Vault 的主機。"
+      "title": "使用 Vault SSH 簽署",
+      "description": "建立 Vault 簽署者設定檔，並連線至使用 Vault 的主機。"
     },
     "share": {
-      "title": "共享庫配置文件",
-      "description": "將 Vault 簽署者設定檔標記為共用，以便每個使用者都可以選擇它。"
+      "title": "共用 Vault 設定檔",
+      "description": "將 Vault 簽署者設定檔標記為共用，以便所有使用者都能選用它。"
     }
   },
   "settings": {
     "redirectUri": {
       "label": "重定向 URI",
-      "description": "將此 URL 新增至 Termix 登入的每個 Vault OIDC 角色的 allowed_redirect_uris 中。"
+      "description": "將此 URL 新增至 Termix 登入所使用的每個 Vault OIDC 角色的 allowed_redirect_uris 中。"
+    },
+    "privateHosts": {
+      "label": "允許的私人 Vault 主機",
+      "description": "任何人的個人設定檔可使用的私人或回環 Vault 主機名稱/IP。共用設定檔以及由具有共用權限者建立的設定檔已允許使用。請以逗號或換行分隔項目。"
     },
     "host": {
       "profileId": {

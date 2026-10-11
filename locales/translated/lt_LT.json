@@ -1,0 +1,73 @@
+{
+  "editor": {
+    "profile": "Vault parašo profilio",
+    "selectProfile": "Pasirinkite Vault profilį...",
+    "hint": "Nustatymai imami iš bendro profilio; prisijungus prie Vault bus naudojamas OIDC prisijungimas. Slaptažodžiai ar raktai nėra saugomi.",
+    "docs": "Peržiūrėti dokumentaciją",
+    "sharedProfile": "{{name}} (bendras)"
+  },
+  "profiles": {
+    "new": "Naujas profilis",
+    "manage": "Tvarkyti Vault profilius",
+    "name": "Rodomas pavadinimas",
+    "vaultAddr": "Vault adresas",
+    "namespace": "Vardų erdvė",
+    "oidcMount": "OIDC autentifikavimo taškas",
+    "oidcRole": "OIDC vaidmuo",
+    "sshMount": "SSH slaptažodžių taškas",
+    "sshRole": "SSH parašo vaidmuo",
+    "validPrincipals": "Galimi subjektai",
+    "keyType": "Laikinų raktų tipas",
+    "shareWithAll": "Bendrinti su visais vartotojais",
+    "create": "Sukurti profilį",
+    "created": "Vault profilis sukurtas",
+    "saved": "Vault profilis išsaugotas",
+    "deleted": "Vault profilis ištrintas",
+    "saveFailed": "Nepavyko išsaugoti Vault profilio",
+    "deleteFailed": "Nepavyko ištrinti Vault profilio",
+    "save": "Išsaugoti profilį",
+    "validationError": "Būtina nurodyti pavadinimą, Vault adresą ir SSH parašo vaidmenį",
+    "none": "Dar nėra Vault profilių.",
+    "sharedBadge": "bendras",
+    "edit": "Redaguoti",
+    "delete": "Ištrinti",
+    "deleteConfirm": "Ištrinti Vault profilį „{{name}}“?"
+  },
+  "hosts": {
+    "filterAuthVault": "Vault"
+  },
+  "dialog": {
+    "title": "Reikalingas prisijungimas prie Vault",
+    "description": "Atidarytas langas prisijungimui prie HashiCorp Vault. Užbaikite prisijungimą tame lange; šis ryšys bus tęsiamas automatiškai.",
+    "failed": "Vault autentifikavimas nepavyko. Bandykite dar kartą.",
+    "reopen": "Iš naujo atidaryti prisijungimo langą"
+  },
+  "permissions": {
+    "use": {
+      "title": "Naudoti Vault SSH parašavimą",
+      "description": "Sukurti Vault parašo profilius ir jungtis prie serverių, naudojančių Vault."
+    },
+    "share": {
+      "title": "Bendrinti Vault profilius",
+      "description": "Pažymėti Vault parašo profilį kaip bendrą, kad jį galėtų pasirinkti bet kuris vartotojas."
+    }
+  },
+  "settings": {
+    "redirectUri": {
+      "label": "Perkrovimo URI",
+      "description": "Pridėkite šį URL į leistinus „allowed_redirect_uris“ kiekviename Vault OIDC vaidmuo, su kuriuo prisijungia Termix."
+    },
+    "privateHosts": {
+      "label": "Leisti privačius Vault serverius",
+      "description": "Privatūs arba kilpos (loopback) Vault serverių vardai/IP, kuriuos gali naudoti bet kurio vartotojo asmeninis profilis. Bendri profiliai ir profiliai, sukurti turinčių bendrinimo teisių vartotojų, jau gali naudoti bet kokius. Įrašus atskirkite kableliais arba naujomis eilutėmis."
+    },
+    "host": {
+      "profileId": {
+        "label": "Vault parašo profilis"
+      }
+    }
+  },
+  "plugin": {
+    "name": "HashiCorp Vault"
+  }
+}

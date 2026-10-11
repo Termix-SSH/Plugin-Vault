@@ -1,22 +1,22 @@
 {
   "editor": {
-    "profile": "Perfil de firmante de Vault",
-    "selectProfile": "Seleccionar un perfil de Vault...",
-    "hint": "La configuración proviene del perfil compartido; se iniciará sesión en Vault a través de OIDC al conectarse. No se almacenan secretos.",
+    "profile": "Perfil de firma de Vault",
+    "selectProfile": "Selecciona un perfil de Vault...",
+    "hint": "La configuración proviene del perfil compartido; iniciarás sesión en Vault mediante OIDC al conectarte. No se almacenan secretos.",
     "docs": "Ver documentación",
     "sharedProfile": "{{name}} (compartido)"
   },
   "profiles": {
     "new": "Nuevo perfil",
-    "manage": "Administrar perfiles de Vault",
+    "manage": "Gestionar perfiles de Vault",
     "name": "Nombre descriptivo",
     "vaultAddr": "Dirección de Vault",
     "namespace": "Espacio de nombres",
-    "oidcMount": "Montaje de autenticación OIDC",
-    "oidcRole": "Rol OIDC",
-    "sshMount": "Montaje de secretos SSH",
-    "sshRole": "Rol de firmante SSH",
-    "validPrincipals": "Principals válidos",
+    "oidcMount": "Punto de montaje de autenticación OIDC",
+    "oidcRole": "Rol de OIDC",
+    "sshMount": "Punto de montaje de secretos SSH",
+    "sshRole": "Rol de firma SSH",
+    "validPrincipals": "Principales válidos",
     "keyType": "Tipo de clave efímera",
     "shareWithAll": "Compartir con todos los usuarios",
     "create": "Crear perfil",
@@ -26,39 +26,44 @@
     "saveFailed": "Error al guardar el perfil de Vault",
     "deleteFailed": "Error al eliminar el perfil de Vault",
     "save": "Guardar perfil",
-    "validationError": "Se requieren el nombre, la dirección de Vault y el rol de firmante SSH",
+    "validationError": "El nombre, la dirección de Vault y el rol de firma SSH son obligatorios",
     "none": "Aún no hay perfiles de Vault.",
     "sharedBadge": "compartido",
     "edit": "Editar",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "deleteConfirm": "¿Eliminar el perfil de Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Bóveda"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Inicio de sesión en Vault requerido",
+    "title": "Se requiere inicio de sesión en Vault",
     "description": "Se ha abierto una ventana para iniciar sesión en HashiCorp Vault. Completa el inicio de sesión allí; esta conexión continuará automáticamente.",
-    "failed": "La autenticación de Vault falló. Inténtalo de nuevo.",
+    "failed": "Error en la autenticación de Vault. Inténtalo de nuevo.",
     "reopen": "Reabrir ventana de inicio de sesión"
   },
   "permissions": {
     "use": {
-      "title": "Utilice la firma SSH de Vault.",
-      "description": "Cree perfiles de firmante de Vault y conéctese a los hosts que utilizan Vault."
+      "title": "Usar firma SSH de Vault",
+      "description": "Crear perfiles de firma de Vault y conectarse a hosts que usen Vault."
     },
     "share": {
-      "title": "Compartir perfiles de bóveda",
-      "description": "Marca un perfil de firmante de Vault como compartido para que todos los usuarios puedan seleccionarlo."
+      "title": "Compartir perfiles de Vault",
+      "description": "Marcar un perfil de firma de Vault como compartido para que cualquier usuario pueda seleccionarlo."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI de redirección",
-      "description": "Agregue esta URL a allowed_redirect_uris en cada rol OIDC de Vault con el que Termix inicie sesión."
+      "description": "Añade esta URL a allowed_redirect_uris en cada rol OIDC de Vault con el que Termix inicie sesión."
+    },
+    "privateHosts": {
+      "label": "Hosts privados de Vault permitidos",
+      "description": "Nombres de host o IPs privadas o de bucle local de Vault que cualquier perfil propio puede usar. Los perfiles compartidos y los creados por personas con permiso para compartir ya pueden. Separa las entradas con comas o saltos de línea."
     },
     "host": {
       "profileId": {
-        "label": "Perfil del firmante de Vault"
+        "label": "Perfil de firma de Vault"
       }
     }
   },

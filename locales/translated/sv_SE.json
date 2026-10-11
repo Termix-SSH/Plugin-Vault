@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "Profil för valvsignerare",
+    "profile": "Vault-signerprofil",
     "selectProfile": "Välj en Vault-profil...",
-    "hint": "Inställningarna kommer från den delade profilen; du loggar in på Vault via OIDC när du ansluter. Inga hemligheter lagras.",
-    "docs": "Visa dokument",
+    "hint": "Inställningarna hämtas från den delade profilen. Du loggar in i Vault via OIDC när du ansluter. Inga hemligheter lagras.",
+    "docs": "Visa dokumentation",
     "sharedProfile": "{{name}} (delad)"
   },
   "profiles": {
     "new": "Ny profil",
     "manage": "Hantera Vault-profiler",
-    "name": "Vänligt namn",
-    "vaultAddr": "Valvadress",
+    "name": "Visningsnamn",
+    "vaultAddr": "Vault-adress",
     "namespace": "Namnrymd",
     "oidcMount": "OIDC-autentiseringsmontering",
     "oidcRole": "OIDC-roll",
-    "sshMount": "SSH-hemligheter monteras",
-    "sshRole": "SSH-signerarroll",
-    "validPrincipals": "Giltiga principer",
-    "keyType": "Tillfällig nyckeltyp",
+    "sshMount": "SSH-hemlighetsmontering",
+    "sshRole": "Roll för SSH-signering",
+    "validPrincipals": "Giltiga principaler",
+    "keyType": "Typ av tillfällig nyckel",
     "shareWithAll": "Dela med alla användare",
     "create": "Skapa profil",
-    "created": "Arkivprofil skapad",
-    "saved": "Arkivprofilen har sparats",
-    "deleted": "Arkivprofil raderad",
-    "saveFailed": "Kunde inte spara arkivprofilen",
-    "deleteFailed": "Misslyckades med att ta bort Arkiv-profilen",
+    "created": "Vault-profil skapad",
+    "saved": "Vault-profil sparad",
+    "deleted": "Vault-profil raderad",
+    "saveFailed": "Misslyckades med att spara Vault-profilen",
+    "deleteFailed": "Misslyckades med att radera Vault-profilen",
     "save": "Spara profil",
-    "validationError": "Namn, valvadress och SSH-signerarroll krävs",
+    "validationError": "Namn, Vault-adress och roll för SSH-signering krävs",
     "none": "Inga Vault-profiler ännu.",
     "sharedBadge": "delad",
     "edit": "Redigera",
-    "delete": "Radera"
+    "delete": "Radera",
+    "deleteConfirm": "Vill du radera Vault-profilen {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Valv"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Inloggning till arkivet krävs",
-    "description": "Ett fönster har öppnats för att logga in på HashiCorp Vault. Slutför inloggningen där; anslutningen fortsätter automatiskt.",
-    "failed": "Valvautentisering misslyckades. Försök igen.",
+    "title": "Inloggning i Vault krävs",
+    "description": "Ett fönster har öppnats för inloggning i HashiCorp Vault. Slutför inloggningen där; anslutningen fortsätter automatiskt.",
+    "failed": "Autentiseringen mot Vault misslyckades. Försök igen.",
     "reopen": "Öppna inloggningsfönstret igen"
   },
   "permissions": {
     "use": {
-      "title": "Använd SSH-signering i Vault",
-      "description": "Skapa profiler för Vault-signerare och anslut till värdar som använder Vault."
+      "title": "Använd Vault-SSH-signering",
+      "description": "Skapa profiler för Vault-signering och anslut till värdar som använder Vault."
     },
     "share": {
       "title": "Dela Vault-profiler",
-      "description": "Markera en Vault-signerarprofil som delad så att alla användare kan välja den."
+      "description": "Markera en profil för Vault-signering som delad så att alla användare kan välja den."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Omdirigerings-URI",
-      "description": "Lägg till denna URL till allowed_redirect_uris i varje Vault OIDC-roll som Termix loggar in med."
+      "description": "Lägg till denna URL i allowed_redirect_uris för varje Vault OIDC-roll som Termix loggar in med."
+    },
+    "privateHosts": {
+      "label": "Tillåtna privata Vault-värdar",
+      "description": "Privata eller loopback-värdnamn/IP-adresser för Vault som vilken användares egen profil som helst får använda. Delade profiler och profiler skapade av personer som har behörighet att dela får redan använda dem. Separera poster med kommatecken eller radbrytningar."
     },
     "host": {
       "profileId": {
-        "label": "Profil för valvsignerare"
+        "label": "Profil för Vault-signering"
       }
     }
   },

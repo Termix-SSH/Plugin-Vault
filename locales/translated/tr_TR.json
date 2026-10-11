@@ -2,23 +2,23 @@
   "editor": {
     "profile": "Vault İmzalayıcı Profili",
     "selectProfile": "Bir Vault profili seçin...",
-    "hint": "Ayarlar paylaşılan profilden gelir; bağlandığınızda OIDC ile Vault'ta oturum açarsınız. Hiçbir gizli bilgi saklanmaz.",
-    "docs": "Belgelere bak",
+    "hint": "Ayarlar paylaşılan profilden gelir; bağlandığınızda Vault'a OIDC üzerinden giriş yaparsınız. Hiçbir gizli bilgi saklanmaz.",
+    "docs": "Dokümanları görüntüle",
     "sharedProfile": "{{name}} (paylaşılan)"
   },
   "profiles": {
     "new": "Yeni profil",
-    "manage": "Vault Profillerini Yönet",
-    "name": "Gösterim Adı",
+    "manage": "Vault profillerini yönet",
+    "name": "Gösterge Adı",
     "vaultAddr": "Vault Adresi",
     "namespace": "Ad Alanı",
-    "oidcMount": "OIDC Kimlik Doğrulama Bağlama",
+    "oidcMount": "OIDC Kimlik Doğrulama Mount Noktası",
     "oidcRole": "OIDC Rolü",
-    "sshMount": "SSH Gizli Dizin Bağlama",
+    "sshMount": "SSH Gizli Bilgiler Mount Noktası",
     "sshRole": "SSH İmzalayıcı Rolü",
-    "validPrincipals": "Geçerli Asıllar",
+    "validPrincipals": "Geçerli İlkeler",
     "keyType": "Geçici Anahtar Türü",
-    "shareWithAll": "Tüm Kullanıcılarla Paylaş",
+    "shareWithAll": "Tüm kullanıcılarla paylaş",
     "create": "Profil oluştur",
     "created": "Vault profili oluşturuldu",
     "saved": "Vault profili kaydedildi",
@@ -26,39 +26,44 @@
     "saveFailed": "Vault profili kaydedilemedi",
     "deleteFailed": "Vault profili silinemedi",
     "save": "Profili kaydet",
-    "validationError": "Ad, Vault adresi ve SSH imzalama rolü gereklidir",
+    "validationError": "Ad, Vault adresi ve SSH imzalayıcı rolü zorunludur",
     "none": "Henüz Vault profili yok.",
     "sharedBadge": "paylaşılan",
     "edit": "Düzenle",
-    "delete": "Sil"
+    "delete": "Sil",
+    "deleteConfirm": "{{name}} Vault profili silinsin mi?"
   },
   "hosts": {
-    "filterAuthVault": "Kasa"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Vault Oturum Açması Gerekli",
-    "description": "HashiCorp Vault'ta oturum açmak için bir pencere açıldı. Orada oturum açmayı tamamlayın; bu bağlantı otomatik olarak devam edecek.",
+    "title": "Vault girişi gerekli",
+    "description": "HashiCorp Vault'a giriş yapmak için bir pencere açıldı. Girişi orada tamamlayın; bu bağlantı otomatik olarak devam edecek.",
     "failed": "Vault kimlik doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
-    "reopen": "Oturum açma penceresini yeniden aç"
+    "reopen": "Giriş penceresini yeniden aç"
   },
   "permissions": {
     "use": {
-      "title": "Vault SSH imzalama özelliğini kullanın.",
-      "description": "Vault imzalayıcı profilleri oluşturun ve Vault kullanan sunuculara bağlanın."
+      "title": "Vault SSH imzalama kullan",
+      "description": "Vault imzalayıcı profilleri oluşturun ve Vault kullanan ana makinelere bağlanın."
     },
     "share": {
-      "title": "Share Vault profillerini paylaşın",
-      "description": "Bir Vault imzalayıcı profilini paylaşımlı olarak işaretleyin, böylece her kullanıcı onu seçebilir."
+      "title": "Vault profillerini paylaş",
+      "description": "Her kullanıcının seçebilmesi için bir Vault imzalayıcı profilini paylaşılan olarak işaretleyin."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Yönlendirme URI'si",
-      "description": "Termix'in oturum açtığı her Vault OIDC rolündeki allowed_redirect_uris alanına bu URL'yi ekleyin."
+      "description": "Termix'in giriş yaptığı her Vault OIDC rolündeki allowed_redirect_uris listesine bu URL'yi ekleyin."
+    },
+    "privateHosts": {
+      "label": "İzin verilen özel Vault ana makineleri",
+      "description": "Herkesin kendi profilinde kullanabileceği özel veya döngüsel Vault ana makine adları/IP'leri. Paylaşılan profiller ve paylaşma yetkisi olan kişiler tarafından oluşturulan profiller zaten kullanabilir. Girdileri virgül veya yeni satır ile ayırın."
     },
     "host": {
       "profileId": {
-        "label": "Kasa imzalayıcı profili"
+        "label": "Vault imzalayıcı profili"
       }
     }
   },

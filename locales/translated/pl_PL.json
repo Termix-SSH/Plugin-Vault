@@ -2,63 +2,68 @@
   "editor": {
     "profile": "Profil podpisujący Vault",
     "selectProfile": "Wybierz profil Vault...",
-    "hint": "Ustawienia pochodzą z profilu współdzielonego. Po połączeniu zalogujesz się do Vault przez OIDC. Nie są przechowywane żadne sekrety.",
+    "hint": "Ustawienia pochodzą z udostępnionego profilu; zalogujesz się do Vault przez OIDC podczas łączenia. Nie są przechowywane żadne sekrety.",
     "docs": "Zobacz dokumentację",
-    "sharedProfile": "{{name}} (udostępnione)"
+    "sharedProfile": "{{name}} (udostępniony)"
   },
   "profiles": {
     "new": "Nowy profil",
     "manage": "Zarządzaj profilami Vault",
-    "name": "Przyjazna nazwa",
+    "name": "Nazwa wyświetlana",
     "vaultAddr": "Adres Vault",
     "namespace": "Przestrzeń nazw",
-    "oidcMount": "Mount uwierzytelniania OIDC",
+    "oidcMount": "Mocowanie uwierzytelniania OIDC",
     "oidcRole": "Rola OIDC",
-    "sshMount": "Mount sekretów SSH",
+    "sshMount": "Mocowanie sekretów SSH",
     "sshRole": "Rola podpisująca SSH",
-    "validPrincipals": "Dozwoleni użytkownicy (principals)",
-    "keyType": "Typ klucza efemerycznego",
+    "validPrincipals": "Ważne podmioty",
+    "keyType": "Typ tymczasowego klucza",
     "shareWithAll": "Udostępnij wszystkim użytkownikom",
     "create": "Utwórz profil",
-    "created": "Utworzono profil Vault",
-    "saved": "Zapisano profil Vault",
-    "deleted": "Usunięto profil Vault",
+    "created": "Profil Vault został utworzony",
+    "saved": "Profil Vault został zapisany",
+    "deleted": "Profil Vault został usunięty",
     "saveFailed": "Nie udało się zapisać profilu Vault",
     "deleteFailed": "Nie udało się usunąć profilu Vault",
     "save": "Zapisz profil",
-    "validationError": "Wymagane są nazwa, adres Vault i rola podpisująca SSH",
+    "validationError": "Nazwa, adres Vault i rola podpisująca SSH są wymagane",
     "none": "Brak profili Vault.",
-    "sharedBadge": "współdzielony",
+    "sharedBadge": "udostępniony",
     "edit": "Edytuj",
-    "delete": "Usuń"
+    "delete": "Usuń",
+    "deleteConfirm": "Usunąć profil Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Sklepienie"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "Wymagane logowanie do Vault",
-    "description": "Otworzyło się okno logowania do HashiCorp Vault. Dokończ logowanie, a połączenie zostanie nawiązane automatycznie.",
-    "failed": "Uwierzytelnienie w Vault nie powiodło się. Spróbuj ponownie.",
+    "description": "Otwarto okno do logowania do HashiCorp Vault. Ukończ logowanie w tym oknie; połączenie zostanie wznowione automatycznie.",
+    "failed": "Uwierzytelnianie w Vault nie powiodło się. Spróbuj ponownie.",
     "reopen": "Otwórz ponownie okno logowania"
   },
   "permissions": {
     "use": {
-      "title": "Użyj podpisu SSH Vault",
-      "description": "Utwórz profile sygnatariuszy Vault i połącz się z hostami korzystającymi z Vault."
+      "title": "Użyj podpisywania SSH przez Vault",
+      "description": "Twórz profile podpisujące Vault i łącz się z hostami używającymi Vault."
     },
     "share": {
-      "title": "Udostępnij profile Vault",
-      "description": "Oznacz profil sygnatariusza Vault jako udostępniony, aby każdy użytkownik mógł z niego skorzystać."
+      "title": "Udostępniaj profile Vault",
+      "description": "Oznacz profil podpisujący Vault jako udostępniony, aby każdy użytkownik mógł go wybrać."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "Przekieruj URI",
-      "description": "Dodaj ten adres URL do allowed_redirect_uris w każdej roli Vault OIDC, za pomocą której loguje się Termix."
+      "label": "URI przekierowania",
+      "description": "Dodaj ten adres URL do allowed_redirect_uris w każdej roli OIDC Vault, z której Termix się loguje."
+    },
+    "privateHosts": {
+      "label": "Dozwolone prywatne hosty Vault",
+      "description": "Prywatne nazwy hostów/IP Vault (lub pętlowe), których może używać własny profil każdego użytkownika. Profile udostępnione oraz te utworzone przez osoby z uprawnieniami do udostępniania mogą ich używać bez ograniczeń. Oddziel wpisy przecinkami lub nowymi liniami."
     },
     "host": {
       "profileId": {
-        "label": "Profil sygnatariusza Vault"
+        "label": "Profil podpisujący Vault"
       }
     }
   },

@@ -2,53 +2,54 @@
   "editor": {
     "profile": "Profilo firmatario Vault",
     "selectProfile": "Seleziona un profilo Vault...",
-    "hint": "Le impostazioni provengono dal profilo condiviso; effettuerai l'accesso a Vault tramite OIDC quando ti connetti. Nessun segreto è memorizzato.",
-    "docs": "Vedi documenti",
+    "hint": "Le impostazioni derivano dal profilo condiviso; accederai a Vault tramite OIDC quando ti connetterai. Nessun segreto viene memorizzato.",
+    "docs": "Visualizza documentazione",
     "sharedProfile": "{{name}} (condiviso)"
   },
   "profiles": {
     "new": "Nuovo profilo",
     "manage": "Gestisci profili Vault",
-    "name": "Nome descrittivo",
+    "name": "Nome visualizzato",
     "vaultAddr": "Indirizzo Vault",
     "namespace": "Namespace",
     "oidcMount": "Mount di autenticazione OIDC",
     "oidcRole": "Ruolo OIDC",
-    "sshMount": "Mount dei segreti SSH",
+    "sshMount": "Mount segreti SSH",
     "sshRole": "Ruolo firmatario SSH",
-    "validPrincipals": "Principal validi",
-    "keyType": "Tipo di chiave effimera",
+    "validPrincipals": "Principali validi",
+    "keyType": "Tipo di chiave temporanea",
     "shareWithAll": "Condividi con tutti gli utenti",
     "create": "Crea profilo",
     "created": "Profilo Vault creato",
     "saved": "Profilo Vault salvato",
     "deleted": "Profilo Vault eliminato",
-    "saveFailed": "Salvataggio profilo Vault non riuscito",
-    "deleteFailed": "Eliminazione profilo Vault non riuscita",
+    "saveFailed": "Impossibile salvare il profilo Vault",
+    "deleteFailed": "Impossibile eliminare il profilo Vault",
     "save": "Salva profilo",
-    "validationError": "Nome, indirizzo Vault e ruolo di firma SSH sono obbligatori",
+    "validationError": "Nome, indirizzo Vault e ruolo firmatario SSH sono obbligatori",
     "none": "Nessun profilo Vault ancora.",
     "sharedBadge": "condiviso",
     "edit": "Modifica",
-    "delete": "Elimina"
+    "delete": "Elimina",
+    "deleteConfirm": "Eliminare il profilo Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Volta"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "Accesso a Vault richiesto",
-    "description": "Una finestra si è aperta per accedere a HashiCorp Vault. Completa l'accesso lì; la connessione continuerà automaticamente.",
-    "failed": "Autenticazione Vault fallita. Riprova.",
-    "reopen": "Riapri la finestra di accesso"
+    "description": "È stata aperta una finestra per accedere a HashiCorp Vault. Completa l'accesso lì; questa connessione continuerà automaticamente.",
+    "failed": "Autenticazione Vault non riuscita. Riprova.",
+    "reopen": "Riapri finestra di accesso"
   },
   "permissions": {
     "use": {
-      "title": "Utilizzare la firma SSH di Vault",
-      "description": "Crea profili di firmatari Vault e connettiti agli host che utilizzano Vault."
+      "title": "Usa la firma SSH di Vault",
+      "description": "Crea profili firmatari Vault e connettiti agli host che utilizzano Vault."
     },
     "share": {
-      "title": "Condividi i profili di Vault",
-      "description": "Contrassegna il profilo di un firmatario di Vault come condiviso in modo che ogni utente possa selezionarlo."
+      "title": "Condividi profili Vault",
+      "description": "Segna un profilo firmatario Vault come condiviso in modo che ogni utente possa selezionarlo."
     }
   },
   "settings": {
@@ -56,9 +57,13 @@
       "label": "URI di reindirizzamento",
       "description": "Aggiungi questo URL a allowed_redirect_uris in ogni ruolo OIDC di Vault con cui Termix effettua l'accesso."
     },
+    "privateHosts": {
+      "label": "Host Vault privati consentiti",
+      "description": "Nomi host/IP Vault privati o di loopback che il profilo personale di chiunque può utilizzare. I profili condivisi e quelli creati da persone autorizzate a condividere possono già farlo. Separa le voci con virgole o a capo."
+    },
     "host": {
       "profileId": {
-        "label": "Profilo del firmatario della cassaforte"
+        "label": "Profilo firmatario Vault"
       }
     }
   },

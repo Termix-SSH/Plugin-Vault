@@ -1,0 +1,73 @@
+{
+  "editor": {
+    "profile": "Vaulti allkirjastaja profiil",
+    "selectProfile": "Valige Vaulti profiil...",
+    "hint": "Seaded pärinevad jagatud profiilist; Vaulti sisselogimine toimub OIDC kaudu ühenduse loomisel. Salasõnu ei salvestata.",
+    "docs": "Dokumentatsiooni vaatamine",
+    "sharedProfile": "{{name}} (jagatud)"
+  },
+  "profiles": {
+    "new": "Uus profiil",
+    "manage": "Vaulti profiilide haldamine",
+    "name": "Sõbralik nimi",
+    "vaultAddr": "Vaulti aadress",
+    "namespace": "Nimeruum",
+    "oidcMount": "OIDC autentimise mount",
+    "oidcRole": "OIDC roll",
+    "sshMount": "SSH saladuste mount",
+    "sshRole": "SSH allkirjastaja roll",
+    "validPrincipals": "Kehtivad printsiibid",
+    "keyType": "Ajutise võtme tüüp",
+    "shareWithAll": "Jaga kõigi kasutajatega",
+    "create": "Profiili loomine",
+    "created": "Vaulti profiil loodud",
+    "saved": "Vaulti profiil salvestatud",
+    "deleted": "Vaulti profiil kustutatud",
+    "saveFailed": "Vaulti profiili salvestamine ebaõnnestus",
+    "deleteFailed": "Vaulti profiili kustutamine ebaõnnestus",
+    "save": "Profiili salvestamine",
+    "validationError": "Nimi, Vaulti aadress ja SSH allkirjastaja roll on kohustuslikud",
+    "none": "Vaulti profiile pole veel.",
+    "sharedBadge": "jagatud",
+    "edit": "Muuda",
+    "delete": "Kustuta",
+    "deleteConfirm": "Kas kustutada Vaulti profiil {{name}}?"
+  },
+  "hosts": {
+    "filterAuthVault": "Vault"
+  },
+  "dialog": {
+    "title": "Vaulti sisselogimine on nõutud",
+    "description": "Aken on avatud HashiCorp Vaulti sisselogimiseks. Logige seal sisse; see ühendus jätkub automaatselt.",
+    "failed": "Vaulti autentimine ebaõnnestus. Palun proovige uuesti.",
+    "reopen": "Ava sisselogimise aken uuesti"
+  },
+  "permissions": {
+    "use": {
+      "title": "Vaulti SSH allkirjastamise kasutamine",
+      "description": "Loo Vaulti allkirjastaja profiile ja ühendu hostidega, mis kasutavad Vaulti."
+    },
+    "share": {
+      "title": "Vaulti profiilide jagamine",
+      "description": "Märgi Vaulti allkirjastaja profiil jagatuna, et iga kasutaja saaks selle valida."
+    }
+  },
+  "settings": {
+    "redirectUri": {
+      "label": "Ümbersuunamise URI",
+      "description": "Lisage see URL iga Vaulti OIDC rolli allowed_redirect_uris väljale, millega Termix sisse logib."
+    },
+    "privateHosts": {
+      "label": "Lubatud privaatseid Vaulti hoste",
+      "description": "Privaatsed või loopback Vaulti hostinimed/IP-d, mida iga kasutaja oma profiiliga kasutada võib. Jagatud profiilid ja profiilid, mille on loonud inimesed, kellel on jagamise õigused, saavad neid juba kasutada. Eraldage kirjed komadega või uue reaga."
+    },
+    "host": {
+      "profileId": {
+        "label": "Vaulti allkirjastaja profiil"
+      }
+    }
+  },
+  "plugin": {
+    "name": "HashiCorp Vault"
+  }
+}

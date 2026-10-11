@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "ملف توقيع Vault",
-    "selectProfile": "اختيار ملف توقيع Vault...",
+    "profile": "ملف موقّع Vault",
+    "selectProfile": "اختر ملف Vault...",
     "hint": "تأتي الإعدادات من الملف المشترك؛ ستقوم بتسجيل الدخول إلى Vault عبر OIDC عند الاتصال. لا يتم تخزين أي أسرار.",
-    "docs": "عرض المستندات",
+    "docs": "عرض التوثيق",
     "sharedProfile": "{{name}} (مشترك)"
   },
   "profiles": {
     "new": "ملف جديد",
     "manage": "إدارة ملفات Vault",
-    "name": "الاسم المألوف",
+    "name": "الاسم الوصفي",
     "vaultAddr": "عنوان Vault",
     "namespace": "مساحة الاسم",
-    "oidcMount": "تثبيت مصادقة OIDC",
+    "oidcMount": "نقطة تثبيت مصادقة OIDC",
     "oidcRole": "دور OIDC",
-    "sshMount": "تثبيت أسرار SSH",
-    "sshRole": "دور موقع SSH",
-    "validPrincipals": "المستخدمون المسموح بهم",
+    "sshMount": "نقطة تثبيت أسرار SSH",
+    "sshRole": "دور موقّع SSH",
+    "validPrincipals": "الكيانات الصالحة",
     "keyType": "نوع المفتاح المؤقت",
     "shareWithAll": "مشاركة مع جميع المستخدمين",
-    "create": "إنشاء ملف تعريف",
-    "created": "تم إنشاء ملف تعريف Vault",
-    "saved": "تم حفظ ملف تعريف Vault",
-    "deleted": "تم حذف ملف تعريف Vault",
-    "saveFailed": "فشل حفظ ملف تعريف Vault",
-    "deleteFailed": "فشل حذف ملف تعريف Vault",
-    "save": "حفظ ملف التعريف",
-    "validationError": "الاسم وعنوان Vault ودور الموقّع SSH مطلوب",
-    "none": "لا توجد ملفات تعريف Vault بعد.",
+    "create": "إنشاء ملف",
+    "created": "تم إنشاء ملف Vault",
+    "saved": "تم حفظ ملف Vault",
+    "deleted": "تم حذف ملف Vault",
+    "saveFailed": "فشل حفظ ملف Vault",
+    "deleteFailed": "فشل حذف ملف Vault",
+    "save": "حفظ الملف",
+    "validationError": "الاسم وعنوان Vault ودور موقّع SSH مطلوبة",
+    "none": "لا توجد ملفات Vault بعد.",
     "sharedBadge": "مشترك",
-    "edit": "تحرير",
-    "delete": "حذف"
+    "edit": "تعديل",
+    "delete": "حذف",
+    "deleteConfirm": "حذف ملف Vault {{name}}؟"
   },
   "hosts": {
-    "filterAuthVault": "قبو"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "مطلوب تسجيل الدخول إلى Vault",
+    "title": "يتطلب تسجيل الدخول إلى Vault",
     "description": "تم فتح نافذة لتسجيل الدخول إلى HashiCorp Vault. أكمل تسجيل الدخول هناك؛ سيستمر هذا الاتصال تلقائيًا.",
-    "failed": "فشلت مصادقة Vault. يرجى المحاولة مرة أخرى.",
-    "reopen": "أعد فتح نافذة تسجيل الدخول"
+    "failed": "فشل مصادقة Vault. يرجى المحاولة مرة أخرى.",
+    "reopen": "إعادة فتح نافذة تسجيل الدخول"
   },
   "permissions": {
     "use": {
-      "title": "استخدم توقيع SSH الخاص بـ Vault",
-      "description": "أنشئ ملفات تعريف التوقيع الخاصة بـ Vault وقم بالاتصال بالمضيفين الذين يستخدمون Vault."
+      "title": "استخدام توقيع SSH عبر Vault",
+      "description": "إنشاء ملفات موقّع Vault والاتصال بالمضيفين الذين يستخدمون Vault."
     },
     "share": {
-      "title": "ملفات تعريف Share Vault",
-      "description": "قم بتحديد ملف تعريف مُوقِّع Vault على أنه مُشترك حتى يتمكن كل مستخدم من اختياره."
+      "title": "مشاركة ملفات Vault",
+      "description": "تحديد ملف موقّع Vault كمشترك حتى يتمكن كل مستخدم من اختياره."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "عنوان إعادة التوجيه",
-      "description": "أضف عنوان URL هذا إلى allowed_redirect_uris في كل دور Vault OIDC الذي يسجل Termix الدخول به."
+      "label": "URI إعادة التوجيه",
+      "description": "أضف هذا العنوان إلى allowed_redirect_uris في كل دور OIDC لـ Vault الذي يسجل Termix الدخول من خلاله."
+    },
+    "privateHosts": {
+      "label": "مضيفي Vault الخاصين المسموح بهم",
+      "description": "أسماء المضيفين أو عناوين IP الخاصة أو المحلية لـ Vault التي قد يستخدمها أي ملف شخصي للمستخدم. ملفات المشتركين والملفات التي أنشأها الأشخاص الذين يمكنهم المشاركة مسموح بها بالفعل. افصل الإدخالات بفواصل أو أسطر جديدة."
     },
     "host": {
       "profileId": {
-        "label": "ملف تعريف مُوقِّع الخزينة"
+        "label": "ملف موقّع Vault"
       }
     }
   },

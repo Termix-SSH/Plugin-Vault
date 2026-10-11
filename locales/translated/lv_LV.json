@@ -1,0 +1,73 @@
+{
+  "editor": {
+    "profile": "Vault parakstīšanas profils",
+    "selectProfile": "Izvēlieties Vault profilu...",
+    "hint": "Iestatījumi tiek ņemti no kopīgā profila; pieslēdzoties, jūs autorizēsieties Vault, izmantojot OIDC. Noslēpumi netiek glabāti.",
+    "docs": "Apskatīt dokumentāciju",
+    "sharedProfile": "{{name}} (kopīgs)"
+  },
+  "profiles": {
+    "new": "Jauns profils",
+    "manage": "Pārvaldīt Vault profilus",
+    "name": "Saprātīgais nosaukums",
+    "vaultAddr": "Vault adrese",
+    "namespace": "Vārdu telpa",
+    "oidcMount": "OIDC autentifikācijas punkts",
+    "oidcRole": "OIDC loma",
+    "sshMount": "SSH noslēpumu punkts",
+    "sshRole": "SSH parakstītāja loma",
+    "validPrincipals": "Derīgie principi",
+    "keyType": "Pagaidu atslēgas tips",
+    "shareWithAll": "Kopīgot ar visiem lietotājiem",
+    "create": "Izveidot profilu",
+    "created": "Vault profils izveidots",
+    "saved": "Vault profils saglabāts",
+    "deleted": "Vault profils dzēsts",
+    "saveFailed": "Neizdevās saglabāt Vault profilu",
+    "deleteFailed": "Neizdevās dzēst Vault profilu",
+    "save": "Saglabāt profilu",
+    "validationError": "Ir nepieciešams nosaukums, Vault adrese un SSH parakstītāja loma",
+    "none": "Vēl nav Vault profilu.",
+    "sharedBadge": "kopīgs",
+    "edit": "Rediģēt",
+    "delete": "Dzēst",
+    "deleteConfirm": "Dzēst Vault profilu {{name}}?"
+  },
+  "hosts": {
+    "filterAuthVault": "Vault"
+  },
+  "dialog": {
+    "title": "Nepieciešama Vault autorizācija",
+    "description": "Ir atvērts logs, lai autorizētos HashiCorp Vault. Pabeidziet autorizāciju tur; šī savienojuma turpināšanās notiks automātiski.",
+    "failed": "Vault autentifikācija neizdevās. Lūdzu, mēģiniet vēlreiz.",
+    "reopen": "Atkārtoti atvērt autorizācijas logu"
+  },
+  "permissions": {
+    "use": {
+      "title": "Izmantot Vault SSH parakstīšanu",
+      "description": "Izveidojiet Vault parakstītāja profilus un pieslēdzieties hostiem, kas izmanto Vault."
+    },
+    "share": {
+      "title": "Kopīgot Vault profilus",
+      "description": "Atzīmējiet Vault parakstītāja profilu kā kopīgu, lai to varētu izvēlēties jebkurš lietotājs."
+    }
+  },
+  "settings": {
+    "redirectUri": {
+      "label": "Pāradresācijas URI",
+      "description": "Pievienojiet šo URL uz allowed_redirect_uris katrā Vault OIDC lomā, ar kuru Termix autorizējas."
+    },
+    "privateHosts": {
+      "label": "Atļautie privātie Vault hosti",
+      "description": "Privātie vai cilpas Vault hosta nosaukumi/IP, kurus jebkura lietotāja personīgais profils var izmantot. Kopīgie profili un profili, ko izveidojuši cilvēki, kuriem ir atļauts kopīgot, jau var izmantot. Atdaliet ierakstus ar komatiem vai jaunām rindām."
+    },
+    "host": {
+      "profileId": {
+        "label": "Vault parakstītāja profils"
+      }
+    }
+  },
+  "plugin": {
+    "name": "HashiCorp Vault"
+  }
+}

@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "Perfil de assinatura Vault",
-    "selectProfile": "Selecionar um perfil Vault...",
-    "hint": "As definições provêm do perfil partilhado; ao ligar, iniciará sessão no Vault via OIDC. Nenhum segredo é armazenado.",
-    "docs": "Ver docs",
+    "profile": "Perfil de Assinatura do Vault",
+    "selectProfile": "Selecionar um perfil do Vault...",
+    "hint": "As definições provêm do perfil partilhado; irá iniciar sessão no Vault via OIDC ao conectar. Nenhum segredo é armazenado.",
+    "docs": "Ver documentação",
     "sharedProfile": "{{name}} (partilhado)"
   },
   "profiles": {
     "new": "Novo perfil",
-    "manage": "Gerir perfis Vault",
+    "manage": "Gerir perfis do Vault",
     "name": "Nome Amigável",
-    "vaultAddr": "Endereço Vault",
-    "namespace": "Namespace",
-    "oidcMount": "Mount de autenticação OIDC",
+    "vaultAddr": "Endereço do Vault",
+    "namespace": "Espaço de Nomes",
+    "oidcMount": "Ponto de Montagem de Autenticação OIDC",
     "oidcRole": "Função OIDC",
-    "sshMount": "Mount de segredos SSH",
-    "sshRole": "Função de assinatura SSH",
-    "validPrincipals": "Principais válidos",
-    "keyType": "Tipo de chave efémera",
+    "sshMount": "Ponto de Montagem de Segredos SSH",
+    "sshRole": "Função de Assinatura SSH",
+    "validPrincipals": "Principais Válidos",
+    "keyType": "Tipo de Chave Efêmera",
     "shareWithAll": "Partilhar com todos os utilizadores",
     "create": "Criar perfil",
-    "created": "Perfil Vault criado",
-    "saved": "Perfil Vault guardado",
-    "deleted": "Perfil Vault eliminado",
-    "saveFailed": "Falha ao guardar perfil Vault",
-    "deleteFailed": "Falha ao eliminar perfil Vault",
+    "created": "Perfil do Vault criado",
+    "saved": "Perfil do Vault guardado",
+    "deleted": "Perfil do Vault eliminado",
+    "saveFailed": "Falha ao guardar o perfil do Vault",
+    "deleteFailed": "Falha ao eliminar o perfil do Vault",
     "save": "Guardar perfil",
-    "validationError": "Nome, endereço Vault e função de signatário SSH são obrigatórios",
-    "none": "Ainda sem perfis Vault.",
+    "validationError": "O nome, o endereço do Vault e a função de assinatura SSH são obrigatórios",
+    "none": "Ainda não há perfis do Vault.",
     "sharedBadge": "partilhado",
     "edit": "Editar",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "deleteConfirm": "Eliminar o perfil do Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Cofre"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "Início de sessão no Vault necessário",
-    "description": "Foi aberta uma janela para iniciar sessão no HashiCorp Vault. Conclua o início de sessão aí; esta ligação continuará automaticamente.",
+    "description": "Uma janela abriu para iniciar sessão no HashiCorp Vault. Complete o início de sessão aí; esta conexão continuará automaticamente.",
     "failed": "A autenticação no Vault falhou. Tente novamente.",
     "reopen": "Reabrir janela de início de sessão"
   },
   "permissions": {
     "use": {
-      "title": "Utilize a assinatura SSH do Vault",
-      "description": "Crie perfis de assinatura do Vault e ligue-se a hosts que utilizam o Vault."
+      "title": "Usar assinatura SSH do Vault",
+      "description": "Criar perfis de assinatura do Vault e conectar a hosts que usam o Vault."
     },
     "share": {
-      "title": "Perfis do Share Vault",
-      "description": "Marque um perfil de subscrição do Vault como partilhado para que todos os utilizadores o possam selecionar."
+      "title": "Partilhar perfis do Vault",
+      "description": "Marcar um perfil de assinatura do Vault como partilhado para que todos os utilizadores o possam selecionar."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "URI de redireccionamento",
-      "description": "Adicione este URL à lista allowed_redirect_uris em cada função OIDC do Vault que o Termix utiliza para iniciar sessão."
+      "label": "URI de Redirecionamento",
+      "description": "Adicione este URL a allowed_redirect_uris em cada função OIDC do Vault com que o Termix inicia sessão."
+    },
+    "privateHosts": {
+      "label": "Hosts privados do Vault permitidos",
+      "description": "Nomes de host/IPs privados ou de loopback do Vault que qualquer perfil pessoal pode usar. Perfis partilhados e perfis criados por pessoas com permissão para partilhar já podem. Separe as entradas com vírgulas ou novas linhas."
     },
     "host": {
       "profileId": {
-        "label": "Perfil de assinatura do cofre"
+        "label": "Perfil de assinatura do Vault"
       }
     }
   },

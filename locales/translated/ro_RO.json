@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "Profilul semnatarului din seif",
+    "profile": "Profil semnator Vault",
     "selectProfile": "Selectați un profil Vault...",
-    "hint": "Setările provin din profilul partajat; te vei conecta la Vault prin OIDC când te conectezi. Nu sunt stocate secrete.",
-    "docs": "Vizualizați documentele",
+    "hint": "Setările provin din profilul partajat; vă veți autentifica în Vault prin OIDC la conectare. Nu se stochează secrete.",
+    "docs": "Vizualizare documentație",
     "sharedProfile": "{{name}} (partajat)"
   },
   "profiles": {
     "new": "Profil nou",
-    "manage": "Gestionați profilurile din seif",
-    "name": "Nume prietenos",
-    "vaultAddr": "Adresă seif",
+    "manage": "Gestionați profilurile Vault",
+    "name": "Nume afișat",
+    "vaultAddr": "Adresă Vault",
     "namespace": "Spațiu de nume",
-    "oidcMount": "Montare autentificare OIDC",
-    "oidcRole": "Rolul OIDC",
-    "sshMount": "Secretele SSH Mount",
-    "sshRole": "Rolul semnatarului SSH",
-    "validPrincipals": "Principali validi",
-    "keyType": "Tip de cheie efemeră",
-    "shareWithAll": "Partajați cu toți utilizatorii",
-    "create": "Creați un profil",
-    "created": "Profilul seifului a fost creat",
-    "saved": "Profilul seifului a fost salvat",
-    "deleted": "Profilul seifului a fost șters",
-    "saveFailed": "Nu s-a putut salva profilul din Seif",
-    "deleteFailed": "Nu s-a putut șterge profilul Vault",
-    "save": "Salvați profilul",
-    "validationError": "Numele, adresa seifului și rolul semnatarului SSH sunt obligatorii.",
+    "oidcMount": "Punct de montare autentificare OIDC",
+    "oidcRole": "Rol OIDC",
+    "sshMount": "Punct de montare secrete SSH",
+    "sshRole": "Rol semnator SSH",
+    "validPrincipals": "Principii valide",
+    "keyType": "Tip cheie efemeră",
+    "shareWithAll": "Partajează cu toți utilizatorii",
+    "create": "Creează profil",
+    "created": "Profilul Vault a fost creat",
+    "saved": "Profilul Vault a fost salvat",
+    "deleted": "Profilul Vault a fost șters",
+    "saveFailed": "Salvarea profilului Vault a eșuat",
+    "deleteFailed": "Ștergerea profilului Vault a eșuat",
+    "save": "Salvează profilul",
+    "validationError": "Numele, adresa Vault și rolul semnatorului SSH sunt obligatorii",
     "none": "Încă nu există profiluri Vault.",
     "sharedBadge": "partajat",
-    "edit": "Edita",
-    "delete": "Şterge"
+    "edit": "Editează",
+    "delete": "Șterge",
+    "deleteConfirm": "Ștergeți profilul Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Seif"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Este necesară conectarea la seif",
-    "description": "S-a deschis o fereastră pentru a vă conecta la HashiCorp Vault. Finalizați conectarea acolo; această conexiune va continua automat.",
-    "failed": "Autentificarea în seif a eșuat. Vă rugăm să încercați din nou.",
-    "reopen": "Redeschideți fereastra de conectare"
+    "title": "Autentificarea în Vault este necesară",
+    "description": "S-a deschis o fereastră pentru autentificarea în HashiCorp Vault. Finalizați autentificarea acolo; această conexiune va continua automat.",
+    "failed": "Autentificarea în Vault a eșuat. Vă rugăm să încercați din nou.",
+    "reopen": "Redeschide fereastra de autentificare"
   },
   "permissions": {
     "use": {
-      "title": "Folosește semnarea SSH în Vault",
-      "description": "Creați profiluri de semnatar Vault și conectați-vă la gazde care utilizează Vault."
+      "title": "Folosește semnarea SSH prin Vault",
+      "description": "Creați profiluri de semnare Vault și conectați-vă la gazde care folosesc Vault."
     },
     "share": {
-      "title": "Partajați profiluri Vault",
-      "description": "Marcați un profil de semnatar Vault ca partajat, astfel încât fiecare utilizator să îl poată alege."
+      "title": "Partajează profiluri Vault",
+      "description": "Marcați un profil de semnare Vault ca partajat, astfel încât orice utilizator să îl poată selecta."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI de redirecționare",
-      "description": "Adăugați această adresă URL la allowed_redirect_uris în fiecare rol OIDC din Vault cu care se conectează Termix."
+      "description": "Adăugați această URL la allowed_redirect_uris în fiecare rol OIDC Vault cu care Termix se autentifică."
+    },
+    "privateHosts": {
+      "label": "Gazde private Vault permise",
+      "description": "Nume de gazdă/IP-uri private sau de loopback pentru Vault pe care orice profil personal le poate folosi. Profilurile partajate și cele create de persoane cu drepturi de partajare le pot folosi deja. Separați intrările prin virgule sau linii noi."
     },
     "host": {
       "profileId": {
-        "label": "Profilul semnatarului din seif"
+        "label": "Profil semnator Vault"
       }
     }
   },

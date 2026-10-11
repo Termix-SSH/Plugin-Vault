@@ -1,0 +1,73 @@
+{
+  "editor": {
+    "profile": "Profil podpisovalca Vault",
+    "selectProfile": "Izberite profil Vault...",
+    "hint": "Nastavitve so iz skupnega profila; pri povezavi se boste v Vault prijavili prek OIDC. skrivnosti se ne shranjujejo.",
+    "docs": "Oglejte si dokumentacijo",
+    "sharedProfile": "{{name}} (skupno)"
+  },
+  "profiles": {
+    "new": "Nov profil",
+    "manage": "Upravljanje profilov Vault",
+    "name": "Prijazno ime",
+    "vaultAddr": "Naslov Vault",
+    "namespace": "Imenski prostor",
+    "oidcMount": "Točka namestitve preverjanja pristnosti OIDC",
+    "oidcRole": "Vloga OIDC",
+    "sshMount": "Točka namestitve skrivnosti SSH",
+    "sshRole": "Vloga podpisovalca SSH",
+    "validPrincipals": "Veljavni subjekti",
+    "keyType": "Vrsta kratkotrajnega ključa",
+    "shareWithAll": "Deli z vsemi uporabniki",
+    "create": "Ustvari profil",
+    "created": "Profil Vault je ustvarjen",
+    "saved": "Profil Vault je shranjen",
+    "deleted": "Profil Vault je izbrisan",
+    "saveFailed": "Shranjevanje profila Vault ni uspelo",
+    "deleteFailed": "Brisanje profila Vault ni uspelo",
+    "save": "Shrani profil",
+    "validationError": "Ime, naslov Vault in vloga podpisovalca SSH so obvezni",
+    "none": "Še ni profilov Vault.",
+    "sharedBadge": "skupno",
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "deleteConfirm": "Izbrišete profil Vault {{name}}?"
+  },
+  "hosts": {
+    "filterAuthVault": "Vault"
+  },
+  "dialog": {
+    "title": "Potrebna je prijava v Vault",
+    "description": "Odprlo se je okno za prijavo v HashiCorp Vault. Tam dokončajte prijavo; ta povezava se bo samodejno nadaljevala.",
+    "failed": "Preverjanje pristnosti Vault ni uspelo. Poskusite znova.",
+    "reopen": "Ponovno odprite okno za prijavo"
+  },
+  "permissions": {
+    "use": {
+      "title": "Uporaba podpisovanja SSH prek Vault",
+      "description": "Ustvarjajte profile podpisovalcev Vault in se povežite z gostitelji, ki uporabljajo Vault."
+    },
+    "share": {
+      "title": "Deljenje profilov Vault",
+      "description": "Označite profil podpisovalca Vault kot skupen, da ga lahko izbere vsak uporabnik."
+    }
+  },
+  "settings": {
+    "redirectUri": {
+      "label": "URI za preusmeritev",
+      "description": "Ta URL dodajte v allowed_redirect_uris v vsaki vlogi Vault OIDC, s katero se Termix prijavlja."
+    },
+    "privateHosts": {
+      "label": "Dovoljeni zasebni gostitelji Vault",
+      "description": "Zasebni ali zanka gostiteljska imena/IP-ji Vault, ki jih lahko uporablja profil katerega koli uporabnika. Skupni profili in profili, ki jih ustvarijo osebe z dovoljenjem za deljenje, jih lahko že uporabljajo. Vnos ločite z vejicami ali novimi vrsticami."
+    },
+    "host": {
+      "profileId": {
+        "label": "Profil podpisovalca Vault"
+      }
+    }
+  },
+  "plugin": {
+    "name": "HashiCorp Vault"
+  }
+}

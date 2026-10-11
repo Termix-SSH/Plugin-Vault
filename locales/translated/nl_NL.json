@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "Vault-ondertekenaarprofiel",
+    "profile": "Vault-signerprofiel",
     "selectProfile": "Selecteer een Vault-profiel...",
-    "hint": "De instellingen zijn afkomstig van het gedeelde profiel; u meldt zich bij Vault aan via OIDC wanneer u verbinding maakt. Er worden geen geheimen opgeslagen.",
-    "docs": "Documenten bekijken",
+    "hint": "Instellingen komen uit het gedeelde profiel; je meldt je aan bij Vault via OIDC wanneer je verbinding maakt. Er worden geen geheimen opgeslagen.",
+    "docs": "Documentatie bekijken",
     "sharedProfile": "{{name}} (gedeeld)"
   },
   "profiles": {
     "new": "Nieuw profiel",
-    "manage": "Beheer Vault-profielen",
-    "name": "Vriendelijke naam",
-    "vaultAddr": "Kluisadres",
-    "namespace": "Naamruimte",
-    "oidcMount": "OIDC-authenticatiekoppeling",
+    "manage": "Vault-profielen beheren",
+    "name": "Weergavenaam",
+    "vaultAddr": "Vault-adres",
+    "namespace": "Namespace",
+    "oidcMount": "OIDC-authenticatiemount",
     "oidcRole": "OIDC-rol",
-    "sshMount": "SSH-geheimen Mount",
-    "sshRole": "SSH-ondertekenaarrol",
-    "validPrincipals": "Geldige principes",
-    "keyType": "Tijdelijk sleuteltype",
+    "sshMount": "SSH-geheimenmount",
+    "sshRole": "SSH-signerrol",
+    "validPrincipals": "Geldige principals",
+    "keyType": "Type tijdelijke sleutel",
     "shareWithAll": "Delen met alle gebruikers",
-    "create": "Profiel aanmaken",
+    "create": "Profiel maken",
     "created": "Vault-profiel aangemaakt",
     "saved": "Vault-profiel opgeslagen",
-    "deleted": "Kluisprofiel verwijderd",
-    "saveFailed": "Het opslaan van het Vault-profiel is mislukt.",
-    "deleteFailed": "Het verwijderen van het Vault-profiel is mislukt.",
+    "deleted": "Vault-profiel verwijderd",
+    "saveFailed": "Opslaan van Vault-profiel mislukt",
+    "deleteFailed": "Verwijderen van Vault-profiel mislukt",
     "save": "Profiel opslaan",
-    "validationError": "Naam, kluisadres en SSH-ondertekeningsrol zijn vereist.",
-    "none": "Nog geen Vault-profielen beschikbaar.",
+    "validationError": "Naam, Vault-adres en SSH-signerrol zijn verplicht",
+    "none": "Nog geen Vault-profielen.",
     "sharedBadge": "gedeeld",
-    "edit": "Bewerking",
-    "delete": "Verwijderen"
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "deleteConfirm": "Vault-profiel {{name}} verwijderen?"
   },
   "hosts": {
-    "filterAuthVault": "Kluis"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Aanmelden bij Vault is vereist.",
-    "description": "Er is een venster geopend om in te loggen bij HashiCorp Vault. Voltooi de aanmelding daar; deze verbinding wordt automatisch tot stand gebracht.",
-    "failed": "Authenticatie voor de kluis is mislukt. Probeer het opnieuw.",
-    "reopen": "Heropen het aanmeldvenster"
+    "title": "Vault-aanmelding vereist",
+    "description": "Er is een venster geopend om in te loggen bij HashiCorp Vault. Voltooi de aanmelding daar; deze verbinding gaat automatisch verder.",
+    "failed": "Vault-authenticatie mislukt. Probeer het opnieuw.",
+    "reopen": "Aanmeldingsvenster opnieuw openen"
   },
   "permissions": {
     "use": {
-      "title": "Gebruik Vault SSH-ondertekening",
-      "description": "Maak Vault-ondertekeningsprofielen aan en maak verbinding met hosts die Vault gebruiken."
+      "title": "Vault-SSH-signering gebruiken",
+      "description": "Vault-signerprofielen maken en verbinding maken met hosts die Vault gebruiken."
     },
     "share": {
-      "title": "Deel Vault-profielen",
-      "description": "Markeer een Vault-ondertekeningsprofiel als gedeeld, zodat elke gebruiker het kan selecteren."
+      "title": "Vault-profielen delen",
+      "description": "Markeer een Vault-signerprofiel als gedeeld zodat elke gebruiker het kan selecteren."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "Omleidings-URI",
+      "label": "Redirect-URI",
       "description": "Voeg deze URL toe aan allowed_redirect_uris in elke Vault OIDC-rol waarmee Termix zich aanmeldt."
+    },
+    "privateHosts": {
+      "label": "Toegestane privé-Vault-hosts",
+      "description": "Privé- of loopback-Vault-hostnamen/IP-adressen die door iemands eigen profiel mogen worden gebruikt. Gedeelde profielen en profielen gemaakt door personen die mogen delen, mogen dit al. Scheid invoer met komma's of nieuwe regels."
     },
     "host": {
       "profileId": {
-        "label": "Vault-ondertekenaarprofiel"
+        "label": "Vault-signerprofiel"
       }
     }
   },

@@ -1,0 +1,73 @@
+{
+  "editor": {
+    "profile": "Profil Penandatangan Vault",
+    "selectProfile": "Pilih profil Vault...",
+    "hint": "Tetapan berasal daripada profil kongsi; anda akan log masuk ke Vault melalui OIDC apabila menyambung. Tiada rahsia disimpan.",
+    "docs": "Lihat dokumentasi",
+    "sharedProfile": "{{name}} (dikongsi)"
+  },
+  "profiles": {
+    "new": "Profil baharu",
+    "manage": "Urus profil Vault",
+    "name": "Nama Mesra",
+    "vaultAddr": "Alamat Vault",
+    "namespace": "Ruang Nama",
+    "oidcMount": "Pemasangan Pengesahan OIDC",
+    "oidcRole": "Peranan OIDC",
+    "sshMount": "Pemasangan Rahsia SSH",
+    "sshRole": "Peranan Penandatangan SSH",
+    "validPrincipals": "Prinsip Sah",
+    "keyType": "Jenis Kunci Sementara",
+    "shareWithAll": "Kongsi dengan semua pengguna",
+    "create": "Cipta profil",
+    "created": "Profil Vault dicipta",
+    "saved": "Profil Vault disimpan",
+    "deleted": "Profil Vault dipadam",
+    "saveFailed": "Gagal menyimpan profil Vault",
+    "deleteFailed": "Gagal memadam profil Vault",
+    "save": "Simpan profil",
+    "validationError": "Nama, alamat Vault dan peranan penandatangan SSH diperlukan",
+    "none": "Tiada profil Vault lagi.",
+    "sharedBadge": "dikongsi",
+    "edit": "Sunting",
+    "delete": "Padam",
+    "deleteConfirm": "Padam profil Vault {{name}}?"
+  },
+  "hosts": {
+    "filterAuthVault": "Vault"
+  },
+  "dialog": {
+    "title": "Log masuk Vault diperlukan",
+    "description": "Tetingkap telah dibuka untuk log masuk ke HashiCorp Vault. Selesaikan log masuk di sana; sambungan ini akan diteruskan secara automatik.",
+    "failed": "Pengesahan Vault gagal. Sila cuba lagi.",
+    "reopen": "Buka semula tetingkap log masuk"
+  },
+  "permissions": {
+    "use": {
+      "title": "Gunakan penandatanganan SSH Vault",
+      "description": "Cipta profil penandatangan Vault dan sambungkan kepada hos yang menggunakan Vault."
+    },
+    "share": {
+      "title": "Kongsi profil Vault",
+      "description": "Tanda profil penandatangan Vault sebagai dikongsi supaya setiap pengguna boleh memilihnya."
+    }
+  },
+  "settings": {
+    "redirectUri": {
+      "label": "URI Pengalihan",
+      "description": "Tambah URL ini ke allowed_redirect_uris dalam setiap peranan OIDC Vault yang digunakan oleh Termix untuk log masuk."
+    },
+    "privateHosts": {
+      "label": "Hos Vault peribadi yang dibenarkan",
+      "description": "Nama hos/IP Vault peribadi atau loopback yang boleh digunakan oleh profil peribadi sesiapa sahaja. Profil kongsi dan profil yang dibuat oleh orang yang boleh berkongsi sudah dibenarkan. Pisahkan entri dengan koma atau baris baharu."
+    },
+    "host": {
+      "profileId": {
+        "label": "Profil penandatangan Vault"
+      }
+    }
+  },
+  "plugin": {
+    "name": "HashiCorp Vault"
+  }
+}

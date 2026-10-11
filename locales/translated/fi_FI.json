@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "Varaston allekirjoittajan profiili",
-    "selectProfile": "Valitse holviprofiili...",
-    "hint": "Asetukset tulevat jaetusta profiilista; kirjaudut Holviin OIDC:n kautta, kun muodostat yhteyden. Salaisuuksia ei tallenneta.",
-    "docs": "Näytä dokumentit",
+    "profile": "Vault-allekirjoittajan profiili",
+    "selectProfile": "Valitse Vault-profiili...",
+    "hint": "Asetukset tulevat jaetusta profiilista; kirjaudut Vaultiin OIDC:n kautta yhdistäessäsi. Salaisuuksia ei tallenneta.",
+    "docs": "Näytä dokumentaatio",
     "sharedProfile": "{{name}} (jaettu)"
   },
   "profiles": {
     "new": "Uusi profiili",
-    "manage": "Hallinnoi holviprofiileja",
-    "name": "Ystävällinen nimi",
-    "vaultAddr": "Holvin osoite",
-    "namespace": "Nimiavaruus",
-    "oidcMount": "OIDC-todennusliitos",
+    "manage": "Hallinnoi Vault-profiileja",
+    "name": "Näyttönimi",
+    "vaultAddr": "Vault-osoite",
+    "namespace": "Nimetila",
+    "oidcMount": "OIDC-auth-mount",
     "oidcRole": "OIDC-rooli",
-    "sshMount": "SSH-salaisuuksien kiinnitys",
+    "sshMount": "SSH-salaisuuksien mount",
     "sshRole": "SSH-allekirjoittajan rooli",
-    "validPrincipals": "Voimassa olevat pääasialliset",
-    "keyType": "Lyhytaikainen avaintyyppi",
-    "shareWithAll": "Jaa kaikkien käyttäjien kanssa",
+    "validPrincipals": "Kelvolliset pääteentiteetit",
+    "keyType": "Väliaikaisen avaimen tyyppi",
+    "shareWithAll": "Jaa kaikille käyttäjille",
     "create": "Luo profiili",
-    "created": "Holvin profiili luotu",
-    "saved": "Holvin profiili tallennettu",
-    "deleted": "Holvin profiili poistettu",
-    "saveFailed": "Holvin profiilin tallentaminen epäonnistui",
-    "deleteFailed": "Holviprofiilin poistaminen epäonnistui",
+    "created": "Vault-profiili luotu",
+    "saved": "Vault-profiili tallennettu",
+    "deleted": "Vault-profiili poistettu",
+    "saveFailed": "Vault-profiilin tallennus epäonnistui",
+    "deleteFailed": "Vault-profiilin poisto epäonnistui",
     "save": "Tallenna profiili",
-    "validationError": "Nimi, holvin osoite ja SSH-allekirjoittajan rooli vaaditaan",
-    "none": "Ei vielä holviprofiileja.",
+    "validationError": "Nimi, Vault-osoite ja SSH-allekirjoittajan rooli ovat pakollisia",
+    "none": "Vault-profiileja ei vielä ole.",
     "sharedBadge": "jaettu",
-    "edit": "Muokata",
-    "delete": "Poistaa"
+    "edit": "Muokkaa",
+    "delete": "Poista",
+    "deleteConfirm": "Haluatko poistaa Vault-profiilin {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Holvi"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Holviin kirjautuminen vaaditaan",
-    "description": "Ikkuna HashiCorp-holviin kirjautumista varten on avautunut. Kirjaudu sisään siinä. Yhteys jatkuu automaattisesti.",
-    "failed": "Holvin todennus epäonnistui. Yritä uudelleen.",
+    "title": "Vault- kirjautuminen vaaditaan",
+    "description": "Ikkuna on avattu kirjautumista varten HashiCorp Vaultiin. Suorita kirjautuminen siellä; tämä yhteys jatkuu automaattisesti.",
+    "failed": "Vault-tunnistautuminen epäonnistui. Yritä uudelleen.",
     "reopen": "Avaa kirjautumisikkuna uudelleen"
   },
   "permissions": {
     "use": {
       "title": "Käytä Vaultin SSH-allekirjoitusta",
-      "description": "Luo Vault-allekirjoittajaprofiileja ja muodosta yhteys Vaultia käyttäviin isäntiin."
+      "description": "Luo Vault-allekirjoittajan profiileja ja yhdistä isäntiin, jotka käyttävät Vaultia."
     },
     "share": {
-      "title": "Jaa holviprofiileja",
+      "title": "Jaa Vault-profiileja",
       "description": "Merkitse Vault-allekirjoittajan profiili jaetuksi, jotta jokainen käyttäjä voi valita sen."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "Uudelleenohjauksen URI",
-      "description": "Lisää tämä URL-osoite allowed_redirect_uris-kohtaan jokaisessa Vault OIDC -roolissa, jolla Termix kirjautuu sisään."
+      "label": "Uudelleenohjaus-URI",
+      "description": "Lisää tämä URL Vaultin OIDC-roolien allowed_redirect_uris-listalle, joilla Termix kirjautuu sisään."
+    },
+    "privateHosts": {
+      "label": "Sallitut yksityiset Vault-isännät",
+      "description": "Yksityiset tai silmukointi-isäntien Vault-isäntien nimet/IP-osoitteet, joita kenen tahansa oma profiili voi käyttää. Jaetut profiilit ja profiilit, jotka on luonut henkilöillä, joilla on jakaoikeus, voivat käyttää niitä jo. Erottele merkinnät pilkuilla tai rivinvaihdoin."
     },
     "host": {
       "profileId": {
-        "label": "Varaston allekirjoittajan profiili"
+        "label": "Vault-allekirjoittajan profiili"
       }
     }
   },

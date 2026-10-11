@@ -1,10 +1,10 @@
 {
   "editor": {
-    "profile": "Hồ sơ người ký Vault",
-    "selectProfile": "Chọn hồ sơ Vault...",
-    "hint": "Cài đặt từ hồ sơ dùng chung; bạn sẽ đăng nhập Vault qua OIDC khi kết nối. Không lưu bí mật.",
+    "profile": "Hồ sơ ký Vault",
+    "selectProfile": "Chọn một hồ sơ Vault...",
+    "hint": "Cài đặt được lấy từ hồ sơ chia sẻ; bạn sẽ đăng nhập vào Vault qua OIDC khi kết nối. Không có bí mật nào được lưu trữ.",
     "docs": "Xem tài liệu",
-    "sharedProfile": "{{name}} (được chia sẻ)"
+    "sharedProfile": "{{name}} (chia sẻ)"
   },
   "profiles": {
     "new": "Hồ sơ mới",
@@ -16,7 +16,7 @@
     "oidcRole": "Vai trò OIDC",
     "sshMount": "Điểm gắn bí mật SSH",
     "sshRole": "Vai trò ký SSH",
-    "validPrincipals": "Các danh tính hợp lệ",
+    "validPrincipals": "Chủ thể hợp lệ",
     "keyType": "Loại khóa tạm thời",
     "shareWithAll": "Chia sẻ với tất cả người dùng",
     "create": "Tạo hồ sơ",
@@ -26,39 +26,44 @@
     "saveFailed": "Không thể lưu hồ sơ Vault",
     "deleteFailed": "Không thể xóa hồ sơ Vault",
     "save": "Lưu hồ sơ",
-    "validationError": "Tên, địa chỉ Vault và vai trò ký SSH là bắt buộc",
+    "validationError": "Bắt buộc nhập tên, địa chỉ Vault và vai trò ký SSH",
     "none": "Chưa có hồ sơ Vault nào.",
-    "sharedBadge": "được chia sẻ",
+    "sharedBadge": "đã chia sẻ",
     "edit": "Chỉnh sửa",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "deleteConfirm": "Xóa hồ sơ Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Kho tiền"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
     "title": "Yêu cầu đăng nhập Vault",
-    "description": "Một cửa sổ đã mở để đăng nhập vào HashiCorp Vault. Hoàn tất đăng nhập ở đó; kết nối này sẽ tự động tiếp tục.",
+    "description": "Một cửa sổ đã mở để đăng nhập vào HashiCorp Vault. Hãy hoàn tất đăng nhập ở đó; kết nối này sẽ tiếp tục tự động.",
     "failed": "Xác thực Vault thất bại. Vui lòng thử lại.",
     "reopen": "Mở lại cửa sổ đăng nhập"
   },
   "permissions": {
     "use": {
-      "title": "Sử dụng tính năng ký SSH của Vault.",
-      "description": "Tạo hồ sơ người ký Vault và kết nối với các máy chủ sử dụng Vault."
+      "title": "Sử dụng ký SSH Vault",
+      "description": "Tạo hồ sơ ký Vault và kết nối với các máy chủ sử dụng Vault."
     },
     "share": {
       "title": "Chia sẻ hồ sơ Vault",
-      "description": "Đánh dấu hồ sơ người ký Vault là được chia sẻ để mọi người dùng đều có thể chọn hồ sơ đó."
+      "description": "Đánh dấu một hồ sơ ký Vault là chia sẻ để mọi người dùng đều có thể chọn."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI chuyển hướng",
-      "description": "Thêm URL này vào allowed_redirect_uris trong mỗi vai trò Vault OIDC mà Termix sử dụng để đăng nhập."
+      "description": "Thêm URL này vào allowed_redirect_uris trong mỗi vai trò OIDC của Vault mà Termix sử dụng để đăng nhập."
+    },
+    "privateHosts": {
+      "label": "Máy chủ Vault riêng được phép",
+      "description": "Tên máy chủ/IP Vault riêng hoặc loopback mà hồ sơ cá nhân của bất kỳ ai cũng có thể sử dụng. Hồ sơ chia sẻ và hồ sơ do những người có quyền chia sẻ tạo ra đã được phép. Tách các mục bằng dấu phẩy hoặc dòng mới."
     },
     "host": {
       "profileId": {
-        "label": "Hồ sơ người ký Vault"
+        "label": "Hồ sơ ký Vault"
       }
     }
   },

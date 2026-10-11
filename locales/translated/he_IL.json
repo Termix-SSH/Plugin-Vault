@@ -1,64 +1,69 @@
 {
   "editor": {
-    "profile": "פרופיל חותם בכספת",
-    "selectProfile": "בחר פרופיל כספת...",
-    "hint": "ההגדרות מגיעות מהפרופיל המשותף; תיכנס לכספת דרך OIDC כשתתחבר. לא נשמרים סודות.",
-    "docs": "הצג מסמכים",
-    "sharedProfile": "{{name}} (שותף)"
+    "profile": "פרופיל חתימת Vault",
+    "selectProfile": "בחר פרופיל Vault...",
+    "hint": "ההגדרות מגיעות מהפרופיל המשותף; תתחבר ל-Vault באמצעות OIDC בעת החיבור. אין סודות שמאוחסנים.",
+    "docs": "צפה בתיעוד",
+    "sharedProfile": "{{name}} (משותף)"
   },
   "profiles": {
     "new": "פרופיל חדש",
-    "manage": "ניהול פרופילי כספת",
-    "name": "שם ידידותי",
-    "vaultAddr": "כתובת הכספת",
-    "namespace": "מרחב השמות",
-    "oidcMount": "אישור OIDC",
+    "manage": "נהל פרופילי Vault",
+    "name": "שם תצוגה",
+    "vaultAddr": "כתובת Vault",
+    "namespace": "מרחב שמות",
+    "oidcMount": "נקודת חיבור אימות OIDC",
     "oidcRole": "תפקיד OIDC",
-    "sshMount": "סודות SSH מאוורר",
+    "sshMount": "נקודת חיבור סודות SSH",
     "sshRole": "תפקיד חותם SSH",
     "validPrincipals": "עקרונות תקפים",
     "keyType": "סוג מפתח זמני",
     "shareWithAll": "שתף עם כל המשתמשים",
     "create": "צור פרופיל",
-    "created": "פרופיל הכספת נוצר",
-    "saved": "פרופיל הכספת נשמר",
-    "deleted": "פרופיל הכספת נמחק",
-    "saveFailed": "שמירת פרופיל הכספת נכשלה",
-    "deleteFailed": "נכשלה מחיקת פרופיל הכספת",
+    "created": "פרופיל Vault נוצר",
+    "saved": "פרופיל Vault נשמר",
+    "deleted": "פרופיל Vault נמחק",
+    "saveFailed": "שמירת פרופיל Vault נכשלה",
+    "deleteFailed": "מחיקת פרופיל Vault נכשלה",
     "save": "שמור פרופיל",
-    "validationError": "שם, כתובת כספת ותפקיד חתימה ב-SSH נדרשים",
-    "none": "אין עדיין פרופילים בכספת.",
-    "sharedBadge": "מְשׁוּתָף",
-    "edit": "לַעֲרוֹך",
-    "delete": "לִמְחוֹק"
+    "validationError": "שם, כתובת Vault ותפקיד חותם SSH הם שדות חובה",
+    "none": "אין עדיין פרופילי Vault.",
+    "sharedBadge": "משותף",
+    "edit": "ערוך",
+    "delete": "מחק",
+    "deleteConfirm": "למחוק את פרופיל Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "קִמרוֹן"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "נדרשת כניסה לכספת",
-    "description": "נפתח חלון לכניסה לכספת HashiCorp. השלם את תהליך הכניסה שם; חיבור זה ימשיך אוטומטית.",
-    "failed": "אימות הכספת נכשל. אנא נסה שוב.",
+    "title": "נדרש כניסה ל-Vault",
+    "description": "חלון נפתח כדי להתחבר ל-HashiCorp Vault. השלם את הכניסה שם; החיבור הזה יימשך באופן אוטומטי.",
+    "failed": "אימות Vault נכשל. אנא נסה שוב.",
     "reopen": "פתח מחדש את חלון הכניסה"
   },
   "permissions": {
     "use": {
       "title": "השתמש בחתימת SSH של Vault",
-      "description": "צור פרופילי חותם של Vault והתחבר למארחים המשתמשים ב-Vault."
+      "description": "צור פרופילי חותם Vault והתחבר למארחים שמשתמשים ב-Vault."
     },
     "share": {
-      "title": "שיתוף פרופילי כספת",
-      "description": "סמן פרופיל של חותם בכספת כמשותף כדי שכל משתמש יוכל לבחור אותו."
+      "title": "שתף פרופילי Vault",
+      "description": "סמן פרופיל חותם Vault כמשותף כך שכל משתמש יוכל לבחור אותו."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "כתובת URL להפניה מחדש",
-      "description": "הוסף כתובת URL זו ל- allowed_redirect_uris בכל תפקיד OIDC של Vault שאיתו Termix מתחבר."
+      "label": "כתובת הפניה מחדש",
+      "description": "הוסף את כתובת ה-URL הזו ל-allowed_redirect_uris בכל תפקיד OIDC של Vault שבו Termix מתחבר."
+    },
+    "privateHosts": {
+      "label": "מארחי Vault פרטיים מורשים",
+      "description": "שמות מארחים/כתובות IP פרטיות או של לולאה של Vault שכל פרופיל אישי עשוי להשתמש בהן. פרופילים משותפים ופרופילים שנוצרו על ידי אנשים שיכולים לשתף כבר מורשים. הפרד בין ערכים באמצעות פסיקים או שורות חדשות."
     },
     "host": {
       "profileId": {
-        "label": "פרופיל חותם בכספת"
+        "label": "פרופיל חותם Vault"
       }
     }
   },

@@ -1,24 +1,24 @@
 {
   "editor": {
-    "profile": "Perfil do assinante do Vault",
+    "profile": "Perfil de Assinante do Vault",
     "selectProfile": "Selecione um perfil do Vault...",
-    "hint": "As configurações são provenientes do perfil compartilhado; você fará login no Vault via OIDC ao se conectar. Nenhum segredo é armazenado.",
-    "docs": "Documentação",
+    "hint": "As configurações vêm do perfil compartilhado; você fará login no Vault via OIDC ao se conectar. Nenhum segredo é armazenado.",
+    "docs": "Ver documentação",
     "sharedProfile": "{{name}} (compartilhado)"
   },
   "profiles": {
     "new": "Novo perfil",
     "manage": "Gerenciar perfis do Vault",
     "name": "Nome Amigável",
-    "vaultAddr": "Endereço do cofre",
-    "namespace": "Espaço de nomes",
-    "oidcMount": "Montagem de autenticação OIDC",
+    "vaultAddr": "Endereço do Vault",
+    "namespace": "Namespace",
+    "oidcMount": "Montagem de Autenticação OIDC",
     "oidcRole": "Função OIDC",
-    "sshMount": "Montagem de segredos SSH",
-    "sshRole": "Função de assinatura SSH",
-    "validPrincipals": "Principais válidos",
-    "keyType": "Tipo de chave efêmera",
-    "shareWithAll": "Compartilhe com todos os usuários",
+    "sshMount": "Montagem de Segredos SSH",
+    "sshRole": "Função de Assinante SSH",
+    "validPrincipals": "Principais Válidos",
+    "keyType": "Tipo de Chave Efêmera",
+    "shareWithAll": "Compartilhar com todos os usuários",
     "create": "Criar perfil",
     "created": "Perfil do Vault criado",
     "saved": "Perfil do Vault salvo",
@@ -26,39 +26,44 @@
     "saveFailed": "Falha ao salvar o perfil do Vault",
     "deleteFailed": "Falha ao excluir o perfil do Vault",
     "save": "Salvar perfil",
-    "validationError": "Nome, endereço do Vault e função de assinatura SSH são obrigatórios.",
-    "none": "Ainda não há perfis no Vault.",
+    "validationError": "Nome, endereço do Vault e função de assinante SSH são obrigatórios",
+    "none": "Nenhum perfil do Vault ainda.",
     "sharedBadge": "compartilhado",
     "edit": "Editar",
-    "delete": "Apagar"
+    "delete": "Excluir",
+    "deleteConfirm": "Excluir o perfil do Vault {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Cofre"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "É necessário fazer login no cofre.",
-    "description": "Uma janela foi aberta para fazer login no HashiCorp Vault. Conclua o login; esta conexão será estabelecida automaticamente.",
-    "failed": "A autenticação do cofre falhou. Tente novamente.",
+    "title": "Login no Vault necessário",
+    "description": "Uma janela foi aberta para fazer login no HashiCorp Vault. Conclua o login lá; esta conexão continuará automaticamente.",
+    "failed": "Falha na autenticação do Vault. Tente novamente.",
     "reopen": "Reabrir janela de login"
   },
   "permissions": {
     "use": {
-      "title": "Use a assinatura SSH do Vault",
-      "description": "Crie perfis de assinatura do Vault e conecte-se a hosts que usam o Vault."
+      "title": "Usar assinatura SSH do Vault",
+      "description": "Criar perfis de assinante do Vault e conectar-se a hosts que usam o Vault."
     },
     "share": {
-      "title": "Perfis do Share Vault",
-      "description": "Marque um perfil de assinatura do Vault como compartilhado para que todos os usuários possam selecioná-lo."
+      "title": "Compartilhar perfis do Vault",
+      "description": "Marcar um perfil de assinante do Vault como compartilhado para que todos os usuários possam selecioná-lo."
     }
   },
   "settings": {
     "redirectUri": {
-      "label": "URI de redirecionamento",
-      "description": "Adicione este URL à lista allowed_redirect_uris em cada função OIDC do Vault que o Termix utiliza para fazer login."
+      "label": "URI de Redirecionamento",
+      "description": "Adicione esta URL aos allowed_redirect_uris em cada função OIDC do Vault com a qual o Termix faz login."
+    },
+    "privateHosts": {
+      "label": "Hosts privados do Vault permitidos",
+      "description": "Nomes de host/IPs do Vault privados ou de loopback que qualquer perfil pessoal pode usar. Perfis compartilhados e perfis criados por pessoas com permissão para compartilhar já podem. Separe as entradas com vírgulas ou quebras de linha."
     },
     "host": {
       "profileId": {
-        "label": "Perfil de assinatura do Vault"
+        "label": "Perfil de assinante do Vault"
       }
     }
   },

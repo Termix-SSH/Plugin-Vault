@@ -1,54 +1,55 @@
 {
   "editor": {
-    "profile": "Profil for underskriver af arkiv",
+    "profile": "Vault-signeringsprofil",
     "selectProfile": "Vælg en Vault-profil...",
-    "hint": "Indstillingerne kommer fra den delte profil; du logger ind på Vault via OIDC, når du opretter forbindelse. Der gemmes ingen hemmeligheder.",
-    "docs": "Se dokumenter",
+    "hint": "Indstillingerne stammer fra den delte profil; du logger ind på Vault via OIDC, når du opretter forbindelse. Der gemmes hemmeligheder.",
+    "docs": "Se dokumentation",
     "sharedProfile": "{{name}} (delt)"
   },
   "profiles": {
     "new": "Ny profil",
     "manage": "Administrer Vault-profiler",
     "name": "Venligt navn",
-    "vaultAddr": "Adresse i boksen",
-    "namespace": "Navnerum",
-    "oidcMount": "OIDC-godkendelsesmontering",
+    "vaultAddr": "Vault-adresse",
+    "namespace": "Namespace",
+    "oidcMount": "OIDC-auth-mont",
     "oidcRole": "OIDC-rolle",
-    "sshMount": "SSH-hemmeligheder monteres",
-    "sshRole": "SSH-underskriverrolle",
+    "sshMount": "SSH-hemmeligheds-mont",
+    "sshRole": "SSH-signeringsrolle",
     "validPrincipals": "Gyldige principper",
-    "keyType": "Kortvarig nøgletype",
+    "keyType": "Type for midlertidig nøgle",
     "shareWithAll": "Del med alle brugere",
     "create": "Opret profil",
     "created": "Vault-profil oprettet",
     "saved": "Vault-profil gemt",
     "deleted": "Vault-profil slettet",
-    "saveFailed": "Kunne ikke gemme Vault-profilen",
-    "deleteFailed": "Kunne ikke slette Vault-profilen",
+    "saveFailed": "Kunne ikke gemme Vault-profil",
+    "deleteFailed": "Kunne ikke slette Vault-profil",
     "save": "Gem profil",
-    "validationError": "Navn, Vault-adresse og SSH-underskriverrolle er påkrævet",
-    "none": "Ingen Vault-profiler endnu.",
+    "validationError": "Navn, Vault-adresse og SSH-signeringsrolle er påkrævet",
+    "none": "Der er ingen Vault-profiler endnu.",
     "sharedBadge": "delt",
-    "edit": "Redigere",
-    "delete": "Slet"
+    "edit": "Rediger",
+    "delete": "Slet",
+    "deleteConfirm": "Slet Vault-profilen {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Hvælving"
+    "filterAuthVault": "Vault"
   },
   "dialog": {
-    "title": "Login til Vault kræves",
-    "description": "Et vindue er åbnet, hvor du kan logge ind på HashiCorp Vault. Fuldfør loginprocessen der; forbindelsen fortsætter automatisk.",
-    "failed": "Godkendelse af arkiv mislykkedes. Prøv igen.",
-    "reopen": "Genåbn loginvinduet"
+    "title": "Vault-login påkrævet",
+    "description": "Et vindue er åbnet for at logge ind på HashiCorp Vault. Afslut logningen der; denne forbindelse fortsætter automatisk.",
+    "failed": "Vault-godkendelse mislykkedes. Prøv venligst igen.",
+    "reopen": "Genåbn login-vindue"
   },
   "permissions": {
     "use": {
       "title": "Brug Vault SSH-signering",
-      "description": "Opret Vault-underskriverprofiler, og opret forbindelse til værter, der bruger Vault."
+      "description": "Opret Vault-signeringsprofiler og opret forbindelse til værter, der bruger Vault."
     },
     "share": {
       "title": "Del Vault-profiler",
-      "description": "Marker en Vault-underskriverprofil som delt, så alle brugere kan vælge den."
+      "description": "Marker en Vault-signeringsprofil som delt, så alle brugere kan vælge den."
     }
   },
   "settings": {
@@ -56,9 +57,13 @@
       "label": "Omdirigerings-URI",
       "description": "Tilføj denne URL til allowed_redirect_uris i hver Vault OIDC-rolle, som Termix logger ind med."
     },
+    "privateHosts": {
+      "label": "Tilladte private Vault-værter",
+      "description": "Private eller loopback Vault-værtnavne/IP'er, som enhver brugers egen profil må bruge. Delte profiler og profiler oprettet af personer, der allerede kan dele, må også bruge dem. Adskil poster med kommaer eller linjeskift."
+    },
     "host": {
       "profileId": {
-        "label": "Profil for underskriver af Vault"
+        "label": "Vault-signeringsprofil"
       }
     }
   },
