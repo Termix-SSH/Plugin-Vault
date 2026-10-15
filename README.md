@@ -6,6 +6,12 @@
 
 <p>Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault</p>
 
+<!-- VIDEO:START -->
+
+<a href="https://www.youtube.com/watch?v=oEi4aI-xal0"><img src="https://img.shields.io/badge/Watch_the_demo-f59145?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch the demo on YouTube" /></a>
+
+<!-- VIDEO:END -->
+
 </div>
 
 <br />
