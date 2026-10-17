@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "使用 HashiCorp Vault 簽發的短期 SSH 憑證連線主機。"
   }
 }
