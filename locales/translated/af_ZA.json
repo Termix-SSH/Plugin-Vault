@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Skakel aan met gasheërs met kortstondige SSH-sertifikate wat deur HashiCorp Vault onderteken is."
   }
 }

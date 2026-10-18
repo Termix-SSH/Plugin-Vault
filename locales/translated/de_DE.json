@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Verbinden Sie sich mit Hosts, die kurzlebige SSH-Zertifikate verwenden, die von HashiCorp Vault signiert wurden."
   }
 }

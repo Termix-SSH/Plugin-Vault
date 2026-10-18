@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Připojte se k hostitelům pomocí krátkodobých SSH certifikátů podepsaných službou HashiCorp Vault."
   }
 }

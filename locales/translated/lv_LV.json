@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Savienojieties ar mezgliem, izmantojot īslaicīgus SSH sertifikātus, ko parakstījis HashiCorp Vault."
   }
 }

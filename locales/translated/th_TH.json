@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "เชื่อมต่อกับโฮสต์โดยใช้ใบรับรอง SSH อายุสั้นที่ลงนามโดย HashiCorp Vault"
   }
 }

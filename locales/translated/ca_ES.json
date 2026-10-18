@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Connecta't a amfitrions amb certificats SSH de curta durada signats per HashiCorp Vault."
   }
 }

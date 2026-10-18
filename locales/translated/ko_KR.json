@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "HashiCorp Vault에서 서명한 단기 유효 SSH 인증서를 사용하여 호스트에 연결합니다."
   }
 }

@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Повезујте се са хостовима користећи SSH сертификате кратког трајања потписане од стране HashiCorp Vault."
   }
 }

@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "HashiCorp Vault によって署名された短期間の SSH 証明書を使用してホストに接続します。"
   }
 }

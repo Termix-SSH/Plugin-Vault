@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "Ühendu hostidega lühiajaliste SSH-sertifikaatide kaudu, mille on allkirjastanud HashiCorp Vault."
   }
 }

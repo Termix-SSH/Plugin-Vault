@@ -68,6 +68,7 @@
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault"
+    "name": "HashiCorp Vault",
+    "description": "HashiCorp Vault द्वारा हस्ताक्षरित अल्पकालिक SSH प्रमाणपत्रों के साथ होस्ट से कनेक्ट करें।"
   }
 }

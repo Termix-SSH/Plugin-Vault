@@ -43,5 +43,6 @@
   "settings.privateHosts.label": "af99bfcdb2dd",
   "settings.privateHosts.description": "00d32b135b6d",
   "settings.host.profileId.label": "28e7aa1393ad",
-  "plugin.name": "d00d79e2d01e"
+  "plugin.name": "d00d79e2d01e",
+  "plugin.description": "23e6a51ba577"
 }
