@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
+import { publicKeyFromPrivate } from "@termix-ssh/plugin-sdk/ssh-keys";
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import os from "node:os";
@@ -9,7 +10,9 @@ import {
   allowedHosts,
   completeVaultOidc,
   generateEphemeralKeyPair,
+  isProvider,
   parseCertValidBefore,
+  providerLabel,
   signWithVault,
   startVaultOidc,
   type VaultProfileConfig,
@@ -17,7 +20,29 @@ import {
 
 const { utils: ssh2Utils } = ssh2Pkg;
 
+describe("providers", () => {
+  it("knows Vault and OpenBao only", () => {
+    expect(isProvider("vault")).toBe(true);
+    expect(isProvider("openbao")).toBe(true);
+    expect(isProvider("infisical")).toBe(false);
+    expect(isProvider(undefined)).toBe(false);
+  });
+
+  it("labels a missing provider as Vault", () => {
+    expect(providerLabel("openbao")).toBe("OpenBao");
+    expect(providerLabel("vault")).toBe("Vault");
+    expect(providerLabel(null)).toBe("Vault");
+  });
+});
+
 describe("generateEphemeralKeyPair", () => {
+  it("always gives a key that reads back", () => {
+    for (let i = 0; i < 1500; i += 1) {
+      const pair = generateEphemeralKeyPair("ssh-ed25519");
+      expect(publicKeyFromPrivate(pair.privateKey)).not.toBeNull();
+    }
+  });
+
   for (const keyType of [
     "ssh-ed25519",
     "ecdsa-sha2-nistp256",

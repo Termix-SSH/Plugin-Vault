@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault 簽署者設定檔",
-    "selectProfile": "選擇 Vault 設定檔...",
-    "hint": "設定來自共用設定檔；連線時您將透過 OIDC 登入 Vault。不會儲存任何機密資訊。",
+    "profile": "簽署者設定檔",
+    "selectProfile": "選取一個簽署者設定檔...",
+    "hint": "設定來自設定檔。連線時，您會透過 OIDC 登入 Vault 或 OpenBao。不會儲存任何機密資訊。",
     "docs": "查看說明文件",
     "sharedProfile": "{{name}}（共用）"
   },
   "profiles": {
     "new": "新增設定檔",
-    "manage": "管理 Vault 設定檔",
+    "manage": "管理簽署者設定檔",
     "name": "顯示名稱",
-    "vaultAddr": "Vault 位址",
+    "provider": "簽署者",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "伺服器位址",
     "namespace": "命名空間",
     "oidcMount": "OIDC 驗證掛載點",
     "oidcRole": "OIDC 角色",
@@ -20,55 +25,63 @@
     "keyType": "臨時金鑰類型",
     "shareWithAll": "與所有使用者共用",
     "create": "建立設定檔",
-    "created": "Vault 設定檔已建立",
-    "saved": "Vault 設定檔已儲存",
-    "deleted": "Vault 設定檔已刪除",
-    "saveFailed": "儲存 Vault 設定檔失敗",
-    "deleteFailed": "刪除 Vault 設定檔失敗",
+    "created": "已建立簽署者設定檔",
+    "saved": "已儲存簽署者設定檔",
+    "deleted": "已刪除簽署者設定檔",
+    "saveFailed": "儲存簽署者設定檔失敗",
+    "deleteFailed": "刪除簽署者設定檔失敗",
     "save": "儲存設定檔",
-    "validationError": "名稱、Vault 位址與 SSH 簽署者角色為必填欄位",
-    "none": "尚無 Vault 設定檔。",
+    "validationError": "名稱、伺服器位址與 SSH 簽署者角色為必填欄位",
+    "none": "尚無簽署者設定檔。",
     "sharedBadge": "共用",
     "edit": "編輯",
     "delete": "刪除",
-    "deleteConfirm": "確定要刪除 Vault 設定檔 {{name}} 嗎？"
+    "deleteConfirm": "要刪除簽署者設定檔 {{name}} 嗎？"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault 或 OpenBao"
   },
   "dialog": {
-    "title": "需要 Vault 登入",
-    "description": "已開啟視窗以登入 HashiCorp Vault。請在該視窗完成登入；此連線將自動繼續。",
-    "failed": "Vault 驗證失敗。請再試一次。",
+    "title": "需要登入",
+    "description": "已開啟視窗以登入 {{provider}}。請在該視窗完成登入，連線將自動繼續。",
+    "failed": "登入失敗。請再試一次。",
     "reopen": "重新開啟登入視窗"
   },
   "permissions": {
     "use": {
-      "title": "使用 Vault SSH 簽署",
-      "description": "建立 Vault 簽署者設定檔，並連線至使用 Vault 的主機。"
+      "title": "使用 SSH 憑證簽署",
+      "description": "建立簽署者設定檔，並連線至使用 Vault 或 OpenBao 的主機。"
     },
     "share": {
-      "title": "共用 Vault 設定檔",
-      "description": "將 Vault 簽署者設定檔標記為共用，以便所有使用者都能選用它。"
+      "title": "共用簽署者設定檔",
+      "description": "將簽署者設定檔標記為共用，以便所有使用者都能選取。"
     }
   },
   "settings": {
     "redirectUri": {
       "label": "重定向 URI",
-      "description": "將此 URL 新增至 Termix 登入所使用的每個 Vault OIDC 角色的 allowed_redirect_uris 中。"
+      "description": "將此 URL 新增至 Termix 用來登入的每個 Vault 或 OpenBao OIDC 角色的 allowed_redirect_uris 中。"
     },
     "privateHosts": {
-      "label": "允許的私人 Vault 主機",
-      "description": "任何人的個人設定檔可使用的私人或回環 Vault 主機名稱/IP。共用設定檔以及由具有共用權限者建立的設定檔已允許使用。請以逗號或換行分隔項目。"
+      "label": "允許的私人簽署者主機",
+      "description": "任何人自己的設定檔可使用的私人或回環 Vault 或 OpenBao 主機名稱或 IP。共用設定檔以及由具有共用權限者建立的設定檔已允許使用。請以逗號或換行分隔各項目。"
     },
     "host": {
       "profileId": {
-        "label": "Vault 簽署者設定檔"
+        "label": "簽署者設定檔"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "使用 HashiCorp Vault 簽發的短期 SSH 憑證連線主機。"
+    "name": "SSH 憑證簽署者",
+    "description": "使用由 HashiCorp Vault 或 OpenBao 簽署的短期 SSH 憑證連線至主機。"
+  },
+  "resultPage": {
+    "signedIn": "已登入",
+    "failed": "登入失敗",
+    "closing": "您可以關閉此視窗並返回 Termix。",
+    "tryAgain": "關閉此視窗，並在 Termix 中再試一次。",
+    "close": "關閉視窗",
+    "requestId": "請求 ID：{{id}}"
   }
 }

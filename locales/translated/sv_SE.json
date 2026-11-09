@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault-signerprofil",
-    "selectProfile": "Välj en Vault-profil...",
-    "hint": "Inställningarna hämtas från den delade profilen. Du loggar in i Vault via OIDC när du ansluter. Inga hemligheter lagras.",
+    "profile": "Signeringsprofil",
+    "selectProfile": "Välj en signeringsprofil...",
+    "hint": "Inställningarna hämtas från profilen. Du loggar in i Vault eller OpenBao med OIDC när du ansluter. Inga hemligheter lagras.",
     "docs": "Visa dokumentation",
     "sharedProfile": "{{name}} (delad)"
   },
   "profiles": {
     "new": "Ny profil",
-    "manage": "Hantera Vault-profiler",
+    "manage": "Hantera signeringsprofiler",
     "name": "Visningsnamn",
-    "vaultAddr": "Vault-adress",
+    "provider": "Signerare",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Serveradress",
     "namespace": "Namnrymd",
     "oidcMount": "OIDC-autentiseringsmontering",
     "oidcRole": "OIDC-roll",
@@ -20,55 +25,63 @@
     "keyType": "Typ av tillfällig nyckel",
     "shareWithAll": "Dela med alla användare",
     "create": "Skapa profil",
-    "created": "Vault-profil skapad",
-    "saved": "Vault-profil sparad",
-    "deleted": "Vault-profil raderad",
-    "saveFailed": "Misslyckades med att spara Vault-profilen",
-    "deleteFailed": "Misslyckades med att radera Vault-profilen",
+    "created": "Signeringsprofil skapad",
+    "saved": "Signeringsprofil sparad",
+    "deleted": "Signeringsprofil raderad",
+    "saveFailed": "Misslyckades med att spara signeringsprofilen",
+    "deleteFailed": "Misslyckades med att radera signeringsprofilen",
     "save": "Spara profil",
-    "validationError": "Namn, Vault-adress och roll för SSH-signering krävs",
-    "none": "Inga Vault-profiler ännu.",
+    "validationError": "Namn, serveradress och roll för SSH-signerare krävs",
+    "none": "Inga signeringsprofiler ännu.",
     "sharedBadge": "delad",
     "edit": "Redigera",
     "delete": "Radera",
-    "deleteConfirm": "Vill du radera Vault-profilen {{name}}?"
+    "deleteConfirm": "Vill du radera signeringsprofilen {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault eller OpenBao"
   },
   "dialog": {
-    "title": "Inloggning i Vault krävs",
-    "description": "Ett fönster har öppnats för inloggning i HashiCorp Vault. Slutför inloggningen där; anslutningen fortsätter automatiskt.",
-    "failed": "Autentiseringen mot Vault misslyckades. Försök igen.",
+    "title": "Inloggning krävs",
+    "description": "Ett fönster har öppnats för att logga in i {{provider}}. Slutför inloggningen där, så fortsätter anslutningen automatiskt.",
+    "failed": "Inloggningen misslyckades. Försök igen.",
     "reopen": "Öppna inloggningsfönstret igen"
   },
   "permissions": {
     "use": {
-      "title": "Använd Vault-SSH-signering",
-      "description": "Skapa profiler för Vault-signering och anslut till värdar som använder Vault."
+      "title": "Använd SSH-certifikatsignering",
+      "description": "Skapa signeringsprofiler och anslut till värdar som använder Vault eller OpenBao."
     },
     "share": {
-      "title": "Dela Vault-profiler",
-      "description": "Markera en profil för Vault-signering som delad så att alla användare kan välja den."
+      "title": "Dela signeringsprofiler",
+      "description": "Markera en signeringsprofil som delad så att alla användare kan välja den."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Omdirigerings-URI",
-      "description": "Lägg till denna URL i allowed_redirect_uris för varje Vault OIDC-roll som Termix loggar in med."
+      "description": "Lägg till den här URL:en i allowed_redirect_uris för varje Vault- eller OpenBao-OIDC-roll som Termix loggar in med."
     },
     "privateHosts": {
-      "label": "Tillåtna privata Vault-värdar",
-      "description": "Privata eller loopback-värdnamn/IP-adresser för Vault som vilken användares egen profil som helst får använda. Delade profiler och profiler skapade av personer som har behörighet att dela får redan använda dem. Separera poster med kommatecken eller radbrytningar."
+      "label": "Tillåtna privata signeringsvärdar",
+      "description": "Privata eller loopback-värdnamn eller IP-adresser för Vault eller OpenBao som vilkensomhelst användares egen profil får använda. Delade profiler och profiler skapade av personer som har behörighet att dela får redan använda dem. Separera poster med kommatecken eller nya rader."
     },
     "host": {
       "profileId": {
-        "label": "Profil för Vault-signering"
+        "label": "Signeringsprofil"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Anslut till värdar med kortlivade SSH-certifikat signerade av HashiCorp Vault."
+    "name": "SSH-certifikatsignerare",
+    "description": "Anslut till värdar med kortlivade SSH-certifikat signerade av HashiCorp Vault eller OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Inloggad",
+    "failed": "Inloggningen misslyckades",
+    "closing": "Du kan stänga det här fönstret och gå tillbaka till Termix.",
+    "tryAgain": "Stäng det här fönstret och försök igen från Termix.",
+    "close": "Stäng fönstret",
+    "requestId": "Begärans-ID: {{id}}"
   }
 }

@@ -7,7 +7,7 @@ import { Button, Input, copyToClipboard } from "@termix-ssh/plugin-sdk/ui";
 
 const CALLBACK_PATH = "plugin-api/vault/oidc/callback";
 
-/** The redirect URI to allow in the Vault OIDC role. */
+/** The redirect URI to allow in the Vault or OpenBao OIDC role. */
 export function redirectUri(baseUri = document.baseURI): string {
   return new URL(CALLBACK_PATH, baseUri).toString();
 }

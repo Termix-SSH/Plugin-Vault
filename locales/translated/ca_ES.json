@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Perfil de signador de Vault",
-    "selectProfile": "Seleccioneu un perfil de Vault...",
-    "hint": "La configuració prové del perfil compartit; us autenticareu a Vault mitjançant OIDC en connectar-vos. No s'emmagatzemen secrets.",
+    "profile": "Perfil del signant",
+    "selectProfile": "Seleccioneu un perfil del signant...",
+    "hint": "La configuració prové del perfil. Inicieu sessió a Vault o OpenBao amb OIDC quan us connecteu. No s'emmagatzemen secrets.",
     "docs": "Veure la documentació",
     "sharedProfile": "{{name}} (compartit)"
   },
   "profiles": {
     "new": "Nou perfil",
-    "manage": "Gestionar perfils de Vault",
+    "manage": "Gestionar perfils del signant",
     "name": "Nom amigable",
-    "vaultAddr": "Adreça de Vault",
+    "provider": "Signant",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Adreça del servidor",
     "namespace": "Espai de noms",
     "oidcMount": "Muntatge d'autenticació OIDC",
     "oidcRole": "Rol d'OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Tipus de clau efímera",
     "shareWithAll": "Compartir amb tots els usuaris",
     "create": "Crear perfil",
-    "created": "Perfil de Vault creat",
-    "saved": "Perfil de Vault desat",
-    "deleted": "Perfil de Vault eliminat",
-    "saveFailed": "No s'ha pogut desar el perfil de Vault",
-    "deleteFailed": "No s'ha pogut eliminar el perfil de Vault",
+    "created": "Perfil del signant creat",
+    "saved": "Perfil del signant desat",
+    "deleted": "Perfil del signant eliminat",
+    "saveFailed": "No s'ha pogut desar el perfil del signant",
+    "deleteFailed": "No s'ha pogut eliminar el perfil del signant",
     "save": "Desar perfil",
-    "validationError": "El nom, l'adreça de Vault i el rol de signador SSH són obligatoris",
-    "none": "Encara no hi ha perfils de Vault.",
+    "validationError": "El nom, l'adreça del servidor i el rol de signant SSH són obligatoris",
+    "none": "Encara no hi ha perfils del signant.",
     "sharedBadge": "compartit",
     "edit": "Editar",
     "delete": "Eliminar",
-    "deleteConfirm": "Voleu eliminar el perfil de Vault {{name}}?"
+    "deleteConfirm": "Voleu eliminar el perfil del signant {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault o OpenBao"
   },
   "dialog": {
-    "title": "Cal autenticar-se a Vault",
-    "description": "S'ha obert una finestra per autenticar-vos a HashiCorp Vault. Completeu l'autenticació allà; aquesta connexió continuarà automàticament.",
-    "failed": "L'autenticació a Vault ha fallat. Si us plau, torneu-ho a intentar.",
+    "title": "Cal iniciar sessió",
+    "description": "S'ha obert una finestra per iniciar sessió a {{provider}}. Finalitzeu l'inici de sessió allà i aquesta connexió continuarà automàticament.",
+    "failed": "L'inici de sessió ha fallat. Torneu-ho a provar.",
     "reopen": "Tornar a obrir la finestra d'autenticació"
   },
   "permissions": {
     "use": {
-      "title": "Utilitzar la signatura SSH de Vault",
-      "description": "Crear perfils de signador de Vault i connectar-vos a amfitrions que utilitzin Vault."
+      "title": "Utilitzar la signatura de certificats SSH",
+      "description": "Creeu perfils del signant i connecteu-vos a amfitrions que utilitzin Vault o OpenBao."
     },
     "share": {
-      "title": "Compartir perfils de Vault",
-      "description": "Marcar un perfil de signador de Vault com a compartit perquè tots els usuaris el puguin seleccionar."
+      "title": "Compartir perfils del signant",
+      "description": "Marqueu un perfil del signant com a compartit perquè tots els usuaris el puguin seleccionar."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI de redirecció",
-      "description": "Afegiu aquesta URL a allowed_redirect_uris en cada rol d'OIDC de Vault amb el qual Termix s'autentica."
+      "description": "Afegiu aquesta URL a allowed_redirect_uris en cada rol OIDC de Vault o OpenBao amb el qual Termix inicia sessió."
     },
     "privateHosts": {
-      "label": "Amfitrions privats de Vault permesos",
-      "description": "Noms d'amfitrió/IPs privats o de bucle local de Vault que qualsevol perfil propi pot utilitzar. Els perfils compartits i els creats per persones amb permís de compartició ja ho poden fer. Separeu les entrades amb comes o salts de línia."
+      "label": "Amfitrions privats del signant permesos",
+      "description": "Noms d'amfitrió o adreces IP privades o de bucle local de Vault o OpenBao que qualsevol perfil propi pot utilitzar. Els perfils compartits i els perfils creats per persones que ja poden compartir també ho poden fer. Separeu les entrades amb comes o salts de línia."
     },
     "host": {
       "profileId": {
-        "label": "Perfil de signador de Vault"
+        "label": "Perfil del signant"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Connecta't a amfitrions amb certificats SSH de curta durada signats per HashiCorp Vault."
+    "name": "Signant de certificats SSH",
+    "description": "Connecteu-vos a amfitrions amb certificats SSH de curta durada signats per HashiCorp Vault o OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Sessió iniciada",
+    "failed": "L'inici de sessió ha fallat",
+    "closing": "Podeu tancar aquesta finestra i tornar a Termix.",
+    "tryAgain": "Tancareu aquesta finestra i torneu-ho a provar des de Termix.",
+    "close": "Tanca la finestra",
+    "requestId": "ID de sol·licitud: {{id}}"
   }
 }

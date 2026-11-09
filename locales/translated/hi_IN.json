@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault Signer Profile",
-    "selectProfile": "Vault प्रोफ़ाइल चुनें...",
-    "hint": "सेटिंग्स साझा प्रोफ़ाइल से आती हैं; कनेक्ट करने पर आप OIDC के माध्यम से Vault में साइन इन करेंगे। कोई भी गुप्त जानकारी संग्रहीत नहीं की जाती।",
+    "profile": "Signer Profile",
+    "selectProfile": "एक signer profile चुनें...",
+    "hint": "सेटिंग्स प्रोफाइल से आती हैं। कनेक्ट करते समय आप OIDC के साथ Vault या OpenBao में साइन इन करते हैं। कोई भी गुप्त जानकारी संग्रहीत नहीं की जाती।",
     "docs": "दस्तावेज़ देखें",
     "sharedProfile": "{{name}} (साझा)"
   },
   "profiles": {
     "new": "नई प्रोफ़ाइल",
-    "manage": "Vault प्रोफ़ाइलें प्रबंधित करें",
+    "manage": "Signer profiles प्रबंधित करें",
     "name": "उपयोगकर्ता नाम",
-    "vaultAddr": "Vault पता",
+    "provider": "Signer",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "सर्वर पता",
     "namespace": "नेमस्पेस",
     "oidcMount": "OIDC Auth Mount",
     "oidcRole": "OIDC भूमिका",
@@ -20,55 +25,63 @@
     "keyType": "अस्थायी Key प्रकार",
     "shareWithAll": "सभी उपयोगकर्ताओं के साथ साझा करें",
     "create": "प्रोफ़ाइल बनाएं",
-    "created": "Vault प्रोफ़ाइल बनाई गई",
-    "saved": "Vault प्रोफ़ाइल सहेजी गई",
-    "deleted": "Vault प्रोफ़ाइल हटाई गई",
-    "saveFailed": "Vault प्रोफ़ाइल सहेजने में विफल",
-    "deleteFailed": "Vault प्रोफ़ाइल हटाने में विफल",
+    "created": "Signer profile बनाया गया",
+    "saved": "Signer profile सहेजा गया",
+    "deleted": "साइनर प्रोफ़ाइल हटा दी गई",
+    "saveFailed": "साइनर प्रोफ़ाइल सहेजने में विफल",
+    "deleteFailed": "साइनर प्रोफ़ाइल हटाने में विफल",
     "save": "प्रोफ़ाइल सहेजें",
-    "validationError": "नाम, Vault पता और SSH signer भूमिका आवश्यक हैं",
-    "none": "अभी तक कोई Vault प्रोफ़ाइल नहीं।",
+    "validationError": "नाम, सर्वर पता और SSH साइनर भूमिका आवश्यक हैं",
+    "none": "अभी तक कोई साइनर प्रोफ़ाइल नहीं है।",
     "sharedBadge": "साझा",
     "edit": "संपादित करें",
     "delete": "हटाएं",
-    "deleteConfirm": "क्या Vault प्रोफ़ाइल {{name}} हटानी है?"
+    "deleteConfirm": "क्या साइनर प्रोफ़ाइल {{name}} हटानी है?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault या OpenBao"
   },
   "dialog": {
-    "title": "Vault साइन-इन आवश्यक है",
-    "description": "HashiCorp Vault में साइन इन करने के लिए एक विंडो खुली है। वहां साइन-इन पूरा करें; यह कनेक्शन स्वचालित रूप से जारी रहेगा।",
-    "failed": "Vault प्रमाणीकरण विफल रहा। कृपया पुनः प्रयास करें।",
+    "title": "साइन-इन आवश्यक है",
+    "description": "{{provider}} में साइन-इन करने के लिए एक विंडो खुली है। वहां साइन-इन पूरी करें और यह कनेक्शन अपने आप जारी रहेगा।",
+    "failed": "साइन-इन विफल रहा। कृपया पुनः प्रयास करें।",
     "reopen": "साइन-इन विंडो पुनः खोलें"
   },
   "permissions": {
     "use": {
-      "title": "Vault SSH साइनिंग का उपयोग करें",
-      "description": "Vault signer प्रोफ़ाइलें बनाएं और उन होस्ट से कनेक्ट करें जो Vault का उपयोग करते हैं।"
+      "title": "SSH प्रमाणपत्र हस्ताक्षर का उपयोग करें",
+      "description": "हस्ताक्षरकर्ता प्रोफ़ाइलें बनाएं और उन होस्ट से कनेक्ट करें जो Vault या OpenBao का उपयोग करते हैं।"
     },
     "share": {
-      "title": "Vault प्रोफ़ाइलें साझा करें",
-      "description": "Vault signer प्रोफ़ाइल को साझा के रूप में चिह्नित करें ताकि हर उपयोगकर्ता उसे चुन सके।"
+      "title": "हस्ताक्षरकर्ता प्रोफ़ाइल साझा करें",
+      "description": "हस्ताक्षरकर्ता प्रोफ़ाइल को साझा के रूप में चिह्नित करें ताकि हर उपयोगकर्ता उसे चुन सके।"
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Redirect URI",
-      "description": "Termix जिस Vault OIDC भूमिका के साथ साइन इन करता है, उसमें allowed_redirect_uris में यह URL जोड़ें।"
+      "description": "इस URL को allowed_redirect_uris में जोड़ें, प्रत्येक Vault या OpenBao OIDC भूमिका में जिसके साथ Termix साइन इन करता है।"
     },
     "privateHosts": {
-      "label": "अनुमत प्राइवेट Vault होस्ट",
-      "description": "प्राइवेट या लूपबैक Vault होस्टनेम/IP जो किसी भी उपयोगकर्ता की अपनी प्रोफ़ाइल द्वारा उपयोग किए जा सकते हैं। साझा प्रोफ़ाइलें और वे प्रोफ़ाइलें जो पहले से साझा करने वाले लोगों द्वारा बनाई गई हैं, वे पहले से ही अनुमत हैं। प्रविष्टियों को अल्पविराम या नई पंक्तियों से अलग करें।"
+      "label": "अनुमत प्राइवेट हस्ताक्षरकर्ता होस्ट",
+      "description": "प्राइवेट या लूपबैक Vault या OpenBao होस्टनेम या IP जो किसी भी उपयोगकर्ता की अपनी प्रोफ़ाइल द्वारा उपयोग की जा सकती हैं। साझा प्रोफ़ाइलें और वे प्रोफ़ाइलें जो पहले से ही साझा करने वाले लोगों द्वारा बनाई गई हैं, वे भी उपयोग कर सकती हैं। प्रविष्टियों को अल्पविराम या नई पंक्तियों से अलग करें।"
     },
     "host": {
       "profileId": {
-        "label": "Vault signer प्रोफ़ाइल"
+        "label": "हस्ताक्षरकर्ता प्रोफ़ाइल"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "HashiCorp Vault द्वारा हस्ताक्षरित अल्पकालिक SSH प्रमाणपत्रों के साथ होस्ट से कनेक्ट करें।"
+    "name": "SSH प्रमाणपत्र हस्ताक्षरकर्ता",
+    "description": "HashiCorp Vault या OpenBao द्वारा हस्ताक्षरित अल्पकालिक SSH प्रमाणपत्रों के साथ होस्ट से कनेक्ट करें।"
+  },
+  "resultPage": {
+    "signedIn": "साइन इन हो गया",
+    "failed": "साइन इन विफल रहा",
+    "closing": "आप इस विंडो को बंद कर सकते हैं और Termix पर वापस जा सकते हैं।",
+    "tryAgain": "इस विंडो को बंद करें और Termix से पुनः प्रयास करें।",
+    "close": "विंडो बंद करें",
+    "requestId": "अनुरोध ID: {{id}}"
   }
 }

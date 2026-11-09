@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profil potpisivača Vaulta",
-    "selectProfile": "Odaberite profil Vaulta...",
-    "hint": "Postavke dolaze iz zajedničkog profila; prijavit ćete se u Vault putem OIDC-a prilikom povezivanja. Tajne se ne pohranjuju.",
+    "profile": "Profil potpisivača",
+    "selectProfile": "Odaberite profil potpisivača...",
+    "hint": "Postavke dolaze iz profila. Povezujete se na Vault ili OpenBao putem OIDC-a prilikom povezivanja. Tajne se ne pohranjuju.",
     "docs": "Prikaži dokumentaciju",
     "sharedProfile": "{{name}} (zajednički)"
   },
   "profiles": {
     "new": "Novi profil",
-    "manage": "Upravljaj profilima Vaulta",
+    "manage": "Upravljanje profilima potpisivača",
     "name": "Prikazno ime",
-    "vaultAddr": "Adresa Vaulta",
+    "provider": "Potpisivač",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Adresa poslužitelja",
     "namespace": "Prostor imena",
     "oidcMount": "Točka montiranja OIDC autentifikacije",
     "oidcRole": "OIDC uloga",
@@ -20,55 +25,63 @@
     "keyType": "Vrsta prolaznog ključa",
     "shareWithAll": "Dijeli sa svim korisnicima",
     "create": "Stvori profil",
-    "created": "Profil Vaulta je stvoren",
-    "saved": "Profil Vaulta je spremljen",
-    "deleted": "Profil Vaulta je obrisan",
-    "saveFailed": "Spremanje profila Vaulta nije uspjelo",
-    "deleteFailed": "Brisanje profila Vaulta nije uspjelo",
+    "created": "Profil potpisivača je stvoren",
+    "saved": "Profil potpisivača je spremljen",
+    "deleted": "Profil potpisivača je obrisan",
+    "saveFailed": "Spremanje profila potpisivača nije uspjelo",
+    "deleteFailed": "Brisanje profila potpisivača nije uspjelo",
     "save": "Spremi profil",
-    "validationError": "Ime, adresa Vaulta i uloga SSH potpisivača su obavezni",
-    "none": "Još nema profila Vaulta.",
+    "validationError": "Naziv, adresa poslužitelja i uloga SSH potpisivača su obavezni",
+    "none": "Još nema profila potpisivača.",
     "sharedBadge": "zajednički",
     "edit": "Uredi",
     "delete": "Obriši",
-    "deleteConfirm": "Obrisati profil Vaulta {{name}}?"
+    "deleteConfirm": "Obrisati profil potpisivača {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault ili OpenBao"
   },
   "dialog": {
-    "title": "Potrebna je prijava u Vault",
-    "description": "Prozor za prijavu u HashiCorp Vault je otvoren. Završite prijavu tamo; ova veza će se nastaviti automatski.",
-    "failed": "Autentifikacija u Vaultu nije uspjela. Pokušajte ponovno.",
+    "title": "Prijava je obavezna",
+    "description": "Prozor za prijavu na {{provider}} je otvoren. Završite prijavu u tom prozoru, a ova veza će se nastaviti automatski.",
+    "failed": "Prijava nije uspjela. Pokušajte ponovno.",
     "reopen": "Ponovno otvori prozor za prijavu"
   },
   "permissions": {
     "use": {
-      "title": "Koristi Vault SSH potpisivanje",
-      "description": "Stvaraj profile potpisivača Vaulta i povezuji se s hostovima koji koriste Vault."
+      "title": "Korištenje potpisivanja SSH certifikata",
+      "description": "Stvaranje profila potpisivača i povezivanje na poslužitelje koji koriste Vault ili OpenBao."
     },
     "share": {
-      "title": "Dijeli profile Vaulta",
-      "description": "Označi profil potpisivača Vaulta kao zajednički kako bi ga svaki korisnik mogao odabrati."
+      "title": "Dijeljenje profila potpisivača",
+      "description": "Označavanje profila potpisivača kao zajedničkog kako bi ga mogli odabrati svi korisnici."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI za preusmjeravanje",
-      "description": "Dodajte ovaj URL u allowed_redirect_uris za svaku Vault OIDC ulogu s kojom se Termix prijavljuje."
+      "description": "Dodajte ovaj URL u allowed_redirect_uris za svaku Vault ili OpenBao OIDC ulogu s kojom se Termix povezuje."
     },
     "privateHosts": {
-      "label": "Dopušteni privatni hostovi Vaulta",
-      "description": "Privatni ili loopback hostovi/IP-ovi Vaulta koje može koristiti bilo tko u vlastitom profilu. Zajednički profili i profili koje mogu stvarati osobe s dozvolom za dijeljenje već mogu. Odvojite unose zarezima ili novim redovima."
+      "label": "Dopušteni privatni poslužitelji potpisivača",
+      "description": "Privatne ili loopback adrese Vault ili OpenBao poslužitelja koje može koristiti bilo tko u vlastitom profilu. Zajednički profili i profili koje su stvorili korisnici s dozvolom za dijeljenje već mogu koristiti bilo koje adrese. Unose odvojite zarezima ili novim redovima."
     },
     "host": {
       "profileId": {
-        "label": "Profil potpisivača Vaulta"
+        "label": "Profil potpisivača"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Povežite se s poslužiteljima pomoću kratkotrajnih SSH certifikata potpisanih od strane HashiCorp Vaulta."
+    "name": "SSH potpisivač certifikata",
+    "description": "Povezivanje na poslužitelje pomoću kratkotrajnih SSH certifikata potpisanih od strane HashiCorp Vaulta ili OpenBaoa."
+  },
+  "resultPage": {
+    "signedIn": "Prijavljeno",
+    "failed": "Prijava nije uspjela",
+    "closing": "Možete zatvoriti ovaj prozor i vratiti se u Termix.",
+    "tryAgain": "Zatvorite ovaj prozor i pokušajte ponovno iz Termixa.",
+    "close": "Zatvori prozor",
+    "requestId": "ID zahtjeva: {{id}}"
   }
 }

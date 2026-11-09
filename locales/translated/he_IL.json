@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "פרופיל חתימת Vault",
-    "selectProfile": "בחר פרופיל Vault...",
-    "hint": "ההגדרות מגיעות מהפרופיל המשותף; תתחבר ל-Vault באמצעות OIDC בעת החיבור. אין סודות שמאוחסנים.",
+    "profile": "פרופיל חותם",
+    "selectProfile": "בחר פרופיל חותם...",
+    "hint": "ההגדרות מגיעות מהפרופיל. אתה נכנס ל-Vault או ל-OpenBao באמצעות OIDC בעת החיבור. אין סודות שמאוחסנים.",
     "docs": "צפה בתיעוד",
     "sharedProfile": "{{name}} (משותף)"
   },
   "profiles": {
     "new": "פרופיל חדש",
-    "manage": "נהל פרופילי Vault",
+    "manage": "נהל פרופילי חותם",
     "name": "שם תצוגה",
-    "vaultAddr": "כתובת Vault",
+    "provider": "חותם",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "כתובת שרת",
     "namespace": "מרחב שמות",
     "oidcMount": "נקודת חיבור אימות OIDC",
     "oidcRole": "תפקיד OIDC",
@@ -20,55 +25,63 @@
     "keyType": "סוג מפתח זמני",
     "shareWithAll": "שתף עם כל המשתמשים",
     "create": "צור פרופיל",
-    "created": "פרופיל Vault נוצר",
-    "saved": "פרופיל Vault נשמר",
-    "deleted": "פרופיל Vault נמחק",
-    "saveFailed": "שמירת פרופיל Vault נכשלה",
-    "deleteFailed": "מחיקת פרופיל Vault נכשלה",
+    "created": "פרופיל החותם נוצר",
+    "saved": "פרופיל החותם נשמר",
+    "deleted": "פרופיל החותם נמחק",
+    "saveFailed": "שמירת פרופיל החותם נכשלה",
+    "deleteFailed": "מחיקת פרופיל החותם נכשלה",
     "save": "שמור פרופיל",
-    "validationError": "שם, כתובת Vault ותפקיד חותם SSH הם שדות חובה",
-    "none": "אין עדיין פרופילי Vault.",
+    "validationError": "שם, כתובת שרת ותפקיד חותם SSH הם חובה",
+    "none": "אין עדיין פרופילי חותם.",
     "sharedBadge": "משותף",
     "edit": "ערוך",
     "delete": "מחק",
-    "deleteConfirm": "למחוק את פרופיל Vault {{name}}?"
+    "deleteConfirm": "למחוק את פרופיל החותם {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault או OpenBao"
   },
   "dialog": {
-    "title": "נדרש כניסה ל-Vault",
-    "description": "חלון נפתח כדי להתחבר ל-HashiCorp Vault. השלם את הכניסה שם; החיבור הזה יימשך באופן אוטומטי.",
-    "failed": "אימות Vault נכשל. אנא נסה שוב.",
+    "title": "נדרש כניסה",
+    "description": "חלון נפתח כדי להיכנס ל-{{provider}}. סיים את הכניסה שם והחיבור הזה יימשך לבד.",
+    "failed": "הכניסה נכשלה. אנא נסה שוב.",
     "reopen": "פתח מחדש את חלון הכניסה"
   },
   "permissions": {
     "use": {
-      "title": "השתמש בחתימת SSH של Vault",
-      "description": "צור פרופילי חותם Vault והתחבר למארחים שמשתמשים ב-Vault."
+      "title": "השתמש בחתימת תעודות SSH",
+      "description": "צור פרופילי חותם והתחבר לשרתים שמשתמשים ב-Vault או ב-OpenBao."
     },
     "share": {
-      "title": "שתף פרופילי Vault",
-      "description": "סמן פרופיל חותם Vault כמשותף כך שכל משתמש יוכל לבחור אותו."
+      "title": "שתף פרופילי חותם",
+      "description": "סמן פרופיל חותם כמשותף כך שכל משתמש יוכל לבחור אותו."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "כתובת הפניה מחדש",
-      "description": "הוסף את כתובת ה-URL הזו ל-allowed_redirect_uris בכל תפקיד OIDC של Vault שבו Termix מתחבר."
+      "description": "הוסף את ה-URL הזה ל-allowed_redirect_uris בכל תפקיד OIDC של Vault או OpenBao שבו Termix נכנס."
     },
     "privateHosts": {
-      "label": "מארחי Vault פרטיים מורשים",
-      "description": "שמות מארחים/כתובות IP פרטיות או של לולאה של Vault שכל פרופיל אישי עשוי להשתמש בהן. פרופילים משותפים ופרופילים שנוצרו על ידי אנשים שיכולים לשתף כבר מורשים. הפרד בין ערכים באמצעות פסיקים או שורות חדשות."
+      "label": "שרתי חותם פרטיים מורשים",
+      "description": "שמות מארחים או כתובות IP פרטיות או של loopback של Vault או OpenBao שפרופיל אישי של כל אחד יכול להשתמש בהן. פרופילים משותפים ופרופילים שנוצרו על ידי אנשים שיכולים לשתף כבר יכולים. הפרד בין ערכים באמצעות פסיקים או שורות חדשות."
     },
     "host": {
       "profileId": {
-        "label": "פרופיל חותם Vault"
+        "label": "פרופיל חותם"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "התחבר למארחים באמצעות תעודות SSH לטווח קצר שחתומות על ידי HashiCorp Vault."
+    "name": "חותם תעודות SSH",
+    "description": "התחבר לשרתים עם תעודות SSH לטווח קצר שחתומות על ידי HashiCorp Vault או OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "נכנס",
+    "failed": "הכניסה נכשלה",
+    "closing": "אתה יכול לסגור חלון זה ולחזור ל-Termix.",
+    "tryAgain": "סגור חלון זה ונסה שוב מ-Termix.",
+    "close": "סגור חלון",
+    "requestId": "מזהה בקשה: {{id}}"
   }
 }

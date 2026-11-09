@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profil semnator Vault",
-    "selectProfile": "Selectați un profil Vault...",
-    "hint": "Setările provin din profilul partajat; vă veți autentifica în Vault prin OIDC la conectare. Nu se stochează secrete.",
+    "profile": "Profil semnator",
+    "selectProfile": "Selectați un profil de semnator...",
+    "hint": "Setările provin din profil. Autentificarea în Vault sau OpenBao se face prin OIDC la conectare. Nu se stochează niciun secret.",
     "docs": "Vizualizare documentație",
     "sharedProfile": "{{name}} (partajat)"
   },
   "profiles": {
     "new": "Profil nou",
-    "manage": "Gestionați profilurile Vault",
+    "manage": "Gestionați profilurile de semnator",
     "name": "Nume afișat",
-    "vaultAddr": "Adresă Vault",
+    "provider": "Semnator",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Adresa serverului",
     "namespace": "Spațiu de nume",
     "oidcMount": "Punct de montare autentificare OIDC",
     "oidcRole": "Rol OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Tip cheie efemeră",
     "shareWithAll": "Partajează cu toți utilizatorii",
     "create": "Creează profil",
-    "created": "Profilul Vault a fost creat",
-    "saved": "Profilul Vault a fost salvat",
-    "deleted": "Profilul Vault a fost șters",
-    "saveFailed": "Salvarea profilului Vault a eșuat",
-    "deleteFailed": "Ștergerea profilului Vault a eșuat",
+    "created": "Profilul de semnator a fost creat",
+    "saved": "Profilul de semnator a fost salvat",
+    "deleted": "Profilul de semnator a fost șters",
+    "saveFailed": "Salvarea profilului de semnator a eșuat",
+    "deleteFailed": "Ștergerea profilului de semnator a eșuat",
     "save": "Salvează profilul",
-    "validationError": "Numele, adresa Vault și rolul semnatorului SSH sunt obligatorii",
-    "none": "Încă nu există profiluri Vault.",
+    "validationError": "Numele, adresa serverului și rolul de semnare SSH sunt obligatorii",
+    "none": "Încă nu există profiluri de semnator.",
     "sharedBadge": "partajat",
     "edit": "Editează",
     "delete": "Șterge",
-    "deleteConfirm": "Ștergeți profilul Vault {{name}}?"
+    "deleteConfirm": "Ștergeți profilul de semnator {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault sau OpenBao"
   },
   "dialog": {
-    "title": "Autentificarea în Vault este necesară",
-    "description": "S-a deschis o fereastră pentru autentificarea în HashiCorp Vault. Finalizați autentificarea acolo; această conexiune va continua automat.",
-    "failed": "Autentificarea în Vault a eșuat. Vă rugăm să încercați din nou.",
+    "title": "Autentificare necesară",
+    "description": "S-a deschis o fereastră pentru autentificare în {{provider}}. Finalizați autentificarea acolo și conexiunea va continua automat.",
+    "failed": "Autentificarea a eșuat. Vă rugăm să încercați din nou.",
     "reopen": "Redeschide fereastra de autentificare"
   },
   "permissions": {
     "use": {
-      "title": "Folosește semnarea SSH prin Vault",
-      "description": "Creați profiluri de semnare Vault și conectați-vă la gazde care folosesc Vault."
+      "title": "Utilizarea semnării certificatelor SSH",
+      "description": "Creați profiluri de semnator și conectați-vă la gazde care folosesc Vault sau OpenBao."
     },
     "share": {
-      "title": "Partajează profiluri Vault",
-      "description": "Marcați un profil de semnare Vault ca partajat, astfel încât orice utilizator să îl poată selecta."
+      "title": "Partajarea profilurilor de semnator",
+      "description": "Marcați un profil de semnator ca partajat pentru ca orice utilizator să îl poată selecta."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI de redirecționare",
-      "description": "Adăugați această URL la allowed_redirect_uris în fiecare rol OIDC Vault cu care Termix se autentifică."
+      "description": "Adăugați această URL la allowed_redirect_uris în fiecare rol OIDC Vault sau OpenBao cu care Termix se autentifică."
     },
     "privateHosts": {
-      "label": "Gazde private Vault permise",
-      "description": "Nume de gazdă/IP-uri private sau de loopback pentru Vault pe care orice profil personal le poate folosi. Profilurile partajate și cele create de persoane cu drepturi de partajare le pot folosi deja. Separați intrările prin virgule sau linii noi."
+      "label": "Gazde private de semnator permise",
+      "description": "Numele de gazdă sau IP-urile private/loopback pentru Vault sau OpenBao pe care orice profil personal le poate folosi. Profilurile partajate și cele create de persoane cu drepturi de partajare le pot folosi deja. Separați intrările prin virgule sau linii noi."
     },
     "host": {
       "profileId": {
-        "label": "Profil semnator Vault"
+        "label": "Profil semnator"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Conectați-vă la gazde folosind certificate SSH cu durată de viață scurtă, semnate de HashiCorp Vault."
+    "name": "Semnator certificat SSH",
+    "description": "Conectați-vă la gazde cu certificate SSH pe termen scurt, semnate de HashiCorp Vault sau OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Autentificat",
+    "failed": "Autentificarea a eșuat",
+    "closing": "Puteți închide această fereastră și să reveniți la Termix.",
+    "tryAgain": "Închideți această fereastră și încercați din nou din Termix.",
+    "close": "Închide fereastra",
+    "requestId": "ID cerere: {{id}}"
   }
 }

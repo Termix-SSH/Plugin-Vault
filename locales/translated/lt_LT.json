@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault parašo profilio",
-    "selectProfile": "Pasirinkite Vault profilį...",
-    "hint": "Nustatymai imami iš bendro profilio; prisijungus prie Vault bus naudojamas OIDC prisijungimas. Slaptažodžiai ar raktai nėra saugomi.",
+    "profile": "Parašo profilis",
+    "selectProfile": "Pasirinkite parašo profilį...",
+    "hint": "Nustatymai imami iš profilio. Prisijungus prisijungiate prie Vault arba OpenBao naudodami OIDC. Jokių slaptažodžių ar raktų nėra saugoma.",
     "docs": "Peržiūrėti dokumentaciją",
     "sharedProfile": "{{name}} (bendras)"
   },
   "profiles": {
     "new": "Naujas profilis",
-    "manage": "Tvarkyti Vault profilius",
+    "manage": "Tvarkyti parašo profilius",
     "name": "Rodomas pavadinimas",
-    "vaultAddr": "Vault adresas",
+    "provider": "Parašytojas",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Serverio adresas",
     "namespace": "Vardų erdvė",
     "oidcMount": "OIDC autentifikavimo taškas",
     "oidcRole": "OIDC vaidmuo",
@@ -20,55 +25,63 @@
     "keyType": "Laikinų raktų tipas",
     "shareWithAll": "Bendrinti su visais vartotojais",
     "create": "Sukurti profilį",
-    "created": "Vault profilis sukurtas",
-    "saved": "Vault profilis išsaugotas",
-    "deleted": "Vault profilis ištrintas",
-    "saveFailed": "Nepavyko išsaugoti Vault profilio",
-    "deleteFailed": "Nepavyko ištrinti Vault profilio",
+    "created": "Parašo profilis sukurtas",
+    "saved": "Parašo profilis išsaugotas",
+    "deleted": "Parašo profilis ištrintas",
+    "saveFailed": "Nepavyko išsaugoti parašo profilio",
+    "deleteFailed": "Nepavyko ištrinti parašo profilio",
     "save": "Išsaugoti profilį",
-    "validationError": "Būtina nurodyti pavadinimą, Vault adresą ir SSH parašo vaidmenį",
-    "none": "Dar nėra Vault profilių.",
+    "validationError": "Būtina nurodyti pavadinimą, serverio adresą ir SSH parašo rolę",
+    "none": "Dar nėra parašo profilių.",
     "sharedBadge": "bendras",
     "edit": "Redaguoti",
     "delete": "Ištrinti",
-    "deleteConfirm": "Ištrinti Vault profilį „{{name}}“?"
+    "deleteConfirm": "Ištrinti parašo profilį „{{name}}“?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault arba OpenBao"
   },
   "dialog": {
-    "title": "Reikalingas prisijungimas prie Vault",
-    "description": "Atidarytas langas prisijungimui prie HashiCorp Vault. Užbaikite prisijungimą tame lange; šis ryšys bus tęsiamas automatiškai.",
-    "failed": "Vault autentifikavimas nepavyko. Bandykite dar kartą.",
+    "title": "Reikalingas prisijungimas",
+    "description": "Atidarytas langas prisijungimui prie {{provider}}. Užbaikite prisijungimą tame lange, o šis ryšys tęsis automatiškai.",
+    "failed": "Prisijungimas nepavyko. Bandykite dar kartą.",
     "reopen": "Iš naujo atidaryti prisijungimo langą"
   },
   "permissions": {
     "use": {
-      "title": "Naudoti Vault SSH parašavimą",
-      "description": "Sukurti Vault parašo profilius ir jungtis prie serverių, naudojančių Vault."
+      "title": "Naudoti SSH sertifikatų pasirašymą",
+      "description": "Sukurti parašo profilius ir jungtis prie serverių, naudojančių Vault arba OpenBao."
     },
     "share": {
-      "title": "Bendrinti Vault profilius",
-      "description": "Pažymėti Vault parašo profilį kaip bendrą, kad jį galėtų pasirinkti bet kuris vartotojas."
+      "title": "Bendrinti parašo profilius",
+      "description": "Pažymėti parašo profilį kaip bendrinamą, kad jį galėtų pasirinkti visi vartotojai."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Perkrovimo URI",
-      "description": "Pridėkite šį URL į leistinus „allowed_redirect_uris“ kiekviename Vault OIDC vaidmuo, su kuriuo prisijungia Termix."
+      "description": "Pridėkite šį URL į allowed_redirect_uris kiekvienoje Vault arba OpenBao OIDC rolėje, kuria Termix prisijungia."
     },
     "privateHosts": {
-      "label": "Leisti privačius Vault serverius",
-      "description": "Privatūs arba kilpos (loopback) Vault serverių vardai/IP, kuriuos gali naudoti bet kurio vartotojo asmeninis profilis. Bendri profiliai ir profiliai, sukurti turinčių bendrinimo teisių vartotojų, jau gali naudoti bet kokius. Įrašus atskirkite kableliais arba naujomis eilutėmis."
+      "label": "Leidžiami privačių parašo serverių vardai",
+      "description": "Privatūs arba kilpos (loopback) Vault arba OpenBao serverio vardai ar IP adresai, kuriuos gali naudoti bet kurio vartotojo asmeninis profilis. Bendrinami profiliai ir profiliai, sukurti turinčių teisių bendrinti asmenų, jau gali naudoti bet kokius. Įrašus atskirkite kableliais arba naujomis eilutėmis."
     },
     "host": {
       "profileId": {
-        "label": "Vault parašo profilis"
+        "label": "Parašo profilis"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Prisijunkite prie serverių naudodami trumpalaikius SSH sertifikatus, pasirašytus HashiCorp Vault."
+    "name": "SSH sertifikatų parašytojas",
+    "description": "Junkitės prie serverių naudodami trumpalaikius SSH sertifikatus, pasirašytus HashiCorp Vault arba OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Prisijungta",
+    "failed": "Prisijungimas nepavyko",
+    "closing": "Galite uždaryti šį langą ir grįžti į Termix.",
+    "tryAgain": "Uždarykite šį langą ir bandykite dar kartą iš Termix.",
+    "close": "Uždaryti langą",
+    "requestId": "Užklausos ID: {{id}}"
   }
 }

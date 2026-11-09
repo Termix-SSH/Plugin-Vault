@@ -19,6 +19,7 @@ export interface ProfileRow {
   description: string | null;
   folder: string | null;
   tags: string | null;
+  provider: string | null;
   vaultAddr: string;
   vaultNamespace: string | null;
   oidcMount: string | null;
@@ -40,6 +41,7 @@ export type ProfileInput = Partial<
 export function toConfig(row: ProfileRow): VaultProfileConfig {
   return {
     id: row.id,
+    provider: row.provider ?? "vault",
     vaultAddr: row.vaultAddr,
     vaultNamespace: row.vaultNamespace ?? null,
     oidcMount: row.oidcMount ?? null,

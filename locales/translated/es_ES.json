@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Perfil de firma de Vault",
-    "selectProfile": "Selecciona un perfil de Vault...",
-    "hint": "La configuración proviene del perfil compartido; iniciarás sesión en Vault mediante OIDC al conectarte. No se almacenan secretos.",
+    "profile": "Perfil de firma",
+    "selectProfile": "Selecciona un perfil de firma...",
+    "hint": "La configuración proviene del perfil. Iniciarás sesión en Vault o OpenBao con OIDC al conectarte. No se almacenan secretos.",
     "docs": "Ver documentación",
     "sharedProfile": "{{name}} (compartido)"
   },
   "profiles": {
     "new": "Nuevo perfil",
-    "manage": "Gestionar perfiles de Vault",
+    "manage": "Gestionar perfiles de firma",
     "name": "Nombre descriptivo",
-    "vaultAddr": "Dirección de Vault",
+    "provider": "Firmante",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Dirección del servidor",
     "namespace": "Espacio de nombres",
     "oidcMount": "Punto de montaje de autenticación OIDC",
     "oidcRole": "Rol de OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Tipo de clave efímera",
     "shareWithAll": "Compartir con todos los usuarios",
     "create": "Crear perfil",
-    "created": "Perfil de Vault creado",
-    "saved": "Perfil de Vault guardado",
-    "deleted": "Perfil de Vault eliminado",
-    "saveFailed": "Error al guardar el perfil de Vault",
-    "deleteFailed": "Error al eliminar el perfil de Vault",
+    "created": "Perfil de firma creado",
+    "saved": "Perfil de firma guardado",
+    "deleted": "Perfil de firma eliminado",
+    "saveFailed": "Error al guardar el perfil de firma",
+    "deleteFailed": "Error al eliminar el perfil de firma",
     "save": "Guardar perfil",
-    "validationError": "El nombre, la dirección de Vault y el rol de firma SSH son obligatorios",
-    "none": "Aún no hay perfiles de Vault.",
+    "validationError": "El nombre, la dirección del servidor y el rol de firma SSH son obligatorios",
+    "none": "Aún no hay perfiles de firma.",
     "sharedBadge": "compartido",
     "edit": "Editar",
     "delete": "Eliminar",
-    "deleteConfirm": "¿Eliminar el perfil de Vault {{name}}?"
+    "deleteConfirm": "¿Eliminar el perfil de firma {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault u OpenBao"
   },
   "dialog": {
-    "title": "Se requiere inicio de sesión en Vault",
-    "description": "Se ha abierto una ventana para iniciar sesión en HashiCorp Vault. Completa el inicio de sesión allí; esta conexión continuará automáticamente.",
-    "failed": "Error en la autenticación de Vault. Inténtalo de nuevo.",
+    "title": "Se requiere inicio de sesión",
+    "description": "Se ha abierto una ventana para iniciar sesión en {{provider}}. Finaliza el inicio de sesión allí y esta conexión continuará automáticamente.",
+    "failed": "Error al iniciar sesión. Inténtalo de nuevo.",
     "reopen": "Reabrir ventana de inicio de sesión"
   },
   "permissions": {
     "use": {
-      "title": "Usar firma SSH de Vault",
-      "description": "Crear perfiles de firma de Vault y conectarse a hosts que usen Vault."
+      "title": "Usar firma de certificados SSH",
+      "description": "Crear perfiles de firma y conectarse a hosts que usen Vault u OpenBao."
     },
     "share": {
-      "title": "Compartir perfiles de Vault",
-      "description": "Marcar un perfil de firma de Vault como compartido para que cualquier usuario pueda seleccionarlo."
+      "title": "Compartir perfiles de firma",
+      "description": "Marcar un perfil de firma como compartido para que todos los usuarios puedan seleccionarlo."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI de redirección",
-      "description": "Añade esta URL a allowed_redirect_uris en cada rol OIDC de Vault con el que Termix inicie sesión."
+      "description": "Añade esta URL a allowed_redirect_uris en cada rol OIDC de Vault u OpenBao con el que Termix inicie sesión."
     },
     "privateHosts": {
-      "label": "Hosts privados de Vault permitidos",
-      "description": "Nombres de host o IPs privadas o de bucle local de Vault que cualquier perfil propio puede usar. Los perfiles compartidos y los creados por personas con permiso para compartir ya pueden. Separa las entradas con comas o saltos de línea."
+      "label": "Hosts de firma privados permitidos",
+      "description": "Nombres de host o IPs privadas o de bucle local de Vault u OpenBao que cualquier perfil propio puede usar. Los perfiles compartidos y los creados por personas con permiso para compartir ya pueden. Separa las entradas con comas o saltos de línea."
     },
     "host": {
       "profileId": {
-        "label": "Perfil de firma de Vault"
+        "label": "Perfil de firma"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Conéctese a hosts con certificados SSH de corta duración firmados por HashiCorp Vault."
+    "name": "Firmante de certificados SSH",
+    "description": "Conéctate a hosts con certificados SSH de corta duración firmados por HashiCorp Vault u OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Sesión iniciada",
+    "failed": "Error al iniciar sesión",
+    "closing": "Puedes cerrar esta ventana y volver a Termix.",
+    "tryAgain": "Cierra esta ventana e inténtalo de nuevo desde Termix.",
+    "close": "Cerrar ventana",
+    "requestId": "ID de solicitud: {{id}}"
   }
 }

@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault-signeringsprofil",
-    "selectProfile": "Vælg en Vault-profil...",
-    "hint": "Indstillingerne stammer fra den delte profil; du logger ind på Vault via OIDC, når du opretter forbindelse. Der gemmes hemmeligheder.",
+    "profile": "Signeringsprofil",
+    "selectProfile": "Vælg en signeringsprofil...",
+    "hint": "Indstillingerne stammer fra profilen. Du logger ind på Vault eller OpenBao med OIDC, når du opretter forbindelse. Der gemmes ingen hemmeligheder.",
     "docs": "Se dokumentation",
     "sharedProfile": "{{name}} (delt)"
   },
   "profiles": {
     "new": "Ny profil",
-    "manage": "Administrer Vault-profiler",
+    "manage": "Administrer signeringsprofiler",
     "name": "Venligt navn",
-    "vaultAddr": "Vault-adresse",
+    "provider": "Signer",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Serveradresse",
     "namespace": "Namespace",
     "oidcMount": "OIDC-auth-mont",
     "oidcRole": "OIDC-rolle",
@@ -20,55 +25,63 @@
     "keyType": "Type for midlertidig nøgle",
     "shareWithAll": "Del med alle brugere",
     "create": "Opret profil",
-    "created": "Vault-profil oprettet",
-    "saved": "Vault-profil gemt",
-    "deleted": "Vault-profil slettet",
-    "saveFailed": "Kunne ikke gemme Vault-profil",
-    "deleteFailed": "Kunne ikke slette Vault-profil",
+    "created": "Signeringsprofil oprettet",
+    "saved": "Signeringsprofil gemt",
+    "deleted": "Signeringsprofil slettet",
+    "saveFailed": "Kunne ikke gemme signeringsprofilen",
+    "deleteFailed": "Kunne ikke slette signeringsprofilen",
     "save": "Gem profil",
-    "validationError": "Navn, Vault-adresse og SSH-signeringsrolle er påkrævet",
-    "none": "Der er ingen Vault-profiler endnu.",
+    "validationError": "Navn, serveradresse og SSH-signeringsrolle er påkrævet",
+    "none": "Der er endnu ingen signeringsprofiler.",
     "sharedBadge": "delt",
     "edit": "Rediger",
     "delete": "Slet",
-    "deleteConfirm": "Slet Vault-profilen {{name}}?"
+    "deleteConfirm": "Slet signeringsprofilen {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault eller OpenBao"
   },
   "dialog": {
-    "title": "Vault-login påkrævet",
-    "description": "Et vindue er åbnet for at logge ind på HashiCorp Vault. Afslut logningen der; denne forbindelse fortsætter automatisk.",
-    "failed": "Vault-godkendelse mislykkedes. Prøv venligst igen.",
+    "title": "Login påkrævet",
+    "description": "Et vindue er åbnet for at logge ind på {{provider}}. Afslut logningen der, og forbindelsen fortsætter automatisk.",
+    "failed": "Login mislykkedes. Prøv venligst igen.",
     "reopen": "Genåbn login-vindue"
   },
   "permissions": {
     "use": {
-      "title": "Brug Vault SSH-signering",
-      "description": "Opret Vault-signeringsprofiler og opret forbindelse til værter, der bruger Vault."
+      "title": "Brug SSH-certifikatsignering",
+      "description": "Opret signeringsprofiler og opret forbindelse til værter, der bruger Vault eller OpenBao."
     },
     "share": {
-      "title": "Del Vault-profiler",
-      "description": "Marker en Vault-signeringsprofil som delt, så alle brugere kan vælge den."
+      "title": "Del signeringsprofiler",
+      "description": "Marker en signeringsprofil som delt, så alle brugere kan vælge den."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Omdirigerings-URI",
-      "description": "Tilføj denne URL til allowed_redirect_uris i hver Vault OIDC-rolle, som Termix logger ind med."
+      "description": "Tilføj denne URL til allowed_redirect_uris i hver Vault- eller OpenBao-OIDC-rolle, som Termix logger ind med."
     },
     "privateHosts": {
-      "label": "Tilladte private Vault-værter",
-      "description": "Private eller loopback Vault-værtnavne/IP'er, som enhver brugers egen profil må bruge. Delte profiler og profiler oprettet af personer, der allerede kan dele, må også bruge dem. Adskil poster med kommaer eller linjeskift."
+      "label": "Tilladte private signeringsværter",
+      "description": "Private eller loopback-værtnavne eller IP-adresser til Vault eller OpenBao, som enhver brugers egen profil må bruge. Delte profiler og profiler oprettet af personer, der allerede kan dele, må også bruge dem. Adskil poster med kommaer eller linjeskift."
     },
     "host": {
       "profileId": {
-        "label": "Vault-signeringsprofil"
+        "label": "Signeringsprofil"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Opret forbindelse til værter med kortvarige SSH-certifikater signeret af HashiCorp Vault."
+    "name": "SSH-certifikatsigner",
+    "description": "Opret forbindelse til værter med kortvarige SSH-certifikater signeret af HashiCorp Vault eller OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Logget ind",
+    "failed": "Login mislykkedes",
+    "closing": "Du kan lukke dette vindue og vende tilbage til Termix.",
+    "tryAgain": "Luk dette vindue og prøv igen fra Termix.",
+    "close": "Luk vindue",
+    "requestId": "Anmodnings-ID: {{id}}"
   }
 }

@@ -10,8 +10,9 @@ import {
 } from "@termix-ssh/plugin-sdk/db";
 
 /**
- * Vault signer profiles: connection settings only, no secrets. A shared
- * profile is visible to every user. Adopted from core's vault_profiles.
+ * Signer profiles: connection settings only, no secrets. A shared profile is
+ * visible to every user. Adopted from core's vault_profiles. provider is
+ * "vault" or "openbao"; both speak the same API.
  */
 export const profiles = adoptLegacyTable(
   "vault_profiles",
@@ -22,6 +23,7 @@ export const profiles = adoptLegacyTable(
     description: text(),
     folder: text(),
     tags: text(),
+    provider: varchar(32).notNull().default("vault"),
     vaultAddr: text().notNull(),
     vaultNamespace: text(),
     oidcMount: text(),

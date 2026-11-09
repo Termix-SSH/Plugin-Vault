@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault サイナプロファイル",
-    "selectProfile": "Vault プロファイルを選択...",
-    "hint": "設定は共有プロファイルから取得されます。接続時に OIDC を介して Vault にサインインします。シークレットは保存されません。",
+    "profile": "署名者プロファイル",
+    "selectProfile": "署名者プロファイルを選択...",
+    "hint": "設定はプロファイルから取得されます。接続時に OIDC を使用して Vault または OpenBao にサインインします。シークレットは保存されません。",
     "docs": "ドキュメントを表示",
     "sharedProfile": "{{name}}（共有）"
   },
   "profiles": {
     "new": "新しいプロファイル",
-    "manage": "Vault プロファイルの管理",
+    "manage": "署名者プロファイルの管理",
     "name": "表示名",
-    "vaultAddr": "Vault アドレス",
+    "provider": "署名者",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "サーバーアドレス",
     "namespace": "ネームスペース",
     "oidcMount": "OIDC 認証マウント",
     "oidcRole": "OIDC ロール",
@@ -20,55 +25,63 @@
     "keyType": "エフェメラルキータイプ",
     "shareWithAll": "すべてのユーザーと共有",
     "create": "プロファイルを作成",
-    "created": "Vault プロファイルが作成されました",
-    "saved": "Vault プロファイルが保存されました",
-    "deleted": "Vault プロファイルが削除されました",
-    "saveFailed": "Vault プロファイルの保存に失敗しました",
-    "deleteFailed": "Vault プロファイルの削除に失敗しました",
+    "created": "署名者プロファイルが作成されました",
+    "saved": "署名者プロファイルが保存されました",
+    "deleted": "署名者プロファイルが削除されました",
+    "saveFailed": "署名者プロファイルの保存に失敗しました",
+    "deleteFailed": "署名者プロファイルの削除に失敗しました",
     "save": "プロファイルを保存",
-    "validationError": "名前、Vault アドレス、SSH サイナロールは必須です",
-    "none": "Vault プロファイルはまだありません。",
+    "validationError": "名前、サーバーアドレス、SSH 署名者ロールは必須です",
+    "none": "署名者プロファイルはまだありません。",
     "sharedBadge": "共有",
     "edit": "編集",
     "delete": "削除",
-    "deleteConfirm": "Vault プロファイル「{{name}}」を削除しますか？"
+    "deleteConfirm": "署名者プロファイル「{{name}}」を削除しますか？"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault または OpenBao"
   },
   "dialog": {
-    "title": "Vault へのサインインが必要です",
-    "description": "HashiCorp Vault へのサインインウィンドウが開きました。そこでサインインを完了してください。この接続は自動的に続行されます。",
-    "failed": "Vault 認証に失敗しました。もう一度お試しください。",
+    "title": "サインインが必要です",
+    "description": "{{provider}} にサインインするためのウィンドウが開きました。そこでサインインを完了すると、この接続は自動的に続行されます。",
+    "failed": "サインインに失敗しました。もう一度お試しください。",
     "reopen": "サインインウィンドウを再表示"
   },
   "permissions": {
     "use": {
-      "title": "Vault SSH サインインの使用",
-      "description": "Vault サイナプロファイルを作成し、Vault を使用するホストに接続します。"
+      "title": "SSH 証明書署名の使用",
+      "description": "署名者プロファイルを作成し、Vault または OpenBao を使用するホストに接続します。"
     },
     "share": {
-      "title": "Vault プロファイルの共有",
-      "description": "Vault サイナプロファイルを共有としてマークし、すべてのユーザーが選択できるようにします。"
+      "title": "署名者プロファイルの共有",
+      "description": "署名者プロファイルに共有マークを付け、すべてのユーザーが選択できるようにします。"
     }
   },
   "settings": {
     "redirectUri": {
       "label": "リダイレクト URI",
-      "description": "Termix がサインインする各 Vault OIDC ロールの allowed_redirect_uris にこの URL を追加してください。"
+      "description": "この URL を、Termix がサインインする各 Vault または OpenBao の OIDC ロールの allowed_redirect_uris に追加してください。"
     },
     "privateHosts": {
-      "label": "許可されたプライベート Vault ホスト",
-      "description": "すべてのユーザーが自分のプロファイルで使用できるプライベートまたはループバックの Vault ホスト名/IP。共有プロファイルと共有権限を持つユーザーが作成したプロファイルは既に使用可能です。エントリはカンマまたは改行で区切ってください。"
+      "label": "許可されたプライベート署名者ホスト",
+      "description": "すべてのユーザーが自分のプロファイルで使用できる、プライベートまたはループバックの Vault または OpenBao のホスト名または IP アドレス。共有プロファイルや、共有権限を持つユーザーが作成したプロファイルはすでに使用可能です。項目はカンマまたは改行で区切ってください。"
     },
     "host": {
       "profileId": {
-        "label": "Vault サイナプロファイル"
+        "label": "署名者プロファイル"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "HashiCorp Vault によって署名された短期間の SSH 証明書を使用してホストに接続します。"
+    "name": "SSH 証明書署名者",
+    "description": "HashiCorp Vault または OpenBao によって署名された短期有効の SSH 証明書を使用してホストに接続します。"
+  },
+  "resultPage": {
+    "signedIn": "サインイン完了",
+    "failed": "サインインに失敗しました",
+    "closing": "このウィンドウを閉じて、Termix に戻ることができます。",
+    "tryAgain": "このウィンドウを閉じて、Termix からもう一度お試しください。",
+    "close": "ウィンドウを閉じる",
+    "requestId": "リクエスト ID: {{id}}"
   }
 }

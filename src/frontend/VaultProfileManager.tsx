@@ -15,6 +15,7 @@ import {
 } from "@termix-ssh/plugin-sdk/ui";
 import {
   errorMessage,
+  type SignerProvider,
   type VaultProfile,
   type VaultProfilePayload,
 } from "./types";
@@ -22,6 +23,7 @@ import {
 type FormState = {
   id?: number;
   name: string;
+  provider: SignerProvider;
   vaultAddr: string;
   vaultNamespace: string;
   oidcMount: string;
@@ -33,10 +35,16 @@ type FormState = {
   shared: boolean;
 };
 
-type TextKey = Exclude<keyof FormState, "id" | "shared">;
+type TextKey = Exclude<keyof FormState, "id" | "shared" | "provider">;
+
+const ADDRESS_PLACEHOLDER: Record<SignerProvider, string> = {
+  vault: "https://vault:8200",
+  openbao: "https://openbao:8200",
+};
 
 const emptyForm: FormState = {
   name: "",
+  provider: "vault",
   vaultAddr: "",
   vaultNamespace: "",
   oidcMount: "oidc",
@@ -52,6 +60,7 @@ function toForm(p: VaultProfile): FormState {
   return {
     id: p.id,
     name: p.name,
+    provider: p.provider === "openbao" ? "openbao" : "vault",
     vaultAddr: p.vaultAddr,
     vaultNamespace: p.vaultNamespace ?? "",
     oidcMount: p.oidcMount ?? "oidc",
@@ -66,7 +75,7 @@ function toForm(p: VaultProfile): FormState {
 
 const blank = (value: string) => value.trim() || null;
 
-/** Create, edit and delete the caller's Vault profiles. */
+/** Create, edit and delete the caller's signer profiles. */
 export function VaultProfileManager({
   profiles,
   onChanged,
@@ -97,6 +106,7 @@ export function VaultProfileManager({
     try {
       const payload: VaultProfilePayload = {
         name: form.name.trim(),
+        provider: form.provider,
         vaultAddr: form.vaultAddr.trim(),
         vaultNamespace: blank(form.vaultNamespace),
         oidcMount: blank(form.oidcMount),
@@ -191,6 +201,7 @@ export function VaultProfileManager({
                     )}
                   </span>
                   <span className="text-[10px] text-muted-foreground truncate">
+                    {t(`profiles.providers.${profile.provider ?? "vault"}`)} |{" "}
                     {profile.vaultAddr}
                   </span>
                 </div>
@@ -232,8 +243,29 @@ export function VaultProfileManager({
       {form && (
         <div className="flex flex-col gap-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {field(t("profiles.name"), "name", "Production Vault")}
-            {field(t("profiles.vaultAddr"), "vaultAddr", "https://vault:8200")}
+            {field(t("profiles.name"), "name", "Production")}
+            <div className="flex flex-col gap-1">
+              <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
+                {t("profiles.provider")}
+              </label>
+              <Select2
+                value={form.provider}
+                onChange={(e) =>
+                  setField("provider", e.target.value as SignerProvider)
+                }
+                className="flex h-8 w-full border border-border bg-background px-3 py-1 text-xs outline-none focus:ring-1 focus:ring-ring"
+              >
+                <option value="vault">{t("profiles.providers.vault")}</option>
+                <option value="openbao">
+                  {t("profiles.providers.openbao")}
+                </option>
+              </Select2>
+            </div>
+            {field(
+              t("profiles.vaultAddr"),
+              "vaultAddr",
+              ADDRESS_PLACEHOLDER[form.provider],
+            )}
             {field(t("profiles.namespace"), "vaultNamespace", "admin")}
             {field(t("profiles.oidcMount"), "oidcMount", "oidc")}
             {field(t("profiles.oidcRole"), "oidcRole", "default")}

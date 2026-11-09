@@ -11,7 +11,7 @@ export function activate(app: TermixApp): void {
     component: VaultAuthEditor,
   });
 
-  // The Vault sign-in while a terminal connects to a Vault host.
+  // The signer sign-in while a terminal connects to a host that uses it.
   app.registerSlotContribution("terminal.overlay", {
     actionId: "vault.signIn",
     titleKey: "dialog.title",

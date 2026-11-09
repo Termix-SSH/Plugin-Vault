@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault-allekirjoittajan profiili",
-    "selectProfile": "Valitse Vault-profiili...",
-    "hint": "Asetukset tulevat jaetusta profiilista; kirjaudut Vaultiin OIDC:n kautta yhdistäessäsi. Salaisuuksia ei tallenneta.",
+    "profile": "Allekirjoittajan profiili",
+    "selectProfile": "Valitse allekirjoittajan profiili...",
+    "hint": "Asetukset tulevat profiilista. Kirjaudut Vaultiin tai OpenBaoon OIDC:n kautta yhdistäessäsi. Salaisuuksia ei tallenneta.",
     "docs": "Näytä dokumentaatio",
     "sharedProfile": "{{name}} (jaettu)"
   },
   "profiles": {
     "new": "Uusi profiili",
-    "manage": "Hallinnoi Vault-profiileja",
+    "manage": "Hallitse allekirjoittajan profiileja",
     "name": "Näyttönimi",
-    "vaultAddr": "Vault-osoite",
+    "provider": "Allekirjoittaja",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Palvelimen osoite",
     "namespace": "Nimetila",
     "oidcMount": "OIDC-auth-mount",
     "oidcRole": "OIDC-rooli",
@@ -20,55 +25,63 @@
     "keyType": "Väliaikaisen avaimen tyyppi",
     "shareWithAll": "Jaa kaikille käyttäjille",
     "create": "Luo profiili",
-    "created": "Vault-profiili luotu",
-    "saved": "Vault-profiili tallennettu",
-    "deleted": "Vault-profiili poistettu",
-    "saveFailed": "Vault-profiilin tallennus epäonnistui",
-    "deleteFailed": "Vault-profiilin poisto epäonnistui",
+    "created": "Allekirjoittajan profiili luotu",
+    "saved": "Allekirjoittajan profiili tallennettu",
+    "deleted": "Allekirjoittajan profiili poistettu",
+    "saveFailed": "Allekirjoittajan profiilin tallennus epäonnistui",
+    "deleteFailed": "Allekirjoittajan profiilin poisto epäonnistui",
     "save": "Tallenna profiili",
-    "validationError": "Nimi, Vault-osoite ja SSH-allekirjoittajan rooli ovat pakollisia",
-    "none": "Vault-profiileja ei vielä ole.",
+    "validationError": "Nimi, palvelimen osoite ja SSH-allekirjoittajan rooli ovat pakollisia",
+    "none": "Ei vielä allekirjoittajan profiileja.",
     "sharedBadge": "jaettu",
     "edit": "Muokkaa",
     "delete": "Poista",
-    "deleteConfirm": "Haluatko poistaa Vault-profiilin {{name}}?"
+    "deleteConfirm": "Haluatko poistaa allekirjoittajan profiilin {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault tai OpenBao"
   },
   "dialog": {
-    "title": "Vault- kirjautuminen vaaditaan",
-    "description": "Ikkuna on avattu kirjautumista varten HashiCorp Vaultiin. Suorita kirjautuminen siellä; tämä yhteys jatkuu automaattisesti.",
-    "failed": "Vault-tunnistautuminen epäonnistui. Yritä uudelleen.",
+    "title": "Kirjautuminen vaaditaan",
+    "description": "Ikkuna on avattu kirjautumista varten palveluun {{provider}}. Suorita kirjautuminen siellä, ja yhteys jatkuu automaattisesti.",
+    "failed": "Kirjautuminen epäonnistui. Yritä uudelleen.",
     "reopen": "Avaa kirjautumisikkuna uudelleen"
   },
   "permissions": {
     "use": {
-      "title": "Käytä Vaultin SSH-allekirjoitusta",
-      "description": "Luo Vault-allekirjoittajan profiileja ja yhdistä isäntiin, jotka käyttävät Vaultia."
+      "title": "Käytä SSH-varmenneallekirjoitusta",
+      "description": "Luo allekirjoittajan profiileja ja yhdistä isäntiin, jotka käyttävät Vaultia tai OpenBaoa."
     },
     "share": {
-      "title": "Jaa Vault-profiileja",
-      "description": "Merkitse Vault-allekirjoittajan profiili jaetuksi, jotta jokainen käyttäjä voi valita sen."
+      "title": "Jaa allekirjoittajan profiileja",
+      "description": "Merkitse allekirjoittajan profiili jaetuksi, jotta jokainen käyttäjä voi valita sen."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Uudelleenohjaus-URI",
-      "description": "Lisää tämä URL Vaultin OIDC-roolien allowed_redirect_uris-listalle, joilla Termix kirjautuu sisään."
+      "description": "Lisää tämä URL-osoite sallittuihin redirect_uris-kenttiin jokaisessa Vaultin tai OpenBaoon OIDC-roolissa, jolla Termix kirjautuu."
     },
     "privateHosts": {
-      "label": "Sallitut yksityiset Vault-isännät",
-      "description": "Yksityiset tai silmukointi-isäntien Vault-isäntien nimet/IP-osoitteet, joita kenen tahansa oma profiili voi käyttää. Jaetut profiilit ja profiilit, jotka on luonut henkilöillä, joilla on jakaoikeus, voivat käyttää niitä jo. Erottele merkinnät pilkuilla tai rivinvaihdoin."
+      "label": "Sallitut yksityiset allekirjoittajapalvelimet",
+      "description": "Yksityiset tai silmukointiosoitteet Vault- tai OpenBao-palvelimille, joita kenen tahansa oma profiili voi käyttää. Jaetut profiilit ja profiilit, jotka on luonut jakaoikeuden omaava henkilö, voivat käyttää niitä jo. Erottele merkinnät pilkuilla tai rivinvaihdoin."
     },
     "host": {
       "profileId": {
-        "label": "Vault-allekirjoittajan profiili"
+        "label": "Allekirjoittajan profiili"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Yhdistä isäntiin HashiCorp Vaultin allekirjoittamilla lyhytaikaisilla SSH-varmenteilla."
+    "name": "SSH-varmenneallekirjoittaja",
+    "description": "Yhdistä isäntiin lyhytaikaisilla SSH-varmenteilla, jotka on allekirjoittanut HashiCorp Vault tai OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Kirjautuminen onnistui",
+    "failed": "Kirjautuminen epäonnistui",
+    "closing": "Voit sulkea tämän ikkunan ja palata Termixiin.",
+    "tryAgain": "Sulje tämä ikkuna ja yritä uudelleen Termixissä.",
+    "close": "Sulje ikkuna",
+    "requestId": "Pyyntö-ID: {{id}}"
   }
 }

@@ -1,4 +1,4 @@
-# Contributing to HashiCorp Vault
+# Contributing to SSH Certificate Signer
 
 ## Development
 

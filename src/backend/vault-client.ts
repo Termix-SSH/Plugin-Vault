@@ -1,17 +1,31 @@
 import crypto from "node:crypto";
-import ssh2Pkg from "ssh2";
+import {
+  generateSshKeyPair,
+  type SshKeyKind,
+} from "@termix-ssh/plugin-sdk/ssh-keys";
 import type { PluginFetch } from "@termix-ssh/plugin-sdk/backend";
 
-const { utils: ssh2Utils } = ssh2Pkg;
-
 /**
- * Vault's HTTP API for SSH signing: an OIDC login for a short-lived Vault
- * token, then the SSH secrets engine signs an ephemeral public key. No Vault
- * token or long-lived key is ever stored.
+ * The Vault HTTP API for SSH signing, which OpenBao speaks too: an OIDC login
+ * for a short-lived token, then the SSH secrets engine signs an ephemeral
+ * public key. No token or long-lived key is ever stored.
  */
+
+export const PROVIDERS = ["vault", "openbao"] as const;
+export type SignerProvider = (typeof PROVIDERS)[number];
+
+export function isProvider(value: unknown): value is SignerProvider {
+  return (PROVIDERS as readonly unknown[]).includes(value);
+}
+
+/** The product name for messages. */
+export function providerLabel(provider: string | null | undefined): string {
+  return provider === "openbao" ? "OpenBao" : "Vault";
+}
 
 export interface VaultProfileConfig {
   id: number;
+  provider?: string | null;
   vaultAddr: string;
   vaultNamespace?: string | null;
   oidcMount?: string | null;
@@ -72,6 +86,7 @@ async function vaultRequest(
   headers: Record<string, string>,
   body?: Record<string, unknown>,
 ): Promise<VaultJson> {
+  const label = providerLabel(profile.provider);
   let response: Response;
   try {
     response = await fetch(url, {
@@ -85,7 +100,7 @@ async function vaultRequest(
     });
   } catch (e) {
     throw new Error(
-      `Failed to reach Vault at ${url.split("?")[0]}: ${
+      `Failed to reach ${label} at ${url.split("?")[0]}: ${
         e instanceof Error ? e.message : String(e)
       }`,
     );
@@ -107,7 +122,7 @@ async function vaultRequest(
         ? json.errors.join("; ")
         : text || `HTTP ${response.status}`;
     throw new Error(
-      `Vault request failed (${response.status}): ${errs.slice(0, MAX_ERROR_LENGTH)}`,
+      `${label} request failed (${response.status}): ${errs.slice(0, MAX_ERROR_LENGTH)}`,
     );
   }
   return json;
@@ -117,27 +132,18 @@ async function vaultRequest(
 export function generateEphemeralKeyPair(
   keyType?: string | null,
 ): EphemeralKeyPair {
-  let type: "ed25519" | "rsa" | "ecdsa" = "ed25519";
-  const options: { bits?: number } = {};
-  switch ((keyType || "ssh-ed25519").trim()) {
-    case "ssh-rsa":
-      type = "rsa";
-      options.bits = 4096;
-      break;
-    case "ecdsa-sha2-nistp256":
-      type = "ecdsa";
-      options.bits = 256;
-      break;
-    default:
-      type = "ed25519";
-  }
-  const pair = ssh2Utils.generateKeyPairSync(type as never, options as never);
-  return { privateKey: pair.private, publicKey: pair.public };
+  const wanted = (keyType || "ssh-ed25519").trim();
+  const type: SshKeyKind =
+    wanted === "ssh-rsa" || wanted === "ecdsa-sha2-nistp256"
+      ? wanted
+      : "ssh-ed25519";
+  const pair = generateSshKeyPair(type);
+  return { privateKey: pair.privateKey, publicKey: pair.publicKey };
 }
 
 /**
- * Starts a Vault OIDC login. `redirectUri` must be allowed by the Vault
- * role's allowed_redirect_uris and by the identity provider.
+ * Starts an OIDC login. `redirectUri` must be allowed by the OIDC role's
+ * allowed_redirect_uris and by the identity provider.
  */
 export async function startVaultOidc(
   fetch: PluginFetch,
@@ -163,10 +169,12 @@ export async function startVaultOidc(
 
   const authUrl: string | undefined = json?.data?.auth_url;
   if (!authUrl) {
-    throw new Error("Vault did not return an OIDC auth_url");
+    throw new Error(
+      `${providerLabel(profile.provider)} did not return an OIDC auth_url`,
+    );
   }
 
-  // Vault puts its own state in the auth_url; the callback is matched on it.
+  // The server puts its own state in the auth_url; the callback is matched on it.
   let state = "";
   try {
     state = new URL(authUrl).searchParams.get("state") || "";
@@ -175,13 +183,15 @@ export async function startVaultOidc(
     state = m ? decodeURIComponent(m[1]) : "";
   }
   if (!state) {
-    throw new Error("Could not determine OIDC state from Vault auth_url");
+    throw new Error(
+      `Could not determine OIDC state from the ${providerLabel(profile.provider)} auth_url`,
+    );
   }
 
   return { authUrl, state, clientNonce };
 }
 
-/** Completes the OIDC callback and returns a short-lived Vault token. */
+/** Completes the OIDC callback and returns a short-lived token. */
 export async function completeVaultOidc(
   fetch: PluginFetch,
   profile: VaultProfileConfig,
@@ -204,12 +214,14 @@ export async function completeVaultOidc(
   );
   const token: string | undefined = json?.auth?.client_token;
   if (!token) {
-    throw new Error("Vault OIDC callback did not return a client token");
+    throw new Error(
+      `${providerLabel(profile.provider)} OIDC callback did not return a client token`,
+    );
   }
   return token;
 }
 
-/** Signs an SSH public key with Vault, returning the OpenSSH certificate line. */
+/** Signs an SSH public key, returning the OpenSSH certificate line. */
 export async function signWithVault(
   fetch: PluginFetch,
   profile: VaultProfileConfig,
@@ -237,7 +249,9 @@ export async function signWithVault(
   );
   const signedKey: string | undefined = json?.data?.signed_key;
   if (!signedKey) {
-    throw new Error("Vault sign response did not include a signed_key");
+    throw new Error(
+      `${providerLabel(profile.provider)} sign response did not include a signed_key`,
+    );
   }
   return signedKey.trim();
 }

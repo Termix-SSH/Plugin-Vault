@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profil Penandatangan Vault",
-    "selectProfile": "Pilih profil Vault...",
-    "hint": "Pengaturan berasal dari profil bersama; Anda akan masuk ke Vault melalui OIDC saat terhubung. Tidak ada rahasia yang disimpan.",
+    "profile": "Profil Penandatangan",
+    "selectProfile": "Pilih profil penandatangan...",
+    "hint": "Pengaturan berasal dari profil. Anda masuk ke Vault atau OpenBao dengan OIDC saat terhubung. Tidak ada rahasia yang disimpan.",
     "docs": "Lihat dokumentasi",
     "sharedProfile": "{{name}} (bersama)"
   },
   "profiles": {
     "new": "Profil baru",
-    "manage": "Kelola profil Vault",
+    "manage": "Kelola profil penandatangan",
     "name": "Nama Ramah",
-    "vaultAddr": "Alamat Vault",
+    "provider": "Penandatangan",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Alamat Server",
     "namespace": "Ruang Nama",
     "oidcMount": "Mount Autentikasi OIDC",
     "oidcRole": "Peran OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Tipe Kunci Sementara",
     "shareWithAll": "Bagikan dengan semua pengguna",
     "create": "Buat profil",
-    "created": "Profil Vault dibuat",
-    "saved": "Profil Vault disimpan",
-    "deleted": "Profil Vault dihapus",
-    "saveFailed": "Gagal menyimpan profil Vault",
-    "deleteFailed": "Gagal menghapus profil Vault",
+    "created": "Profil penandatangan dibuat",
+    "saved": "Profil penandatangan disimpan",
+    "deleted": "Profil penandatangan dihapus",
+    "saveFailed": "Gagal menyimpan profil penandatangan",
+    "deleteFailed": "Gagal menghapus profil penandatangan",
     "save": "Simpan profil",
-    "validationError": "Nama, alamat Vault, dan peran penandatangan SSH wajib diisi",
-    "none": "Belum ada profil Vault.",
+    "validationError": "Nama, alamat server, dan peran penandatangan SSH wajib diisi",
+    "none": "Belum ada profil penandatangan.",
     "sharedBadge": "bersama",
     "edit": "Sunting",
     "delete": "Hapus",
-    "deleteConfirm": "Hapus profil Vault {{name}}?"
+    "deleteConfirm": "Hapus profil penandatangan {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault atau OpenBao"
   },
   "dialog": {
-    "title": "Masuk Vault diperlukan",
-    "description": "Jendela telah terbuka untuk masuk ke HashiCorp Vault. Selesaikan proses masuk di sana; koneksi ini akan dilanjutkan secara otomatis.",
-    "failed": "Autentikasi Vault gagal. Silakan coba lagi.",
+    "title": "Masuk diperlukan",
+    "description": "Jendela telah terbuka untuk masuk ke {{provider}}. Selesaikan proses masuk di sana dan koneksi ini akan berlanjut secara otomatis.",
+    "failed": "Proses masuk gagal. Silakan coba lagi.",
     "reopen": "Buka ulang jendela masuk"
   },
   "permissions": {
     "use": {
-      "title": "Gunakan penandatanganan SSH Vault",
-      "description": "Buat profil penandatangan Vault dan terhubung ke host yang menggunakan Vault."
+      "title": "Gunakan penandatanganan sertifikat SSH",
+      "description": "Buat profil penandatangan dan sambungkan ke host yang menggunakan Vault atau OpenBao."
     },
     "share": {
-      "title": "Bagikan profil Vault",
-      "description": "Tandai profil penandatangan Vault sebagai bersama agar setiap pengguna dapat memilihnya."
+      "title": "Bagikan profil penandatangan",
+      "description": "Tandai profil penandatangan sebagai bersama agar setiap pengguna dapat memilihnya."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI Pengalihan",
-      "description": "Tambahkan URL ini ke allowed_redirect_uris di setiap peran OIDC Vault yang digunakan Termix untuk masuk."
+      "description": "Tambahkan URL ini ke allowed_redirect_uris di setiap peran OIDC Vault atau OpenBao yang digunakan Termix untuk masuk."
     },
     "privateHosts": {
-      "label": "Host Vault pribadi yang diizinkan",
-      "description": "Nama host/IP Vault pribadi atau loopback yang dapat digunakan oleh profil pribadi siapa pun. Profil bersama dan profil yang dibuat oleh orang yang memiliki izin berbagi sudah dapat menggunakannya. Pisahkan entri dengan koma atau baris baru."
+      "label": "Host penandatangan pribadi yang diizinkan",
+      "description": "Hostname atau IP Vault atau OpenBao pribadi atau loopback yang dapat digunakan oleh profil pribadi siapa pun. Profil bersama dan profil yang dibuat oleh orang yang memiliki izin berbagi sudah dapat menggunakannya. Pisahkan entri dengan koma atau baris baru."
     },
     "host": {
       "profileId": {
-        "label": "Profil penandatangan Vault"
+        "label": "Profil penandatangan"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Sambungkan ke host dengan sertifikat SSH berumur pendek yang ditandatangani oleh HashiCorp Vault."
+    "name": "Penandatangan Sertifikat SSH",
+    "description": "Sambungkan ke host dengan sertifikat SSH berumur pendek yang ditandatangani oleh HashiCorp Vault atau OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Berhasil masuk",
+    "failed": "Proses masuk gagal",
+    "closing": "Anda dapat menutup jendela ini dan kembali ke Termix.",
+    "tryAgain": "Tutup jendela ini dan coba lagi dari Termix.",
+    "close": "Tutup jendela",
+    "requestId": "ID Permintaan: {{id}}"
   }
 }

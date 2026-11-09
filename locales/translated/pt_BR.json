@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Perfil de Assinante do Vault",
-    "selectProfile": "Selecione um perfil do Vault...",
-    "hint": "As configurações vêm do perfil compartilhado; você fará login no Vault via OIDC ao se conectar. Nenhum segredo é armazenado.",
+    "profile": "Perfil de Assinante",
+    "selectProfile": "Selecione um perfil de assinante...",
+    "hint": "As configurações vêm do perfil. Você faz login no Vault ou OpenBao com OIDC ao se conectar. Nenhum segredo é armazenado.",
     "docs": "Ver documentação",
     "sharedProfile": "{{name}} (compartilhado)"
   },
   "profiles": {
     "new": "Novo perfil",
-    "manage": "Gerenciar perfis do Vault",
+    "manage": "Gerenciar perfis de assinante",
     "name": "Nome Amigável",
-    "vaultAddr": "Endereço do Vault",
+    "provider": "Assinante",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Endereço do Servidor",
     "namespace": "Namespace",
     "oidcMount": "Montagem de Autenticação OIDC",
     "oidcRole": "Função OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Tipo de Chave Efêmera",
     "shareWithAll": "Compartilhar com todos os usuários",
     "create": "Criar perfil",
-    "created": "Perfil do Vault criado",
-    "saved": "Perfil do Vault salvo",
-    "deleted": "Perfil do Vault excluído",
-    "saveFailed": "Falha ao salvar o perfil do Vault",
-    "deleteFailed": "Falha ao excluir o perfil do Vault",
+    "created": "Perfil de assinante criado",
+    "saved": "Perfil de assinante salvo",
+    "deleted": "Perfil de assinante excluído",
+    "saveFailed": "Falha ao salvar o perfil de assinante",
+    "deleteFailed": "Falha ao excluir o perfil de assinante",
     "save": "Salvar perfil",
-    "validationError": "Nome, endereço do Vault e função de assinante SSH são obrigatórios",
-    "none": "Nenhum perfil do Vault ainda.",
+    "validationError": "Nome, endereço do servidor e papel de assinante SSH são obrigatórios",
+    "none": "Ainda não há perfis de assinante.",
     "sharedBadge": "compartilhado",
     "edit": "Editar",
     "delete": "Excluir",
-    "deleteConfirm": "Excluir o perfil do Vault {{name}}?"
+    "deleteConfirm": "Excluir o perfil de assinante {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault ou OpenBao"
   },
   "dialog": {
-    "title": "Login no Vault necessário",
-    "description": "Uma janela foi aberta para fazer login no HashiCorp Vault. Conclua o login lá; esta conexão continuará automaticamente.",
-    "failed": "Falha na autenticação do Vault. Tente novamente.",
+    "title": "Login necessário",
+    "description": "Uma janela foi aberta para fazer login no {{provider}}. Conclua o login lá e esta conexão continuará automaticamente.",
+    "failed": "Falha no login. Tente novamente.",
     "reopen": "Reabrir janela de login"
   },
   "permissions": {
     "use": {
-      "title": "Usar assinatura SSH do Vault",
-      "description": "Criar perfis de assinante do Vault e conectar-se a hosts que usam o Vault."
+      "title": "Usar assinatura de certificados SSH",
+      "description": "Crie perfis de assinante e conecte-se a hosts que usam Vault ou OpenBao."
     },
     "share": {
-      "title": "Compartilhar perfis do Vault",
-      "description": "Marcar um perfil de assinante do Vault como compartilhado para que todos os usuários possam selecioná-lo."
+      "title": "Compartilhar perfis de assinante",
+      "description": "Marque um perfil de assinante como compartilhado para que todos os usuários possam selecioná-lo."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI de Redirecionamento",
-      "description": "Adicione esta URL aos allowed_redirect_uris em cada função OIDC do Vault com a qual o Termix faz login."
+      "description": "Adicione esta URL aos allowed_redirect_uris em cada papel OIDC do Vault ou OpenBao com o qual o Termix faz login."
     },
     "privateHosts": {
-      "label": "Hosts privados do Vault permitidos",
-      "description": "Nomes de host/IPs do Vault privados ou de loopback que qualquer perfil pessoal pode usar. Perfis compartilhados e perfis criados por pessoas com permissão para compartilhar já podem. Separe as entradas com vírgulas ou quebras de linha."
+      "label": "Hosts de assinante privados permitidos",
+      "description": "Nomes de host ou IPs privados ou de loopback do Vault ou OpenBao que qualquer perfil pessoal pode usar. Perfis compartilhados e perfis criados por pessoas com permissão de compartilhamento já podem. Separe as entradas com vírgulas ou novas linhas."
     },
     "host": {
       "profileId": {
-        "label": "Perfil de assinante do Vault"
+        "label": "Perfil de assinante"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Conecte-se a hosts com certificados SSH de curta duração assinados pelo HashiCorp Vault."
+    "name": "Assinador de Certificados SSH",
+    "description": "Conecte-se a hosts com certificados SSH de curta duração assinados pelo HashiCorp Vault ou OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Login realizado",
+    "failed": "Falha no login",
+    "closing": "Você pode fechar esta janela e voltar ao Termix.",
+    "tryAgain": "Feche esta janela e tente novamente no Termix.",
+    "close": "Fechar janela",
+    "requestId": "ID da solicitação: {{id}}"
   }
 }

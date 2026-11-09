@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault-handtekeningprofiel",
-    "selectProfile": "Kies 'n Vault-profiel...",
-    "hint": "Instellings kom van die gedeelde profiel; jy sal by Vault aanmeld via OIDC wanneer jy verbind. Geen geheime word gestoor nie.",
+    "profile": "Handtekeningprofiel",
+    "selectProfile": "Kies 'n handtekeningprofiel...",
+    "hint": "Instellings kom van die profiel. Jy meld aan by Vault of OpenBao met OIDC wanneer jy verbind. Geen geheime word gestoor nie.",
     "docs": "Bekyk dokumentasie",
     "sharedProfile": "{{name}} (gedeel)"
   },
   "profiles": {
     "new": "Nuwe profiel",
-    "manage": "Bestuur Vault-profile",
+    "manage": "Bestuur handtekeningprofiele",
     "name": "Vriendelike naam",
-    "vaultAddr": "Vault-adres",
+    "provider": "Handtekenaar",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Bedieneradres",
     "namespace": "Naamruimte",
     "oidcMount": "OIDC-authentiseringmonter",
     "oidcRole": "OIDC-rool",
@@ -20,55 +25,63 @@
     "keyType": "Tydelike sleutel tipe",
     "shareWithAll": "Deel met alle gebruikers",
     "create": "Skep profiel",
-    "created": "Vault-profiel geskep",
-    "saved": "Vault-profiel gestoor",
-    "deleted": "Vault-profiel verwyder",
-    "saveFailed": "Kon nie Vault-profiel stoor nie",
-    "deleteFailed": "Kon nie Vault-profiel verwyder nie",
+    "created": "Handtekeningprofiel geskep",
+    "saved": "Handtekeningprofiel gestoor",
+    "deleted": "Handtekeningprofiel verwyder",
+    "saveFailed": "Kon nie handtekeningprofiel stoor nie",
+    "deleteFailed": "Kon nie handtekeningprofiel verwyder nie",
     "save": "Stoor profiel",
-    "validationError": "Naam, Vault-adres en SSH-handtekeningrool is verpligtend",
-    "none": "Nog geen Vault-profile nie.",
+    "validationError": "Naam, bedieneradres en SSH-handtekeningrol is verpligtend",
+    "none": "Nog geen handtekeningprofiele nie.",
     "sharedBadge": "gedeel",
     "edit": "Wysig",
     "delete": "Verwyder",
-    "deleteConfirm": "Verwyder die Vault-profiel {{name}}?"
+    "deleteConfirm": "Verwyder die handtekeningprofiel {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault of OpenBao"
   },
   "dialog": {
-    "title": "Vault-aanmelding vereis",
-    "description": "'n Venster het oopgegaan om by HashiCorp Vault aan te meld. Voltooi die aanmelding daar; hierdie verbinding sal outomaties voortgaan.",
-    "failed": "Vault-authentisering het misluk. Probeer asseblief weer.",
+    "title": "Aanmelding vereis",
+    "description": "'n Venster het oopgegaan om aan te meld by {{provider}}. Voltooi die aanmelding daar en hierdie verbinding sal self voortgaan.",
+    "failed": "Aanmelding het misluk. Probeer asseblief weer.",
     "reopen": "Heropen aanmeldvenster"
   },
   "permissions": {
     "use": {
-      "title": "Gebruik Vault-SSH-handtekening",
-      "description": "Skep Vault-handtekeningprofile en verbind met gasheer wat Vault gebruik."
+      "title": "Gebruik SSH-sertifikaathandtekening",
+      "description": "Skep handtekeningprofiele en verbind met bedieners wat Vault of OpenBao gebruik."
     },
     "share": {
-      "title": "Deel Vault-profile",
-      "description": "Merk 'n Vault-handtekeningprofiel as gedeel sodat elke gebruiker dit kan kies."
+      "title": "Deel handtekeningprofiele",
+      "description": "Merk 'n handtekeningprofiel as gedeel sodat elke gebruiker dit kan kies."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Herleiding-URI",
-      "description": "Voeg hierdie URL by allowed_redirect_uris in elke Vault OIDC-rool waarmee Termix aanmeld."
+      "description": "Voeg hierdie URL by allowed_redirect_uris in elke Vault- of OpenBao-OIDC-rol waarmee Termix aanmeld."
     },
     "privateHosts": {
-      "label": "Toegestane privaat Vault-gasheer",
-      "description": "Privaat of lus-gasheernamme/IP's vir Vault wat enigeen se eie profiel mag gebruik. Gedeelde profile en profile gemaak deur mense wat reeds mag deel, mag ook. Skei inskrywings met kommas of nuwe lyne."
+      "label": "Toegelaatde privaat handtekeningbedieners",
+      "description": "Privaat of lus-terugkeer Vault- of OpenBao-hostname of IP-adresse wat enigeen se eie profiel mag gebruik. Gedeelde profiele en profiele gemaak deur mense wat reeds mag deel, mag ook. Skei inskrywings met kommas of nuwe lyne."
     },
     "host": {
       "profileId": {
-        "label": "Vault-handtekeningprofiel"
+        "label": "Handtekeningprofiel"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Skakel aan met gasheërs met kortstondige SSH-sertifikate wat deur HashiCorp Vault onderteken is."
+    "name": "SSH-sertifikaathandtekenaar",
+    "description": "Verbind met bedieners met kortstondige SSH-sertifikate geteken deur HashiCorp Vault of OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Aangemeld",
+    "failed": "Aanmelding het misluk",
+    "closing": "Jy kan hierdie venster sluit en terugkeer na Termix.",
+    "tryAgain": "Sluit hierdie venster en probeer weer vanaf Termix.",
+    "close": "Sluit venster",
+    "requestId": "Versoek-ID: {{id}}"
   }
 }

@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault İmzalayıcı Profili",
-    "selectProfile": "Bir Vault profili seçin...",
-    "hint": "Ayarlar paylaşılan profilden gelir; bağlandığınızda Vault'a OIDC üzerinden giriş yaparsınız. Hiçbir gizli bilgi saklanmaz.",
+    "profile": "İmzalayan Profili",
+    "selectProfile": "Bir imzalayan profili seçin...",
+    "hint": "Ayarlar profilden gelir. Bağlanırken Vault veya OpenBao'ya OIDC ile giriş yaparsınız. Hiçbir gizli bilgi saklanmaz.",
     "docs": "Dokümanları görüntüle",
     "sharedProfile": "{{name}} (paylaşılan)"
   },
   "profiles": {
     "new": "Yeni profil",
-    "manage": "Vault profillerini yönet",
+    "manage": "İmzalayan profillerini yönet",
     "name": "Gösterge Adı",
-    "vaultAddr": "Vault Adresi",
+    "provider": "İmzalayan",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Sunucu Adresi",
     "namespace": "Ad Alanı",
     "oidcMount": "OIDC Kimlik Doğrulama Mount Noktası",
     "oidcRole": "OIDC Rolü",
@@ -20,55 +25,63 @@
     "keyType": "Geçici Anahtar Türü",
     "shareWithAll": "Tüm kullanıcılarla paylaş",
     "create": "Profil oluştur",
-    "created": "Vault profili oluşturuldu",
-    "saved": "Vault profili kaydedildi",
-    "deleted": "Vault profili silindi",
-    "saveFailed": "Vault profili kaydedilemedi",
-    "deleteFailed": "Vault profili silinemedi",
+    "created": "İmzalayan profili oluşturuldu",
+    "saved": "İmzalayan profili kaydedildi",
+    "deleted": "İmzalayan profili silindi",
+    "saveFailed": "İmzalayan profili kaydedilemedi",
+    "deleteFailed": "İmzalayan profili silinemedi",
     "save": "Profili kaydet",
-    "validationError": "Ad, Vault adresi ve SSH imzalayıcı rolü zorunludur",
-    "none": "Henüz Vault profili yok.",
+    "validationError": "Ad, sunucu adresi ve SSH imzalayan rolü gereklidir",
+    "none": "Henüz imzalayan profili yok.",
     "sharedBadge": "paylaşılan",
     "edit": "Düzenle",
     "delete": "Sil",
-    "deleteConfirm": "{{name}} Vault profili silinsin mi?"
+    "deleteConfirm": "{{name}} imzalayan profili silinsin mi?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault veya OpenBao"
   },
   "dialog": {
-    "title": "Vault girişi gerekli",
-    "description": "HashiCorp Vault'a giriş yapmak için bir pencere açıldı. Girişi orada tamamlayın; bu bağlantı otomatik olarak devam edecek.",
-    "failed": "Vault kimlik doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
+    "title": "Giriş gerekli",
+    "description": "{{provider}}'a giriş yapmak için bir pencere açıldı. Girişi orada tamamlayın, bağlantı kendiliğinden devam edecek.",
+    "failed": "Giriş başarısız oldu. Lütfen tekrar deneyin.",
     "reopen": "Giriş penceresini yeniden aç"
   },
   "permissions": {
     "use": {
-      "title": "Vault SSH imzalama kullan",
-      "description": "Vault imzalayıcı profilleri oluşturun ve Vault kullanan ana makinelere bağlanın."
+      "title": "SSH sertifika imzalama kullan",
+      "description": "İmzalayan profilleri oluşturun ve Vault veya OpenBao kullanan sunuculara bağlanın."
     },
     "share": {
-      "title": "Vault profillerini paylaş",
-      "description": "Her kullanıcının seçebilmesi için bir Vault imzalayıcı profilini paylaşılan olarak işaretleyin."
+      "title": "İmzalayan profillerini paylaş",
+      "description": "Her kullanıcının seçebilmesi için bir imzalayan profilini paylaşılan olarak işaretleyin."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Yönlendirme URI'si",
-      "description": "Termix'in giriş yaptığı her Vault OIDC rolündeki allowed_redirect_uris listesine bu URL'yi ekleyin."
+      "description": "Termix'in giriş yaptığı her Vault veya OpenBao OIDC rolündeki allowed_redirect_uris listesine bu URL'yi ekleyin."
     },
     "privateHosts": {
-      "label": "İzin verilen özel Vault ana makineleri",
-      "description": "Herkesin kendi profilinde kullanabileceği özel veya döngüsel Vault ana makine adları/IP'leri. Paylaşılan profiller ve paylaşma yetkisi olan kişiler tarafından oluşturulan profiller zaten kullanabilir. Girdileri virgül veya yeni satır ile ayırın."
+      "label": "İzin verilen özel imzalayan sunucuları",
+      "description": "Herkesin kendi profilinde kullanabileceği özel veya döngüsel Vault veya OpenBao sunucu adları veya IP'leri. Paylaşılan profiller ve paylaşma yetkisi olan kişiler tarafından oluşturulan profiller zaten kullanabilir. Girdileri virgül veya yeni satır ile ayırın."
     },
     "host": {
       "profileId": {
-        "label": "Vault imzalayıcı profili"
+        "label": "İmzalayan profili"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "HashiCorp Vault tarafından imzalanmış kısa ömürlü SSH sertifikalarıyla ana makinelere bağlanın."
+    "name": "SSH Sertifika İmzalayıcı",
+    "description": "HashiCorp Vault veya OpenBao tarafından imzalanan kısa ömürlü SSH sertifikalarıyla sunuculara bağlanın."
+  },
+  "resultPage": {
+    "signedIn": "Giriş yapıldı",
+    "failed": "Giriş başarısız oldu",
+    "closing": "Bu pencereyi kapatabilir ve Termix'e dönebilirsiniz.",
+    "tryAgain": "Bu pencereyi kapatın ve Termix'ten tekrar deneyin.",
+    "close": "Pencereyi kapat",
+    "requestId": "İstek Kimliği: {{id}}"
   }
 }

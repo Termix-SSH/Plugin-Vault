@@ -3,6 +3,7 @@ import type { TokenStore } from "./token-store.js";
 import {
   completeVaultOidc,
   generateEphemeralKeyPair,
+  providerLabel,
   signWithVault,
   startVaultOidc,
   type VaultProfileConfig,
@@ -58,7 +59,7 @@ function errorMessage(error: unknown): string {
 export type AuthSessions = ReturnType<typeof createAuthSessions>;
 
 /**
- * Vault OIDC sign-ins in flight, keyed by the state Vault put in its auth
+ * OIDC sign-ins in flight, keyed by the state the signer put in its auth
  * URL so the unauthenticated browser callback finds its way back. Created
  * per activation; closeAll runs on deactivate.
  */
@@ -71,7 +72,7 @@ export function createAuthSessions(ctx: PluginContext, tokens: TokenStore) {
   }
 
   return {
-    /** Asks Vault for an auth URL and sends it to the terminal. */
+    /** Asks the signer for an auth URL and sends it to the terminal. */
     async start(request: StartRequest): Promise<void> {
       try {
         const keyPair = generateEphemeralKeyPair(request.profile.keyType);
@@ -110,10 +111,13 @@ export function createAuthSessions(ctx: PluginContext, tokens: TokenStore) {
           hostId: request.hostId,
           requestId: state,
           url: authUrl,
+          provider: request.profile.provider ?? "vault",
         });
       } catch (error) {
         const message = errorMessage(error);
-        ctx.log.error(`Failed to start Vault authentication: ${message}`);
+        ctx.log.error(
+          `Failed to start ${providerLabel(request.profile.provider)} authentication: ${message}`,
+        );
         send(request.socket, {
           type: "vault_error",
           hostId: request.hostId,
@@ -123,8 +127,8 @@ export function createAuthSessions(ctx: PluginContext, tokens: TokenStore) {
     },
 
     /**
-     * The identity provider's redirect, via Vault: exchanges the code for a
-     * Vault token, has Vault sign the ephemeral key and caches the result.
+     * The identity provider's redirect, via the signer: exchanges the code
+     * for a token, has the signer sign the ephemeral key and caches it.
      */
     async complete(state: string, code: string): Promise<CallbackResult> {
       const session = sessions.get(state);
@@ -155,7 +159,7 @@ export function createAuthSessions(ctx: PluginContext, tokens: TokenStore) {
           signed,
         );
         ctx.log.info(
-          `Vault signed a certificate for host ${session.hostId} with profile ${session.profile.id}`,
+          `${providerLabel(session.profile.provider)} signed a certificate for host ${session.hostId} with profile ${session.profile.id}`,
         );
         send(session.socket, {
           type: "vault_completed",
@@ -169,7 +173,9 @@ export function createAuthSessions(ctx: PluginContext, tokens: TokenStore) {
         };
       } catch (error) {
         const message = errorMessage(error);
-        ctx.log.error(`Vault sign-in failed: ${message}`);
+        ctx.log.error(
+          `${providerLabel(session.profile.provider)} sign-in failed: ${message}`,
+        );
         send(session.socket, {
           type: "vault_error",
           hostId: session.hostId,

@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Hồ sơ ký Vault",
-    "selectProfile": "Chọn một hồ sơ Vault...",
-    "hint": "Cài đặt được lấy từ hồ sơ chia sẻ; bạn sẽ đăng nhập vào Vault qua OIDC khi kết nối. Không có bí mật nào được lưu trữ.",
+    "profile": "Hồ sơ ký",
+    "selectProfile": "Chọn một hồ sơ ký...",
+    "hint": "Cài đặt được lấy từ hồ sơ. Bạn sẽ đăng nhập vào Vault hoặc OpenBao bằng OIDC khi kết nối. Không có bí mật nào được lưu trữ.",
     "docs": "Xem tài liệu",
     "sharedProfile": "{{name}} (chia sẻ)"
   },
   "profiles": {
     "new": "Hồ sơ mới",
-    "manage": "Quản lý hồ sơ Vault",
+    "manage": "Quản lý hồ sơ ký",
     "name": "Tên hiển thị",
-    "vaultAddr": "Địa chỉ Vault",
+    "provider": "Người ký",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Địa chỉ máy chủ",
     "namespace": "Không gian tên",
     "oidcMount": "Điểm gắn xác thực OIDC",
     "oidcRole": "Vai trò OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Loại khóa tạm thời",
     "shareWithAll": "Chia sẻ với tất cả người dùng",
     "create": "Tạo hồ sơ",
-    "created": "Đã tạo hồ sơ Vault",
-    "saved": "Đã lưu hồ sơ Vault",
-    "deleted": "Đã xóa hồ sơ Vault",
-    "saveFailed": "Không thể lưu hồ sơ Vault",
-    "deleteFailed": "Không thể xóa hồ sơ Vault",
+    "created": "Đã tạo hồ sơ ký",
+    "saved": "Đã lưu hồ sơ ký",
+    "deleted": "Đã xóa hồ sơ ký",
+    "saveFailed": "Không thể lưu hồ sơ ký",
+    "deleteFailed": "Không thể xóa hồ sơ ký",
     "save": "Lưu hồ sơ",
-    "validationError": "Bắt buộc nhập tên, địa chỉ Vault và vai trò ký SSH",
-    "none": "Chưa có hồ sơ Vault nào.",
+    "validationError": "Bắt buộc phải có tên, địa chỉ máy chủ và vai trò ký SSH",
+    "none": "Chưa có hồ sơ ký nào.",
     "sharedBadge": "đã chia sẻ",
     "edit": "Chỉnh sửa",
     "delete": "Xóa",
-    "deleteConfirm": "Xóa hồ sơ Vault {{name}}?"
+    "deleteConfirm": "Xóa hồ sơ ký {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault hoặc OpenBao"
   },
   "dialog": {
-    "title": "Yêu cầu đăng nhập Vault",
-    "description": "Một cửa sổ đã mở để đăng nhập vào HashiCorp Vault. Hãy hoàn tất đăng nhập ở đó; kết nối này sẽ tiếp tục tự động.",
-    "failed": "Xác thực Vault thất bại. Vui lòng thử lại.",
+    "title": "Yêu cầu đăng nhập",
+    "description": "Một cửa sổ đã mở để đăng nhập vào {{provider}}. Hoàn tất đăng nhập ở đó và kết nối này sẽ tự động tiếp tục.",
+    "failed": "Đăng nhập thất bại. Vui lòng thử lại.",
     "reopen": "Mở lại cửa sổ đăng nhập"
   },
   "permissions": {
     "use": {
-      "title": "Sử dụng ký SSH Vault",
-      "description": "Tạo hồ sơ ký Vault và kết nối với các máy chủ sử dụng Vault."
+      "title": "Sử dụng ký chứng chỉ SSH",
+      "description": "Tạo hồ sơ ký và kết nối với các máy chủ sử dụng Vault hoặc OpenBao."
     },
     "share": {
-      "title": "Chia sẻ hồ sơ Vault",
-      "description": "Đánh dấu một hồ sơ ký Vault là chia sẻ để mọi người dùng đều có thể chọn."
+      "title": "Chia sẻ hồ sơ ký",
+      "description": "Đánh dấu một hồ sơ ký là chia sẻ để mọi người dùng đều có thể chọn nó."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI chuyển hướng",
-      "description": "Thêm URL này vào allowed_redirect_uris trong mỗi vai trò OIDC của Vault mà Termix sử dụng để đăng nhập."
+      "description": "Thêm URL này vào allowed_redirect_uris trong mỗi vai trò OIDC của Vault hoặc OpenBao mà Termix đăng nhập."
     },
     "privateHosts": {
-      "label": "Máy chủ Vault riêng được phép",
-      "description": "Tên máy chủ/IP Vault riêng hoặc loopback mà hồ sơ cá nhân của bất kỳ ai cũng có thể sử dụng. Hồ sơ chia sẻ và hồ sơ do những người có quyền chia sẻ tạo ra đã được phép. Tách các mục bằng dấu phẩy hoặc dòng mới."
+      "label": "Máy chủ ký riêng được phép",
+      "description": "Tên máy chủ hoặc IP riêng hoặc loopback của Vault hoặc OpenBao mà hồ sơ cá nhân của bất kỳ ai cũng có thể sử dụng. Các hồ sơ chia sẻ và hồ sơ do những người có quyền chia sẻ tạo ra đã được phép. Tách các mục bằng dấu phẩy hoặc dòng mới."
     },
     "host": {
       "profileId": {
-        "label": "Hồ sơ ký Vault"
+        "label": "Hồ sơ ký"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Kết nối đến các host bằng chứng chỉ SSH có thời hạn ngắn được ký bởi HashiCorp Vault."
+    "name": "Người ký chứng chỉ SSH",
+    "description": "Kết nối với các máy chủ bằng chứng chỉ SSH có thời hạn ngắn được ký bởi HashiCorp Vault hoặc OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Đã đăng nhập",
+    "failed": "Đăng nhập thất bại",
+    "closing": "Bạn có thể đóng cửa sổ này và quay lại Termix.",
+    "tryAgain": "Đóng cửa sổ này và thử lại từ Termix.",
+    "close": "Đóng cửa sổ",
+    "requestId": "ID yêu cầu: {{id}}"
   }
 }

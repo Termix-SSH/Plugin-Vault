@@ -16,7 +16,7 @@ const DOCS_URL = docsUrl();
 type PluginSettingsBag = Record<string, Record<string, unknown>>;
 
 /**
- * The host editor's "vault" auth method: pick a signer profile, and manage
+ * The host editor's "vault" auth method (Vault or OpenBao): pick a signer profile, and manage
  * profiles in place. The choice is the profileId host setting, which the
  * editor saves with the rest of the host's plugin settings.
  */

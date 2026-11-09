@@ -161,6 +161,39 @@ describe("profiles", () => {
     expect(response.status).toBe(400);
   });
 
+  it("defaults the signer to Vault and accepts OpenBao", async () => {
+    server = await startServer();
+    const plain = await server.request("POST", "/profiles", { body: PROFILE });
+    expect(plain.body.provider).toBe("vault");
+
+    const bao = await server.request("POST", "/profiles", {
+      body: { ...PROFILE, provider: "openbao" },
+    });
+    expect(bao.status).toBe(201);
+    expect(bao.body.provider).toBe("openbao");
+
+    const switched = await server.request("PUT", `/profiles/${plain.body.id}`, {
+      body: { provider: "openbao" },
+    });
+    expect(switched.body.provider).toBe("openbao");
+  });
+
+  it("refuses an unknown signer", async () => {
+    server = await startServer();
+    const created = await server.request("POST", "/profiles", {
+      body: { ...PROFILE, provider: "infisical" },
+    });
+    expect(created.status).toBe(400);
+
+    const ok = await server.request("POST", "/profiles", { body: PROFILE });
+    const updated = await server.request("PUT", `/profiles/${ok.body.id}`, {
+      body: { provider: "nope" },
+    });
+    expect(updated.status).toBe(400);
+    const listed = await server.request("GET", "/profiles");
+    expect(listed.body[0].provider).toBe("vault");
+  });
+
   it("shows other users only shared profiles, and only the owner may change one", async () => {
     server = await startServer();
     const own = await server.request("POST", "/profiles", { body: PROFILE });
@@ -257,7 +290,7 @@ describe("signing a certificate", () => {
       { user: "" },
     );
     expect(callback.status).toBe(200);
-    expect(callback.text).toContain("Vault sign-in complete");
+    expect(callback.text).toContain("Signed in");
     expect(socket.sent.at(-1)).toMatchObject({
       type: "vault_completed",
       hostId: 7,
@@ -286,6 +319,43 @@ describe("signing a certificate", () => {
       expect.objectContaining({ certificate: SIGNED_CERT }),
       "root",
     );
+  });
+
+  it("signs with an OpenBao profile over the same API", async () => {
+    const vault = createFakeVault();
+    server = await startServer({ fetch: vault.fetch });
+    const created = await server.request("POST", "/profiles", {
+      body: { ...PROFILE, provider: "openbao" },
+    });
+    await server.mock.ctx.settings.setHost(7, "profileId", created.body.id);
+
+    const socket = await startSignIn();
+    expect(socket.sent[0]).toMatchObject({
+      type: "vault_auth_url",
+      provider: "openbao",
+    });
+    const callback = await server.request(
+      "GET",
+      `/oidc/callback?state=${vault.state}&code=abc`,
+      { user: "" },
+    );
+    expect(callback.status).toBe(200);
+    expect(socket.sent.at(-1)).toMatchObject({ type: "vault_completed" });
+  });
+
+  it("names OpenBao when OpenBao refuses to sign", async () => {
+    const vault = createFakeVault({ signStatus: 403 });
+    server = await startServer({ fetch: vault.fetch });
+    const created = await server.request("POST", "/profiles", {
+      body: { ...PROFILE, provider: "openbao" },
+    });
+    await server.mock.ctx.settings.setHost(7, "profileId", created.body.id);
+    const socket = await startSignIn();
+    await server.request("GET", `/oidc/callback?state=${vault.state}&code=abc`);
+    expect(socket.sent.at(-1)).toMatchObject({
+      type: "vault_error",
+      error: expect.stringMatching(/^OpenBao request failed \(403\)/),
+    });
   });
 
   it("answers a second use of the same callback with an error", async () => {
@@ -339,7 +409,7 @@ describe("signing a certificate", () => {
 
   it("refuses to start without a profile on the host", async () => {
     server = await startServer();
-    await expect(startSignIn()).rejects.toThrow(/No Vault signer profile/);
+    await expect(startSignIn()).rejects.toThrow(/No signer profile/);
   });
 });
 
@@ -348,7 +418,7 @@ describe("the vault provider", () => {
     server = await startServer();
     expect(await server.provider().prepare({}, HOST, env())).toMatchObject({
       status: "error",
-      message: "Host has no Vault signer profile configured",
+      message: "Host has no signer profile configured",
     });
   });
 
@@ -358,7 +428,7 @@ describe("the vault provider", () => {
     const host = { ...HOST, userId: "user-2" };
     expect(await server.provider().prepare({}, host, env())).toMatchObject({
       status: "error",
-      message: "Host has no Vault signer profile configured",
+      message: "Host has no signer profile configured",
     });
   });
 

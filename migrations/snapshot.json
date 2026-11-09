@@ -26,6 +26,12 @@
         "tags": {
           "type": "text"
         },
+        "provider": {
+          "type": "varchar",
+          "length": 32,
+          "notNull": true,
+          "defaultValue": "vault"
+        },
         "vaultAddr": {
           "type": "text",
           "notNull": true
@@ -117,7 +123,10 @@
       "indexes": [
         {
           "name": "idx_vault_tokens_user_profile",
-          "columns": ["userId", "profileId"],
+          "columns": [
+            "userId",
+            "profileId"
+          ],
           "unique": true
         }
       ],

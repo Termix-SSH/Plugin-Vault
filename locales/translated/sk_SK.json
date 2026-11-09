@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profil Vault Signer",
-    "selectProfile": "Vyberte profil Vault...",
-    "hint": "Nastavenia pochádzajú zo zdieľaného profilu; pri pripojení sa prihlásite do Vault prostredníctvom OIDC. Žiadne tajomstvá sa neukladajú.",
+    "profile": "Profil podpisovateľa",
+    "selectProfile": "Vyberte profil podpisovateľa...",
+    "hint": "Nastavenia pochádzajú z profilu. Pri pripojení sa prihlásite do Vault alebo OpenBao pomocou OIDC. Žiadne tajomstvá sa neukladajú.",
     "docs": "Zobraziť dokumentáciu",
     "sharedProfile": "{{name}} (zdieľaný)"
   },
   "profiles": {
     "new": "Nový profil",
-    "manage": "Spravovať profily Vault",
+    "manage": "Spravovať profily podpisovateľov",
     "name": "Používateľské meno",
-    "vaultAddr": "Adresa Vault",
+    "provider": "Podpisovateľ",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Adresa servera",
     "namespace": "Menový priestor",
     "oidcMount": "Mount OIDC Auth",
     "oidcRole": "Rola OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Typ dočasného kľúča",
     "shareWithAll": "Zdieľať so všetkými používateľmi",
     "create": "Vytvoriť profil",
-    "created": "Profil Vault bol vytvorený",
-    "saved": "Profil Vault bol uložený",
-    "deleted": "Profil Vault bol odstránený",
-    "saveFailed": "Nepodarilo sa uložiť profil Vault",
-    "deleteFailed": "Nepodarilo sa odstrániť profil Vault",
+    "created": "Profil podpisovateľa vytvorený",
+    "saved": "Profil podpisovateľa uložený",
+    "deleted": "Profil podpisovateľa odstránený",
+    "saveFailed": "Nepodarilo sa uložiť profil podpisovateľa",
+    "deleteFailed": "Nepodarilo sa odstrániť profil podpisovateľa",
     "save": "Uložiť profil",
-    "validationError": "Meno, adresa Vault a rola SSH Signer sú povinné",
-    "none": "Zatiaľ žiadne profily Vault.",
+    "validationError": "Meno, adresa servera a rola SSH podpisovateľa sú povinné",
+    "none": "Zatiaľ žiadne profily podpisovateľov.",
     "sharedBadge": "zdieľaný",
     "edit": "Upraviť",
     "delete": "Odstrániť",
-    "deleteConfirm": "Odstrániť profil Vault {{name}}?"
+    "deleteConfirm": "Odstrániť profil podpisovateľa {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault alebo OpenBao"
   },
   "dialog": {
-    "title": "Vyžaduje sa prihlásenie do Vault",
-    "description": "Otvorilo sa okno na prihlásenie do HashiCorp Vault. Dokončite prihlásenie tam; toto pripojenie sa automaticky pokračuje.",
-    "failed": "Overenie Vault zlyhalo. Skúste to znova.",
+    "title": "Vyžaduje sa prihlásenie",
+    "description": "Otvorilo sa okno na prihlásenie do {{provider}}. Dokončite prihlásenie tam a toto pripojenie sa dokončí automaticky.",
+    "failed": "Prihlásenie zlyhalo. Skúste to znova.",
     "reopen": "Znova otvoriť okno na prihlásenie"
   },
   "permissions": {
     "use": {
-      "title": "Používať Vault SSH signing",
-      "description": "Vytvárajte profily Vault Signer a pripájajte sa k hostiteľom, ktoré používajú Vault."
+      "title": "Používať podpisovanie SSH certifikátov",
+      "description": "Vytvárajte profily podpisovateľov a pripájajte sa k hostiteľom, ktoré používajú Vault alebo OpenBao."
     },
     "share": {
-      "title": "Zdieľať profily Vault",
-      "description": "Označte profil Vault Signer ako zdieľaný, aby ho mohol vybrať každý používateľ."
+      "title": "Zdieľať profily podpisovateľov",
+      "description": "Označte profil podpisovateľa ako zdieľaný, aby ho mohol vybrať každý používateľ."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI presmerovania",
-      "description": "Pridajte túto URL do allowed_redirect_uris v každej roly Vault OIDC, s ktorou sa Termix prihlasuje."
+      "description": "Pridajte túto URL do allowed_redirect_uris v každej roly OIDC vo Vault alebo OpenBao, s ktorou sa Termix prihlasuje."
     },
     "privateHosts": {
-      "label": "Povolené súkromné hostiteľské servery Vault",
-      "description": "Súkromné alebo loopback názvy hostiteľov/IP adresy Vault, ktoré môže použiť vlastný profil kohokoľvek. Zdieľané profily a profily vytvorené ľuďmi, ktorí môžu zdieľať, už môžu. Oddelte položky čiarkami alebo novými riadkami."
+      "label": "Povolené súkromné hostiteľské servery podpisovateľov",
+      "description": "Súkromné alebo loopback názvy hostiteľov alebo IP adresy Vault alebo OpenBao, ktoré môže použiť vlastný profil kohokoľvek. Zdieľané profily a profily vytvorené ľuďmi, ktorí môžu zdieľať, už môžu. Oddelte položky čiarkami alebo novými riadkami."
     },
     "host": {
       "profileId": {
-        "label": "Profil Vault Signer"
+        "label": "Profil podpisovateľa"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Pripojte sa k hostiteľom pomocou SSH certifikátov s krátkou platnosťou podpísaných službou HashiCorp Vault."
+    "name": "Podpisovateľ SSH certifikátov",
+    "description": "Pripájajte sa k hostiteľom pomocou krátkodobých SSH certifikátov podpísaných HashiCorp Vault alebo OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Prihlásený",
+    "failed": "Prihlásenie zlyhalo",
+    "closing": "Môžete zavrieť toto okno a vrátiť sa do Termix.",
+    "tryAgain": "Zavrite toto okno a skúste to znova z Termix.",
+    "close": "Zavrieť okno",
+    "requestId": "ID žiadosti: {{id}}"
   }
 }

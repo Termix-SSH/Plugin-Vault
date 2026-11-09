@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault Signer Profile",
-    "selectProfile": "Select a Vault profile...",
-    "hint": "Settings come from the shared profile; you'll sign in to Vault via OIDC when you connect. No secrets are stored.",
+    "profile": "Signer Profile",
+    "selectProfile": "Select a signer profile...",
+    "hint": "Settings come from the profile. You sign in to Vault or OpenBao with OIDC when you connect. No secrets are stored.",
     "docs": "View docs",
     "sharedProfile": "{{name}} (shared)"
   },
   "profiles": {
     "new": "New profile",
-    "manage": "Manage Vault profiles",
+    "manage": "Manage signer profiles",
     "name": "Friendly Name",
-    "vaultAddr": "Vault Address",
+    "provider": "Signer",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Server Address",
     "namespace": "Namespace",
     "oidcMount": "OIDC Auth Mount",
     "oidcRole": "OIDC Role",
@@ -20,55 +25,63 @@
     "keyType": "Ephemeral Key Type",
     "shareWithAll": "Share with all users",
     "create": "Create profile",
-    "created": "Vault profile created",
-    "saved": "Vault profile saved",
-    "deleted": "Vault profile deleted",
-    "saveFailed": "Failed to save Vault profile",
-    "deleteFailed": "Failed to delete Vault profile",
+    "created": "Signer profile created",
+    "saved": "Signer profile saved",
+    "deleted": "Signer profile deleted",
+    "saveFailed": "Failed to save signer profile",
+    "deleteFailed": "Failed to delete signer profile",
     "save": "Save profile",
-    "validationError": "Name, Vault address and SSH signer role are required",
-    "none": "No Vault profiles yet.",
+    "validationError": "Name, server address and SSH signer role are required",
+    "none": "No signer profiles yet.",
     "sharedBadge": "shared",
     "edit": "Edit",
     "delete": "Delete",
-    "deleteConfirm": "Delete the Vault profile {{name}}?"
+    "deleteConfirm": "Delete the signer profile {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault or OpenBao"
   },
   "dialog": {
-    "title": "Vault sign-in required",
-    "description": "A window has opened to sign in to HashiCorp Vault. Complete the sign-in there; this connection will continue automatically.",
-    "failed": "Vault authentication failed. Please try again.",
+    "title": "Sign-in required",
+    "description": "A window has opened to sign in to {{provider}}. Finish the sign-in there and this connection will carry on by itself.",
+    "failed": "Sign-in failed. Please try again.",
     "reopen": "Reopen sign-in window"
   },
   "permissions": {
     "use": {
-      "title": "Use Vault SSH signing",
-      "description": "Create Vault signer profiles and connect to hosts that use Vault."
+      "title": "Use SSH certificate signing",
+      "description": "Create signer profiles and connect to hosts that use Vault or OpenBao."
     },
     "share": {
-      "title": "Share Vault profiles",
-      "description": "Mark a Vault signer profile as shared so every user can pick it."
+      "title": "Share signer profiles",
+      "description": "Mark a signer profile as shared so every user can pick it."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Redirect URI",
-      "description": "Add this URL to allowed_redirect_uris in each Vault OIDC role that Termix signs in with."
+      "description": "Add this URL to allowed_redirect_uris in each Vault or OpenBao OIDC role that Termix signs in with."
     },
     "privateHosts": {
-      "label": "Allowed private Vault hosts",
-      "description": "Private or loopback Vault hostnames/IPs that anyone's own profile may use. Shared profiles and profiles made by people who can share already may. Separate entries with commas or newlines."
+      "label": "Allowed private signer hosts",
+      "description": "Private or loopback Vault or OpenBao hostnames or IPs that anyone's own profile may use. Shared profiles and profiles made by people who can share already may. Separate entries with commas or new lines."
     },
     "host": {
       "profileId": {
-        "label": "Vault signer profile"
+        "label": "Signer profile"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault."
+    "name": "SSH Certificate Signer",
+    "description": "Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault or OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Signed in",
+    "failed": "Sign in failed",
+    "closing": "You can close this window and go back to Termix.",
+    "tryAgain": "Close this window and try again from Termix.",
+    "close": "Close window",
+    "requestId": "Request ID: {{id}}"
   }
 }

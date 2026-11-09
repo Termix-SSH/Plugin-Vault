@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vaulti allkirjastaja profiil",
-    "selectProfile": "Valige Vaulti profiil...",
-    "hint": "Seaded pärinevad jagatud profiilist; Vaulti sisselogimine toimub OIDC kaudu ühenduse loomisel. Salasõnu ei salvestata.",
+    "profile": "Allkirjastaja profiil",
+    "selectProfile": "Valige allkirjastaja profiil...",
+    "hint": "Seaded tulenevad profiilist. Ühenduse loomisel logite Vaulti või OpenBao-sse sisse OIDC kaudu. Salasõnu ei salvestata.",
     "docs": "Dokumentatsiooni vaatamine",
     "sharedProfile": "{{name}} (jagatud)"
   },
   "profiles": {
     "new": "Uus profiil",
-    "manage": "Vaulti profiilide haldamine",
+    "manage": "Allkirjastaja profiilide haldamine",
     "name": "Sõbralik nimi",
-    "vaultAddr": "Vaulti aadress",
+    "provider": "Allkirjastaja",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Serveri aadress",
     "namespace": "Nimeruum",
     "oidcMount": "OIDC autentimise mount",
     "oidcRole": "OIDC roll",
@@ -20,55 +25,63 @@
     "keyType": "Ajutise võtme tüüp",
     "shareWithAll": "Jaga kõigi kasutajatega",
     "create": "Profiili loomine",
-    "created": "Vaulti profiil loodud",
-    "saved": "Vaulti profiil salvestatud",
-    "deleted": "Vaulti profiil kustutatud",
-    "saveFailed": "Vaulti profiili salvestamine ebaõnnestus",
-    "deleteFailed": "Vaulti profiili kustutamine ebaõnnestus",
+    "created": "Allkirjastaja profiil loodud",
+    "saved": "Allkirjastaja profiil salvestatud",
+    "deleted": "Allkirjastaja profiil kustutatud",
+    "saveFailed": "Allkirjastaja profiili salvestamine ebaõnnestus",
+    "deleteFailed": "Allkirjastaja profiili kustutamine ebaõnnestus",
     "save": "Profiili salvestamine",
-    "validationError": "Nimi, Vaulti aadress ja SSH allkirjastaja roll on kohustuslikud",
-    "none": "Vaulti profiile pole veel.",
+    "validationError": "Nimi, serveri aadress ja SSH allkirjastaja roll on kohustuslikud",
+    "none": "Allkirjastaja profiile pole veel.",
     "sharedBadge": "jagatud",
     "edit": "Muuda",
     "delete": "Kustuta",
-    "deleteConfirm": "Kas kustutada Vaulti profiil {{name}}?"
+    "deleteConfirm": "Kas kustutada allkirjastaja profiil {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault või OpenBao"
   },
   "dialog": {
-    "title": "Vaulti sisselogimine on nõutud",
-    "description": "Aken on avatud HashiCorp Vaulti sisselogimiseks. Logige seal sisse; see ühendus jätkub automaatselt.",
-    "failed": "Vaulti autentimine ebaõnnestus. Palun proovige uuesti.",
+    "title": "Sisselogimine on nõutav",
+    "description": "Aken on avatud, et logida sisse {{provider}}. Logige seal sisse ja ühendus jätkub automaatselt.",
+    "failed": "Sisselogimine ebaõnnestus. Palun proovige uuesti.",
     "reopen": "Ava sisselogimise aken uuesti"
   },
   "permissions": {
     "use": {
-      "title": "Vaulti SSH allkirjastamise kasutamine",
-      "description": "Loo Vaulti allkirjastaja profiile ja ühendu hostidega, mis kasutavad Vaulti."
+      "title": "SSH-sertifikaatide allkirjastamise kasutamine",
+      "description": "Loo allkirjastaja profiile ja ühendu hostidega, mis kasutavad Vaulti või OpenBao."
     },
     "share": {
-      "title": "Vaulti profiilide jagamine",
-      "description": "Märgi Vaulti allkirjastaja profiil jagatuna, et iga kasutaja saaks selle valida."
+      "title": "Allkirjastaja profiilide jagamine",
+      "description": "Märgi allkirjastaja profiil jagatuna, et iga kasutaja saaks selle valida."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Ümbersuunamise URI",
-      "description": "Lisage see URL iga Vaulti OIDC rolli allowed_redirect_uris väljale, millega Termix sisse logib."
+      "description": "Lisa see URL lubatud_redirect_uris iga Vaulti või OpenBao OIDC rolli, millega Termix sisse logib."
     },
     "privateHosts": {
-      "label": "Lubatud privaatseid Vaulti hoste",
-      "description": "Privaatsed või loopback Vaulti hostinimed/IP-d, mida iga kasutaja oma profiiliga kasutada võib. Jagatud profiilid ja profiilid, mille on loonud inimesed, kellel on jagamise õigused, saavad neid juba kasutada. Eraldage kirjed komadega või uue reaga."
+      "label": "Lubatud privaatseid allkirjastaja hoste",
+      "description": "Privaatsed või loopback Vaulti või OpenBao hostinimed või IP-aadressid, mida iga kasutaja oma profiiliga kasutada võib. Jagatud profiilid ja profiilid, mille on loonud inimesed, kellel on jagamisõigus, saavad neid juba kasutada. Eralda kirjed koolonite või uute ridade kaupa."
     },
     "host": {
       "profileId": {
-        "label": "Vaulti allkirjastaja profiil"
+        "label": "Allkirjastaja profiil"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Ühendu hostidega lühiajaliste SSH-sertifikaatide kaudu, mille on allkirjastanud HashiCorp Vault."
+    "name": "SSH-sertifikaatide allkirjastaja",
+    "description": "Ühendu hostidega lühiajaliste SSH-sertifikaatidega, mille on allkirjastanud HashiCorp Vault või OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Sisse logitud",
+    "failed": "Sisselogimine ebaõnnestus",
+    "closing": "Saate selle akna sulgeda ja naasta Termixi.",
+    "tryAgain": "Sulgege see aken ja proovige uuesti Termixist.",
+    "close": "Sulge aken",
+    "requestId": "Päringu ID: {{id}}"
   }
 }

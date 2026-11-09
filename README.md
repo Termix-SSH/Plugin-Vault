@@ -2,9 +2,9 @@
 
 <img src="https://termix.site/img/logo.svg" width="120" alt="Termix Logo" />
 
-<h1>HashiCorp Vault</h1>
+<h1>SSH Certificate Signer</h1>
 
-<p>Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault</p>
+<p>Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault or OpenBao</p>
 
 <!-- VIDEO:START -->
 
@@ -18,7 +18,7 @@
 
 ## Overview
 
-HashiCorp Vault lets you connect to hosts with SSH certificates signed by Vault, after signing in to Vault with OIDC.
+SSH Certificate Signer lets you connect to hosts with SSH certificates signed by HashiCorp Vault or OpenBao, after signing in with OIDC.
 
 Read the [docs](https://docs.termix.site/plugins/vault) to set it up and use it.
 
@@ -26,9 +26,10 @@ Read the [docs](https://docs.termix.site/plugins/vault) to set it up and use it.
 
 ## Features
 
-- Adds the Vault auth type to hosts
-- Sign in to Vault with OIDC when you connect
-- Never stores a Vault token or long-lived key
+- Works with HashiCorp Vault and OpenBao
+- Adds the Vault or OpenBao auth type to hosts
+- Sign in with OIDC when you connect
+- Never stores a token or long-lived key
 - Reusable signer profiles you can share with everyone
 
 <br />
@@ -79,7 +80,7 @@ For a paid sponsor spot, email [mail@termix.site](mailto:mail@termix.site).
 
 ## Support
 
-Bugs and ideas for HashiCorp Vault go in this repo: [report a bug](https://github.com/Termix-SSH/Plugin-Vault/issues/new?template=bug_report.yml) or [request a feature](https://github.com/Termix-SSH/Plugin-Vault/issues/new?template=feature_request.yml). Report an issue on the plugin's page in the Plugins tab fills in your versions for you.
+Bugs and ideas for SSH Certificate Signer go in this repo: [report a bug](https://github.com/Termix-SSH/Plugin-Vault/issues/new?template=bug_report.yml) or [request a feature](https://github.com/Termix-SSH/Plugin-Vault/issues/new?template=feature_request.yml). Report an issue on the plugin's page in the Plugins tab fills in your versions for you.
 
 Problems with Termix itself (login, hosts, credentials, sharing, sync) go in the [Termix repo](https://github.com/Termix-SSH/Termix/issues/new/choose). Not sure where it goes? Open it there and it will be moved.
 

@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profil podpisujący Vault",
-    "selectProfile": "Wybierz profil Vault...",
-    "hint": "Ustawienia pochodzą z udostępnionego profilu; zalogujesz się do Vault przez OIDC podczas łączenia. Nie są przechowywane żadne sekrety.",
+    "profile": "Profil podpisującego",
+    "selectProfile": "Wybierz profil podpisującego...",
+    "hint": "Ustawienia pochodzą z profilu. Połączenie z Vault lub OpenBao odbywa się przez OIDC. Żadne tajne dane nie są przechowywane.",
     "docs": "Zobacz dokumentację",
     "sharedProfile": "{{name}} (udostępniony)"
   },
   "profiles": {
     "new": "Nowy profil",
-    "manage": "Zarządzaj profilami Vault",
+    "manage": "Zarządzaj profilami podpisującego",
     "name": "Nazwa wyświetlana",
-    "vaultAddr": "Adres Vault",
+    "provider": "Podpisujący",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Adres serwera",
     "namespace": "Przestrzeń nazw",
     "oidcMount": "Mocowanie uwierzytelniania OIDC",
     "oidcRole": "Rola OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Typ tymczasowego klucza",
     "shareWithAll": "Udostępnij wszystkim użytkownikom",
     "create": "Utwórz profil",
-    "created": "Profil Vault został utworzony",
-    "saved": "Profil Vault został zapisany",
-    "deleted": "Profil Vault został usunięty",
-    "saveFailed": "Nie udało się zapisać profilu Vault",
-    "deleteFailed": "Nie udało się usunąć profilu Vault",
+    "created": "Profil podpisującego utworzony",
+    "saved": "Profil podpisującego zapisany",
+    "deleted": "Profil podpisującego usunięty",
+    "saveFailed": "Nie udało się zapisać profilu podpisującego",
+    "deleteFailed": "Nie udało się usunąć profilu podpisującego",
     "save": "Zapisz profil",
-    "validationError": "Nazwa, adres Vault i rola podpisująca SSH są wymagane",
-    "none": "Brak profili Vault.",
+    "validationError": "Nazwa, adres serwera i rola podpisującego SSH są wymagane",
+    "none": "Brak profili podpisującego.",
     "sharedBadge": "udostępniony",
     "edit": "Edytuj",
     "delete": "Usuń",
-    "deleteConfirm": "Usunąć profil Vault {{name}}?"
+    "deleteConfirm": "Usunąć profil podpisującego {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault lub OpenBao"
   },
   "dialog": {
-    "title": "Wymagane logowanie do Vault",
-    "description": "Otwarto okno do logowania do HashiCorp Vault. Ukończ logowanie w tym oknie; połączenie zostanie wznowione automatycznie.",
-    "failed": "Uwierzytelnianie w Vault nie powiodło się. Spróbuj ponownie.",
+    "title": "Wymagane logowanie",
+    "description": "Otwarto okno do logowania do {{provider}}. Ukończ logowanie tam, a połączenie zostanie nawiązane automatycznie.",
+    "failed": "Logowanie nie powiodło się. Spróbuj ponownie.",
     "reopen": "Otwórz ponownie okno logowania"
   },
   "permissions": {
     "use": {
-      "title": "Użyj podpisywania SSH przez Vault",
-      "description": "Twórz profile podpisujące Vault i łącz się z hostami używającymi Vault."
+      "title": "Użyj podpisywania certyfikatów SSH",
+      "description": "Twórz profile podpisującego i łącz się z hostami używającymi Vault lub OpenBao."
     },
     "share": {
-      "title": "Udostępniaj profile Vault",
-      "description": "Oznacz profil podpisujący Vault jako udostępniony, aby każdy użytkownik mógł go wybrać."
+      "title": "Udostępniaj profile podpisującego",
+      "description": "Oznacz profil podpisującego jako udostępniony, aby każdy użytkownik mógł go wybrać."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI przekierowania",
-      "description": "Dodaj ten adres URL do allowed_redirect_uris w każdej roli OIDC Vault, z której Termix się loguje."
+      "description": "Dodaj ten adres URL do allowed_redirect_uris w każdej roli OIDC Vault lub OpenBao, z której Termix się loguje."
     },
     "privateHosts": {
-      "label": "Dozwolone prywatne hosty Vault",
-      "description": "Prywatne nazwy hostów/IP Vault (lub pętlowe), których może używać własny profil każdego użytkownika. Profile udostępnione oraz te utworzone przez osoby z uprawnieniami do udostępniania mogą ich używać bez ograniczeń. Oddziel wpisy przecinkami lub nowymi liniami."
+      "label": "Dozwolone prywatne hosty podpisującego",
+      "description": "Prywatne lub pętlowe nazwy hostów lub adresy IP Vault lub OpenBao, których może używać własny profil każdego użytkownika. Profile udostępnione oraz te utworzone przez osoby z uprawnieniami do udostępniania mogą ich używać bez ograniczeń. Oddziel wpisy przecinkami lub nowymi liniami."
     },
     "host": {
       "profileId": {
-        "label": "Profil podpisujący Vault"
+        "label": "Profil podpisującego"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Łącz się z hostami przy użyciu krótkotrwałych certyfikatów SSH podpisanych przez HashiCorp Vault."
+    "name": "Podpisujący certyfikaty SSH",
+    "description": "Łącz się z hostami za pomocą krótkotrwałych certyfikatów SSH podpisanych przez HashiCorp Vault lub OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Zalogowano",
+    "failed": "Logowanie nie powiodło się",
+    "closing": "Możesz zamknąć to okno i wrócić do Termix.",
+    "tryAgain": "Zamknij to okno i spróbuj ponownie z Termix.",
+    "close": "Zamknij okno",
+    "requestId": "ID żądania: {{id}}"
   }
 }

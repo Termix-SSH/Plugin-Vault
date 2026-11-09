@@ -16,7 +16,7 @@ import { normalizeAddr } from "./vault-client.js";
 const AUTH_TYPE = "vault";
 
 const REQUIRED_MESSAGE =
-  "Vault SSH signer authentication required. Please open a Terminal connection first.";
+  "SSH certificate signer sign-in required. Please open a Terminal connection first.";
 
 const AUTH_FAILED_PATTERN = /All configured authentication methods failed/i;
 
@@ -42,7 +42,7 @@ async function profileForHost(
 }
 
 /**
- * Whether a profile may point at a private or loopback Vault: a shared
+ * Whether a profile may point at a private or loopback signer: a shared
  * profile, one whose owner may share profiles (admins by default), or one
  * whose host an admin listed in the private hosts setting. Anyone else could
  * otherwise aim the server at internal addresses.
@@ -68,7 +68,7 @@ export async function mayReachPrivateVault(
 }
 
 /**
- * Hosts with auth type "vault" connect with a certificate Vault signed for
+ * Hosts with auth type "vault" connect with a certificate the signer made for
  * the host's profile. Without one, the terminal is asked for a browser
  * sign-in ("vault_auth_required"), which startInteraction runs.
  */
@@ -90,14 +90,14 @@ export function createVaultProvider(
         return {
           status: "error",
           code: "failed",
-          message: "Host has no Vault signer profile configured",
+          message: "Host has no signer profile configured",
         };
       }
       const cert = await tokens.get(env.userId, profile.id);
       if (!cert) {
         env.log(
           "info",
-          "No valid Vault certificate found, requesting authentication",
+          "No valid signed certificate found, requesting authentication",
         );
         return {
           status: "interaction-required",
@@ -118,16 +118,16 @@ export function createVaultProvider(
           status: "error",
           code: "failed",
           message:
-            "Vault SSH signer authentication failed: " +
+            "SSH certificate signer authentication failed: " +
             (error instanceof Error ? error.message : String(error)),
         };
       }
-      env.log("info", "Using cached Vault-signed certificate");
+      env.log("info", "Using cached signed certificate");
       return { status: "ready" };
     },
     onAuthFailed: (host, env, context) => {
       if (!AUTH_FAILED_PATTERN.test(context.error.message)) return undefined;
-      ctx.log.warn("Vault certificate authentication failed, forgetting it");
+      ctx.log.warn("Signed certificate authentication failed, forgetting it");
       void profileForHost(ctx, profiles, host)
         .then((profile) =>
           profile ? tokens.remove(env.userId, profile.id) : undefined,
@@ -136,8 +136,7 @@ export function createVaultProvider(
       return {
         status: "interaction-required",
         interaction: AUTH_TYPE,
-        message:
-          "Vault authentication failed or expired. Please authenticate again.",
+        message: "Signed certificate failed or expired. Please sign in again.",
       };
     },
     startInteraction: async (request) => {
@@ -146,7 +145,7 @@ export function createVaultProvider(
         id: request.hostId,
       });
       if (!profile) {
-        throw new Error("No Vault signer profile configured for this host");
+        throw new Error("No signer profile configured for this host");
       }
       await sessions.start({
         userId: request.userId,

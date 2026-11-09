@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault-Signer-Profil",
-    "selectProfile": "Wählen Sie ein Vault-Profil aus...",
-    "hint": "Die Einstellungen stammen aus dem gemeinsamen Profil. Sie melden sich bei Vault über OIDC an, wenn Sie eine Verbindung herstellen. Es werden keine Geheimnisse gespeichert.",
+    "profile": "Unterzeichnerprofil",
+    "selectProfile": "Wählen Sie ein Unterzeichnerprofil aus...",
+    "hint": "Die Einstellungen stammen aus dem Profil. Sie melden sich beim Herstellen der Verbindung mit OIDC bei Vault oder OpenBao an. Es werden keine Geheimnisse gespeichert.",
     "docs": "Dokumentation anzeigen",
     "sharedProfile": "{{name}} (gemeinsam)"
   },
   "profiles": {
     "new": "Neues Profil",
-    "manage": "Vault-Profile verwalten",
+    "manage": "Unterzeichnerprofile verwalten",
     "name": "Anzeigename",
-    "vaultAddr": "Vault-Adresse",
+    "provider": "Unterzeichner",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Serveradresse",
     "namespace": "Namespace",
     "oidcMount": "OIDC-Auth-Mount",
     "oidcRole": "OIDC-Rolle",
@@ -20,55 +25,63 @@
     "keyType": "Typ des temporären Schlüssels",
     "shareWithAll": "Mit allen Nutzern teilen",
     "create": "Profil erstellen",
-    "created": "Vault-Profil erstellt",
-    "saved": "Vault-Profil gespeichert",
-    "deleted": "Vault-Profil gelöscht",
-    "saveFailed": "Fehler beim Speichern des Vault-Profils",
-    "deleteFailed": "Fehler beim Löschen des Vault-Profils",
+    "created": "Unterzeichnerprofil erstellt",
+    "saved": "Unterzeichnerprofil gespeichert",
+    "deleted": "Unterzeichnerprofil gelöscht",
+    "saveFailed": "Fehler beim Speichern des Unterzeichnerprofils",
+    "deleteFailed": "Fehler beim Löschen des Unterzeichnerprofils",
     "save": "Profil speichern",
-    "validationError": "Name, Vault-Adresse und SSH-Signer-Rolle sind erforderlich",
-    "none": "Es gibt noch keine Vault-Profile.",
+    "validationError": "Name, Serveradresse und SSH-Unterzeichnerrolle sind erforderlich",
+    "none": "Es gibt noch keine Unterzeichnerprofile.",
     "sharedBadge": "gemeinsam",
     "edit": "Bearbeiten",
     "delete": "Löschen",
-    "deleteConfirm": "Vault-Profil {{name}} löschen?"
+    "deleteConfirm": "Unterzeichnerprofil {{name}} löschen?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault oder OpenBao"
   },
   "dialog": {
-    "title": "Vault-Anmeldung erforderlich",
-    "description": "Ein Fenster wurde geöffnet, um sich bei HashiCorp Vault anzumelden. Schließen Sie die Anmeldung dort ab; diese Verbindung wird automatisch fortgesetzt.",
-    "failed": "Vault-Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "title": "Anmeldung erforderlich",
+    "description": "Ein Fenster wurde geöffnet, um sich bei {{provider}} anzumelden. Schließen Sie die Anmeldung dort ab, und diese Verbindung wird automatisch fortgesetzt.",
+    "failed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "reopen": "Anmeldungsfenster erneut öffnen"
   },
   "permissions": {
     "use": {
-      "title": "Vault-SSH-Signierung verwenden",
-      "description": "Erstellen Sie Vault-Signer-Profile und stellen Sie Verbindungen zu Hosts her, die Vault verwenden."
+      "title": "SSH-Zertifikatssignierung verwenden",
+      "description": "Erstellen Sie Unterzeichnerprofile und verbinden Sie sich mit Hosts, die Vault oder OpenBao verwenden."
     },
     "share": {
-      "title": "Vault-Profile teilen",
-      "description": "Markieren Sie ein Vault-Signer-Profil als gemeinsam, damit jeder Nutzer es auswählen kann."
+      "title": "Unterzeichnerprofile teilen",
+      "description": "Markieren Sie ein Unterzeichnerprofil als geteilt, damit jeder Benutzer es auswählen kann."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Weiterleitungs-URI",
-      "description": "Fügen Sie diese URL zu allowed_redirect_uris in jeder Vault-OIDC-Rolle hinzu, mit der sich Termix anmeldet."
+      "description": "Fügen Sie diese URL zu allowed_redirect_uris in jeder Vault- oder OpenBao-OIDC-Rolle hinzu, mit der sich Termix anmeldet."
     },
     "privateHosts": {
-      "label": "Erlaubte private Vault-Hosts",
-      "description": "Private oder Loopback-Vault-Hostnamen/IPs, die vom eigenen Profil jedes Nutzers verwendet werden dürfen. Gemeinsame Profile und Profile von Nutzern mit Teilungsrechten dürfen dies bereits. Trennen Sie Einträge durch Kommas oder Zeilenumbrüche."
+      "label": "Erlaubte private Unterzeichner-Hosts",
+      "description": "Private oder Loopback-Hostnamen oder IPs von Vault oder OpenBao, die von den eigenen Profilen aller Benutzer verwendet werden dürfen. Geteilte Profile und Profile von Personen, die bereits teilen dürfen, sind ebenfalls erlaubt. Trennen Sie Einträge durch Kommas oder Zeilenumbrüche."
     },
     "host": {
       "profileId": {
-        "label": "Vault-Signer-Profil"
+        "label": "Unterzeichnerprofil"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Verbinden Sie sich mit Hosts, die kurzlebige SSH-Zertifikate verwenden, die von HashiCorp Vault signiert wurden."
+    "name": "SSH-Zertifikatssigner",
+    "description": "Verbinden Sie sich mit Hosts mit kurzlebigen SSH-Zertifikaten, die von HashiCorp Vault oder OpenBao signiert wurden."
+  },
+  "resultPage": {
+    "signedIn": "Angemeldet",
+    "failed": "Anmeldung fehlgeschlagen",
+    "closing": "Sie können dieses Fenster schließen und zu Termix zurückkehren.",
+    "tryAgain": "Schließen Sie dieses Fenster und versuchen Sie es erneut in Termix.",
+    "close": "Fenster schließen",
+    "requestId": "Anfrage-ID: {{id}}"
   }
 }

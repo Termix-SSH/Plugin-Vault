@@ -1,7 +1,10 @@
-/** A Vault signer profile as GET /profiles returns it. */
+export type SignerProvider = "vault" | "openbao";
+
+/** A signer profile as GET /profiles returns it. */
 export interface VaultProfile {
   id: number;
   name: string;
+  provider: SignerProvider;
   vaultAddr: string;
   vaultNamespace: string | null;
   oidcMount: string | null;
@@ -16,6 +19,7 @@ export interface VaultProfile {
 
 export interface VaultProfilePayload {
   name: string;
+  provider: SignerProvider;
   vaultAddr: string;
   vaultNamespace: string | null;
   oidcMount: string | null;

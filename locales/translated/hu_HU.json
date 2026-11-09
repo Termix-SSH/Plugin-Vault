@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Vault aláíró profil",
-    "selectProfile": "Válasszon egy Vault profilt...",
-    "hint": "A beállítások a megosztott profilból származnak; a csatlakozáskor OIDC-n keresztül jelentkezzen be a Vaultba. Nincsenek titkok tárolva.",
+    "profile": "Aláíró profil",
+    "selectProfile": "Válasszon aláíró profilt...",
+    "hint": "A beállítások a profilból származnak. A csatlakozáskor OIDC segítségével jelentkezzen be a Vault vagy OpenBao rendszerbe. Titkos adatok nem tárolódnak.",
     "docs": "Dokumentáció megtekintése",
     "sharedProfile": "{{name}} (megosztott)"
   },
   "profiles": {
     "new": "Új profil",
-    "manage": "Vault profilok kezelése",
+    "manage": "Aláíró profilok kezelése",
     "name": "Megnevezés",
-    "vaultAddr": "Vault cím",
+    "provider": "Aláíró",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Szerver címe",
     "namespace": "Névtér",
     "oidcMount": "OIDC hitelesítési mount",
     "oidcRole": "OIDC szerep",
@@ -20,55 +25,63 @@
     "keyType": "Ideiglenes kulcstípus",
     "shareWithAll": "Megosztás minden felhasználóval",
     "create": "Profil létrehozása",
-    "created": "Vault profil létrehozva",
-    "saved": "Vault profil mentve",
-    "deleted": "Vault profil törölve",
-    "saveFailed": "A Vault profil mentése sikertelen",
-    "deleteFailed": "A Vault profil törlése sikertelen",
+    "created": "Aláíró profil létrehozva",
+    "saved": "Aláíró profil mentve",
+    "deleted": "Aláíró profil törölve",
+    "saveFailed": "Az aláíró profil mentése sikertelen",
+    "deleteFailed": "Az aláíró profil törlése sikertelen",
     "save": "Profil mentése",
-    "validationError": "A megnevezés, a Vault cím és az SSH aláíró szerep megadása kötelező",
-    "none": "Még nincsenek Vault profilok.",
+    "validationError": "A név, a szerver címe és az SSH aláíró szerepkör megadása kötelező",
+    "none": "Még nincsenek aláíró profilok.",
     "sharedBadge": "megosztott",
     "edit": "Szerkesztés",
     "delete": "Törlés",
-    "deleteConfirm": "Törli a(z) {{name}} Vault profilt?"
+    "deleteConfirm": "Törli a(z) {{name}} aláíró profilt?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault vagy OpenBao"
   },
   "dialog": {
-    "title": "Vault bejelentkezés szükséges",
-    "description": "Egy ablak nyílt a HashiCorp Vault bejelentkezéséhez. Fejezze be a bejelentkezést ott; a kapcsolat automatikusan folytatódik.",
-    "failed": "A Vault hitelesítés sikertelen. Kérjük, próbálja újra.",
+    "title": "Bejelentkezés szükséges",
+    "description": "Egy ablak nyílt meg a(z) {{provider}} bejelentkezéséhez. Fejezze be a bejelentkezést ott, és a kapcsolat automatikusan folytatódik.",
+    "failed": "A bejelentkezés sikertelen. Kérjük, próbálja újra.",
     "reopen": "Bejelentkező ablak újranyitása"
   },
   "permissions": {
     "use": {
-      "title": "Vault SSH aláírás használata",
-      "description": "Vault aláíró profilok létrehozása és olyan hostokhoz való csatlakozás, amelyek a Vaultot használják."
+      "title": "SSH tanúsítvány-aláírás használata",
+      "description": "Aláíró profilok létrehozása és kapcsolódás olyan hostokhoz, amelyek Vaultot vagy OpenBao-t használnak."
     },
     "share": {
-      "title": "Vault profilok megosztása",
-      "description": "Jelöljön meg egy Vault aláíró profilt megosztottnak, hogy minden felhasználó kiválaszthassa."
+      "title": "Aláíró profilok megosztása",
+      "description": "Jelöljön ki egy aláíró profilt megosztottnak, hogy minden felhasználó kiválaszthassa."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "Átirányítási URI",
-      "description": "Adja hozzá ezt a URL-t az allowed_redirect_uris listájához minden olyan Vault OIDC szerepnél, amellyel a Termix bejelentkezik."
+      "description": "Adja hozzá ezt a URL-t az allowed_redirect_uris listájához minden olyan Vault vagy OpenBao OIDC szerepkörben, amivel a Termix bejelentkezik."
     },
     "privateHosts": {
-      "label": "Megengedett privát Vault hostok",
-      "description": "Privát vagy loopback Vault hosztnevek/IP-címek, amelyeket bárki saját profilja használhat. A megosztott profilok és azok, amelyeket megosztható személyek hoztak létre, már eleve használhatják őket. A bejegyzéseket vesszővel vagy új sorokkal válassza el."
+      "label": "Megengedett privát aláíró hostok",
+      "description": "Privát vagy loopback Vault vagy OpenBao hosztnév vagy IP-címek, amelyeket bárki saját profilja használhat. A megosztott profilok és azok, amelyeket megosztható felhasználók hoztak létre, eleve használhatják őket. A bejegyzéseket vesszővel vagy új sorokkal válassza el."
     },
     "host": {
       "profileId": {
-        "label": "Vault aláíró profil"
+        "label": "Aláíró profil"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Csatlakozzon hostokhoz a HashiCorp Vault által aláírt, rövid életű SSH-tanúsítványok segítségével."
+    "name": "SSH tanúsítvány-aláíró",
+    "description": "Kapcsolódjon hostokhoz rövid élettartamú SSH tanúsítványokkal, amelyeket a HashiCorp Vault vagy az OpenBao írt alá."
+  },
+  "resultPage": {
+    "signedIn": "Bejelentkezve",
+    "failed": "A bejelentkezés sikertelen",
+    "closing": "Bezárhatja ezt az ablakot, és visszatérhet a Termixhez.",
+    "tryAgain": "Zárja be ezt az ablakot, és próbálja újra a Termixben.",
+    "close": "Ablak bezárása",
+    "requestId": "Kérés azonosítója: {{id}}"
   }
 }

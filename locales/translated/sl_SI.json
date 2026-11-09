@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profil podpisovalca Vault",
-    "selectProfile": "Izberite profil Vault...",
-    "hint": "Nastavitve so iz skupnega profila; pri povezavi se boste v Vault prijavili prek OIDC. skrivnosti se ne shranjujejo.",
+    "profile": "Profil podpisovalca",
+    "selectProfile": "Izberite profil podpisovalca...",
+    "hint": "Nastavitve so iz profila. Ob povezavi se prijavite v Vault ali OpenBao z OIDC. Tajni podatki se ne shranjujejo.",
     "docs": "Oglejte si dokumentacijo",
     "sharedProfile": "{{name}} (skupno)"
   },
   "profiles": {
     "new": "Nov profil",
-    "manage": "Upravljanje profilov Vault",
+    "manage": "Upravljanje profilov podpisovalcev",
     "name": "Prijazno ime",
-    "vaultAddr": "Naslov Vault",
+    "provider": "Podpisovalec",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Naslov strežnika",
     "namespace": "Imenski prostor",
     "oidcMount": "Točka namestitve preverjanja pristnosti OIDC",
     "oidcRole": "Vloga OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Vrsta kratkotrajnega ključa",
     "shareWithAll": "Deli z vsemi uporabniki",
     "create": "Ustvari profil",
-    "created": "Profil Vault je ustvarjen",
-    "saved": "Profil Vault je shranjen",
-    "deleted": "Profil Vault je izbrisan",
-    "saveFailed": "Shranjevanje profila Vault ni uspelo",
-    "deleteFailed": "Brisanje profila Vault ni uspelo",
+    "created": "Profil podpisovalca je ustvarjen",
+    "saved": "Profil podpisovalca je shranjen",
+    "deleted": "Profil podpisovalca je izbrisan",
+    "saveFailed": "Shranjevanja profila podpisovalca ni bilo mogoče izvesti",
+    "deleteFailed": "Izbris profila podpisovalca ni uspel",
     "save": "Shrani profil",
-    "validationError": "Ime, naslov Vault in vloga podpisovalca SSH so obvezni",
-    "none": "Še ni profilov Vault.",
+    "validationError": "Ime, naslov strežnika in vloga SSH podpisovalca so obvezni",
+    "none": "Še ni profilov podpisovalcev.",
     "sharedBadge": "skupno",
     "edit": "Uredi",
     "delete": "Izbriši",
-    "deleteConfirm": "Izbrišete profil Vault {{name}}?"
+    "deleteConfirm": "Izbrisati profil podpisovalca {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault ali OpenBao"
   },
   "dialog": {
-    "title": "Potrebna je prijava v Vault",
-    "description": "Odprlo se je okno za prijavo v HashiCorp Vault. Tam dokončajte prijavo; ta povezava se bo samodejno nadaljevala.",
-    "failed": "Preverjanje pristnosti Vault ni uspelo. Poskusite znova.",
+    "title": "Zahtevana je prijava",
+    "description": "Odprlo se je okno za prijavo v {{provider}}. Končajte prijavo tam, povezava pa bo samodejno nadaljevala.",
+    "failed": "Prijava ni uspela. Poskusite znova.",
     "reopen": "Ponovno odprite okno za prijavo"
   },
   "permissions": {
     "use": {
-      "title": "Uporaba podpisovanja SSH prek Vault",
-      "description": "Ustvarjajte profile podpisovalcev Vault in se povežite z gostitelji, ki uporabljajo Vault."
+      "title": "Uporaba podpisovanja SSH certifikatov",
+      "description": "Ustvarjanje profilov podpisovalcev in povezovanje s strežniki, ki uporabljajo Vault ali OpenBao."
     },
     "share": {
-      "title": "Deljenje profilov Vault",
-      "description": "Označite profil podpisovalca Vault kot skupen, da ga lahko izbere vsak uporabnik."
+      "title": "Souporaba profilov podpisovalcev",
+      "description": "Označite profil podpisovalca kot skupni, da ga lahko izbere vsak uporabnik."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI za preusmeritev",
-      "description": "Ta URL dodajte v allowed_redirect_uris v vsaki vlogi Vault OIDC, s katero se Termix prijavlja."
+      "description": "Ta URL dodajte na seznam allowed_redirect_uris v vsaki vlogi OIDC za Vault ali OpenBao, s katero se Termix prijavlja."
     },
     "privateHosts": {
-      "label": "Dovoljeni zasebni gostitelji Vault",
-      "description": "Zasebni ali zanka gostiteljska imena/IP-ji Vault, ki jih lahko uporablja profil katerega koli uporabnika. Skupni profili in profili, ki jih ustvarijo osebe z dovoljenjem za deljenje, jih lahko že uporabljajo. Vnos ločite z vejicami ali novimi vrsticami."
+      "label": "Dovoljeni zasebni strežniki podpisovalcev",
+      "description": "Zasebni ali zankasti naslovi ali IP-ji strežnikov Vault ali OpenBao, ki jih lahko uporablja kateri koli lastni profil. Skupni profili in profili, ustvarjeni s strani tistih, ki imajo pravico do souporabe, jih lahko uporabljajo že. Vnos ločite z vejicami ali novimi vrsticami."
     },
     "host": {
       "profileId": {
-        "label": "Profil podpisovalca Vault"
+        "label": "Profil podpisovalca"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Povežite se z gostitelji z kratkoročnimi SSH certifikati, ki jih je podpisal HashiCorp Vault."
+    "name": "Podpisovalec SSH certifikatov",
+    "description": "Povezovanje s strežniki z kratkotrajnimi SSH certifikati, ki jih je podpisal HashiCorp Vault ali OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Prijavljeno",
+    "failed": "Prijava ni uspela",
+    "closing": "To okno lahko zaprete in se vrnete v Termix.",
+    "tryAgain": "Zaprite to okno in poskusite znova iz Termixa.",
+    "close": "Zapri okno",
+    "requestId": "ID zahteve: {{id}}"
   }
 }

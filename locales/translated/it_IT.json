@@ -1,16 +1,21 @@
 {
   "editor": {
-    "profile": "Profilo firmatario Vault",
-    "selectProfile": "Seleziona un profilo Vault...",
-    "hint": "Le impostazioni derivano dal profilo condiviso; accederai a Vault tramite OIDC quando ti connetterai. Nessun segreto viene memorizzato.",
+    "profile": "Profilo firmatario",
+    "selectProfile": "Seleziona un profilo firmatario...",
+    "hint": "Le impostazioni derivano dal profilo. Ti autentichi a Vault o OpenBao con OIDC quando ti connetti. Nessun segreto viene memorizzato.",
     "docs": "Visualizza documentazione",
     "sharedProfile": "{{name}} (condiviso)"
   },
   "profiles": {
     "new": "Nuovo profilo",
-    "manage": "Gestisci profili Vault",
+    "manage": "Gestisci i profili firmatari",
     "name": "Nome visualizzato",
-    "vaultAddr": "Indirizzo Vault",
+    "provider": "Firmatario",
+    "providers": {
+      "vault": "HashiCorp Vault",
+      "openbao": "OpenBao"
+    },
+    "vaultAddr": "Indirizzo server",
     "namespace": "Namespace",
     "oidcMount": "Mount di autenticazione OIDC",
     "oidcRole": "Ruolo OIDC",
@@ -20,55 +25,63 @@
     "keyType": "Tipo di chiave temporanea",
     "shareWithAll": "Condividi con tutti gli utenti",
     "create": "Crea profilo",
-    "created": "Profilo Vault creato",
-    "saved": "Profilo Vault salvato",
-    "deleted": "Profilo Vault eliminato",
-    "saveFailed": "Impossibile salvare il profilo Vault",
-    "deleteFailed": "Impossibile eliminare il profilo Vault",
+    "created": "Profilo firmatario creato",
+    "saved": "Profilo firmatario salvato",
+    "deleted": "Profilo firmatario eliminato",
+    "saveFailed": "Impossibile salvare il profilo firmatario",
+    "deleteFailed": "Impossibile eliminare il profilo firmatario",
     "save": "Salva profilo",
-    "validationError": "Nome, indirizzo Vault e ruolo firmatario SSH sono obbligatori",
-    "none": "Nessun profilo Vault ancora.",
+    "validationError": "Nome, indirizzo server e ruolo di firma SSH sono obbligatori",
+    "none": "Nessun profilo firmatario ancora.",
     "sharedBadge": "condiviso",
     "edit": "Modifica",
     "delete": "Elimina",
-    "deleteConfirm": "Eliminare il profilo Vault {{name}}?"
+    "deleteConfirm": "Eliminare il profilo firmatario {{name}}?"
   },
   "hosts": {
-    "filterAuthVault": "Vault"
+    "filterAuthVault": "Vault o OpenBao"
   },
   "dialog": {
-    "title": "Accesso a Vault richiesto",
-    "description": "È stata aperta una finestra per accedere a HashiCorp Vault. Completa l'accesso lì; questa connessione continuerà automaticamente.",
-    "failed": "Autenticazione Vault non riuscita. Riprova.",
+    "title": "Accesso richiesto",
+    "description": "È stata aperta una finestra per accedere a {{provider}}. Completa l'accesso lì e questa connessione proseguirà automaticamente.",
+    "failed": "Accesso non riuscito. Riprova.",
     "reopen": "Riapri finestra di accesso"
   },
   "permissions": {
     "use": {
-      "title": "Usa la firma SSH di Vault",
-      "description": "Crea profili firmatari Vault e connettiti agli host che utilizzano Vault."
+      "title": "Usa la firma certificati SSH",
+      "description": "Crea profili firmatari e connettiti a host che utilizzano Vault o OpenBao."
     },
     "share": {
-      "title": "Condividi profili Vault",
-      "description": "Segna un profilo firmatario Vault come condiviso in modo che ogni utente possa selezionarlo."
+      "title": "Condividi profili firmatari",
+      "description": "Segna un profilo firmatario come condiviso in modo che ogni utente possa selezionarlo."
     }
   },
   "settings": {
     "redirectUri": {
       "label": "URI di reindirizzamento",
-      "description": "Aggiungi questo URL a allowed_redirect_uris in ogni ruolo OIDC di Vault con cui Termix effettua l'accesso."
+      "description": "Aggiungi questo URL a allowed_redirect_uris in ogni ruolo OIDC di Vault o OpenBao con cui Termix effettua l'accesso."
     },
     "privateHosts": {
-      "label": "Host Vault privati consentiti",
-      "description": "Nomi host/IP Vault privati o di loopback che il profilo personale di chiunque può utilizzare. I profili condivisi e quelli creati da persone autorizzate a condividere possono già farlo. Separa le voci con virgole o a capo."
+      "label": "Host firmatari privati consentiti",
+      "description": "Nomi host o indirizzi IP privati o di loopback di Vault o OpenBao che possono essere utilizzati dal profilo personale di chiunque. I profili condivisi e quelli creati da persone con autorizzazione alla condivisione possono già farlo. Separa le voci con virgole o a capo."
     },
     "host": {
       "profileId": {
-        "label": "Profilo firmatario Vault"
+        "label": "Profilo firmatario"
       }
     }
   },
   "plugin": {
-    "name": "HashiCorp Vault",
-    "description": "Connettiti agli host con certificati SSH a breve durata firmati da HashiCorp Vault."
+    "name": "Firmatario certificati SSH",
+    "description": "Connettiti a host con certificati SSH a breve durata firmati da HashiCorp Vault o OpenBao."
+  },
+  "resultPage": {
+    "signedIn": "Accesso effettuato",
+    "failed": "Accesso non riuscito",
+    "closing": "Puoi chiudere questa finestra e tornare a Termix.",
+    "tryAgain": "Chiudi questa finestra e riprova da Termix.",
+    "close": "Chiudi finestra",
+    "requestId": "ID richiesta: {{id}}"
   }
 }

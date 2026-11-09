@@ -19,6 +19,7 @@ export interface TerminalOverlayProps {
 
 interface DialogState {
   stage: "waiting" | "error";
+  provider?: string;
   error?: string;
   hostId?: unknown;
   requestId?: string;
@@ -28,9 +29,9 @@ interface DialogState {
 const DIALOG_TIMEOUT_MS = 300_000;
 
 /**
- * Runs the Vault OIDC sign-in for a terminal: asks the server to start it,
- * opens Vault's auth URL in a popup, and reconnects once Vault has signed
- * the certificate.
+ * Runs the OIDC sign-in for a terminal: asks the server to start it, opens
+ * the signer's auth URL in a popup, and reconnects once the certificate is
+ * signed.
  */
 export function VaultOverlay({
   subscribe,
@@ -94,6 +95,10 @@ export function VaultOverlay({
           }
           setDialog({
             stage: "waiting",
+            provider:
+              typeof message.provider === "string"
+                ? message.provider
+                : undefined,
             hostId: message.hostId,
             requestId:
               typeof message.requestId === "string"
@@ -210,7 +215,11 @@ export function VaultOverlay({
         <div className="flex items-center gap-3 py-1">
           <Loader2 className="size-4 animate-spin text-accent-brand shrink-0" />
           <p className="text-xs text-muted-foreground">
-            {t("dialog.description")}
+            {t("dialog.description", {
+              provider: t(
+                `profiles.providers.${dialog.provider === "openbao" ? "openbao" : "vault"}`,
+              ),
+            })}
           </p>
         </div>
       ) : (
