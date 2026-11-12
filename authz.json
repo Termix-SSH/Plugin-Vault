@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Termix-SSH/Termix/main/scripts/authz/authz.schema.json",
+  "seed": [
+    {
+      "as": "owner",
+      "method": "POST",
+      "path": "/plugin-api/vault/profiles",
+      "body": {
+        "name": "authz-own-vault",
+        "vaultAddr": "https://127.0.0.1:9",
+        "sshRole": "ops",
+        "oidcRole": "dev"
+      },
+      "capture": {
+        "vault.profiles": "id"
+      }
+    }
+  ],
+  "routes": {
+    "GET /plugin-api/vault/oidc/callback": {
+      "access": "public"
+    },
+    "GET /plugin-api/vault/profiles": {
+      "access": "user",
+      "permission": "vault.use"
+    },
+    "POST /plugin-api/vault/profiles": {
+      "access": "user"
+    },
+    "DELETE /plugin-api/vault/profiles/:id": {
+      "access": "user",
+      "resource": {
+        "kind": "own",
+        "fixture": "vault.profiles"
+      },
+      "params": {
+        "id": "vault.profiles"
+      },
+      "destructive": true
+    },
+    "PUT /plugin-api/vault/profiles/:id": {
+      "access": "user",
+      "resource": {
+        "kind": "own",
+        "fixture": "vault.profiles"
+      },
+      "params": {
+        "id": "vault.profiles"
+      }
+    }
+  }
+}
