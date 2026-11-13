@@ -76,6 +76,7 @@ describe("activate", () => {
     async (capability) => {
       const db = await createTestDb(pluginDir);
       const mock = createMockCtx({
+        sandbox: true,
         pluginId: manifest.id,
         manifest,
         capabilities: manifest.capabilities.filter((c) => c !== capability),
