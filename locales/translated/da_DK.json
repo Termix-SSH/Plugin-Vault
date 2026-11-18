@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault eller OpenBao"
   },
   "dialog": {
-    "title": "Login påkrævet",
-    "description": "Et vindue er åbnet for at logge ind på {{provider}}. Afslut logningen der, og forbindelsen fortsætter automatisk.",
-    "failed": "Login mislykkedes. Prøv venligst igen.",
-    "reopen": "Genåbn login-vindue"
+    "title": "Godkendelse påkrævet",
+    "providerTitle": "Godkendelse via {{provider}} påkrævet",
+    "description": "Udfør godkendelsen i din browser for at fortsætte. Certifikatet forbliver gyldigt, så længe din signeringsudbyder tillader det.",
+    "openBrowser": "Åbn browser til godkendelse",
+    "waiting": "Venter på godkendelse i browseren...",
+    "failed": "Login mislykkedes. Prøv venligst igen."
   },
   "permissions": {
     "use": {

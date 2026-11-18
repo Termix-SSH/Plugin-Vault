@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault vagy OpenBao"
   },
   "dialog": {
-    "title": "Bejelentkezés szükséges",
-    "description": "Egy ablak nyílt meg a(z) {{provider}} bejelentkezéséhez. Fejezze be a bejelentkezést ott, és a kapcsolat automatikusan folytatódik.",
-    "failed": "A bejelentkezés sikertelen. Kérjük, próbálja újra.",
-    "reopen": "Bejelentkező ablak újranyitása"
+    "title": "Hitelesítés szükséges",
+    "providerTitle": "{{provider}} hitelesítés szükséges",
+    "description": "Fejezze be a hitelesítést a böngészőjében a folytatáshoz. A tanúsítvány addig érvényes, amíg a aláíró engedélyezi.",
+    "openBrowser": "Böngésző megnyitása a hitelesítéshez",
+    "waiting": "Várakozás a böngészős hitelesítésre...",
+    "failed": "A bejelentkezés sikertelen. Kérjük, próbálja újra."
   },
   "permissions": {
     "use": {

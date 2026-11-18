@@ -1,7 +1,7 @@
 {
   "id": "vault",
   "name": "SSH Certificate Signer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Connect to hosts with short-lived SSH certificates signed by HashiCorp Vault or OpenBao.",
   "author": {
     "name": "Termix"
@@ -20,8 +20,8 @@
     "Reusable signer profiles you can share with everyone"
   ],
   "engine": {
-    "termix": ">=26.11.1-0",
-    "api": "^1.16"
+    "termix": ">=26.11.2-0",
+    "api": "^2.0.0"
   },
   "capabilities": [
     "db:own",
@@ -31,6 +31,9 @@
     "auth:provide",
     "ui:surface"
   ],
+  "sandbox": {
+    "registry": ["vault.hostSettingsSync"]
+  },
   "contributes": {
     "auth": {
       "sshAuthTypes": ["vault"]

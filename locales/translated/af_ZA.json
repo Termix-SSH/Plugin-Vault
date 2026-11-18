@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault of OpenBao"
   },
   "dialog": {
-    "title": "Aanmelding vereis",
-    "description": "'n Venster het oopgegaan om aan te meld by {{provider}}. Voltooi die aanmelding daar en hierdie verbinding sal self voortgaan.",
-    "failed": "Aanmelding het misluk. Probeer asseblief weer.",
-    "reopen": "Heropen aanmeldvenster"
+    "title": "Verifikasie Vereis",
+    "providerTitle": "{{provider}} Verifikasie Vereis",
+    "description": "Voltooi verifikasie in jou blaaier om voort te gaan. Die sertifikaat bly geldig so lank as wat jou ondertekenaar dit toelaat.",
+    "openBrowser": "Maak Blaaier Oop om te Verifieer",
+    "waiting": "Wag vir verifikasie in blaaier...",
+    "failed": "Aanmelding het misluk. Probeer asseblief weer."
   },
   "permissions": {
     "use": {

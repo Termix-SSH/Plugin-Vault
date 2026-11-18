@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault hoặc OpenBao"
   },
   "dialog": {
-    "title": "Yêu cầu đăng nhập",
-    "description": "Một cửa sổ đã mở để đăng nhập vào {{provider}}. Hoàn tất đăng nhập ở đó và kết nối này sẽ tự động tiếp tục.",
-    "failed": "Đăng nhập thất bại. Vui lòng thử lại.",
-    "reopen": "Mở lại cửa sổ đăng nhập"
+    "title": "Yêu cầu xác thực",
+    "providerTitle": "Yêu cầu xác thực {{provider}}",
+    "description": "Hoàn tất xác thực trong trình duyệt để tiếp tục. Chứng chỉ sẽ có hiệu lực trong thời gian mà trình ký của bạn cho phép.",
+    "openBrowser": "Mở trình duyệt để xác thực",
+    "waiting": "Đang chờ xác thực trong trình duyệt...",
+    "failed": "Đăng nhập thất bại. Vui lòng thử lại."
   },
   "permissions": {
     "use": {

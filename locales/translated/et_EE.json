@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault või OpenBao"
   },
   "dialog": {
-    "title": "Sisselogimine on nõutav",
-    "description": "Aken on avatud, et logida sisse {{provider}}. Logige seal sisse ja ühendus jätkub automaatselt.",
-    "failed": "Sisselogimine ebaõnnestus. Palun proovige uuesti.",
-    "reopen": "Ava sisselogimise aken uuesti"
+    "title": "Autentimine on nõutud",
+    "providerTitle": "{{provider}} autentimine on nõutud",
+    "description": "Jätkamiseks lõpetage autentimine oma brauseris. Sertifikaat kehtib seni, kuni seda teie allkirjastaja lubab.",
+    "openBrowser": "Ava brauser autentimiseks",
+    "waiting": "Ootame brauseris autentimist...",
+    "failed": "Sisselogimine ebaõnnestus. Palun proovige uuesti."
   },
   "permissions": {
     "use": {

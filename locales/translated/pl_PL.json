@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault lub OpenBao"
   },
   "dialog": {
-    "title": "Wymagane logowanie",
-    "description": "Otwarto okno do logowania do {{provider}}. Ukończ logowanie tam, a połączenie zostanie nawiązane automatycznie.",
-    "failed": "Logowanie nie powiodło się. Spróbuj ponownie.",
-    "reopen": "Otwórz ponownie okno logowania"
+    "title": "Wymagane uwierzytelnienie",
+    "providerTitle": "Wymagane uwierzytelnienie przez {{provider}}",
+    "description": "Ukończ uwierzytelnienie w przeglądarce, aby kontynuować. Certyfikat pozostaje ważny tak długo, jak zezwala na to podpisujący.",
+    "openBrowser": "Otwórz przeglądarkę, aby się uwierzytelnić",
+    "waiting": "Oczekiwanie na uwierzytelnienie w przeglądarce...",
+    "failed": "Logowanie nie powiodło się. Spróbuj ponownie."
   },
   "permissions": {
     "use": {

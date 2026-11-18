@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault oder OpenBao"
   },
   "dialog": {
-    "title": "Anmeldung erforderlich",
-    "description": "Ein Fenster wurde geöffnet, um sich bei {{provider}} anzumelden. Schließen Sie die Anmeldung dort ab, und diese Verbindung wird automatisch fortgesetzt.",
-    "failed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
-    "reopen": "Anmeldungsfenster erneut öffnen"
+    "title": "Authentifizierung erforderlich",
+    "providerTitle": "Authentifizierung für {{provider}} erforderlich",
+    "description": "Schließen Sie die Authentifizierung in Ihrem Browser ab, um fortzufahren. Das Zertifikat bleibt so lange gültig, wie Ihr Signierer es zulässt.",
+    "openBrowser": "Browser öffnen, um sich zu authentifizieren",
+    "waiting": "Warte auf Authentifizierung im Browser...",
+    "failed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."
   },
   "permissions": {
     "use": {

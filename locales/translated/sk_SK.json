@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault alebo OpenBao"
   },
   "dialog": {
-    "title": "Vyžaduje sa prihlásenie",
-    "description": "Otvorilo sa okno na prihlásenie do {{provider}}. Dokončite prihlásenie tam a toto pripojenie sa dokončí automaticky.",
-    "failed": "Prihlásenie zlyhalo. Skúste to znova.",
-    "reopen": "Znova otvoriť okno na prihlásenie"
+    "title": "Vyžaduje sa overenie",
+    "providerTitle": "Vyžaduje sa overenie prostredníctvom {{provider}}",
+    "description": "Dokončite overenie vo svojom prehliadači a pokračujte. Certifikát zostane platný tak dlho, ako to dovoľuje váš podpisovateľ.",
+    "openBrowser": "Otvoriť prehliadač na overenie",
+    "waiting": "Čaká sa na overenie v prehliadači...",
+    "failed": "Prihlásenie zlyhalo. Skúste to znova."
   },
   "permissions": {
     "use": {

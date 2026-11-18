@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault arba OpenBao"
   },
   "dialog": {
-    "title": "Reikalingas prisijungimas",
-    "description": "Atidarytas langas prisijungimui prie {{provider}}. Užbaikite prisijungimą tame lange, o šis ryšys tęsis automatiškai.",
-    "failed": "Prisijungimas nepavyko. Bandykite dar kartą.",
-    "reopen": "Iš naujo atidaryti prisijungimo langą"
+    "title": "Reikalinga autentifikacija",
+    "providerTitle": "Reikalinga „{{provider}}“ autentifikacija",
+    "description": "Norėdami tęsti, užbaigite autentifikaciją naršyklėje. Sertifikatas lieka galiojantis tol, kol leidžia jūsų parašo išdavėjas.",
+    "openBrowser": "Atidaryti naršyklę autentifikacijai",
+    "waiting": "Laukiama autentifikacijos naršyklėje...",
+    "failed": "Prisijungimas nepavyko. Bandykite dar kartą."
   },
   "permissions": {
     "use": {

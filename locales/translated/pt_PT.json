@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault ou OpenBao"
   },
   "dialog": {
-    "title": "Início de sessão necessário",
-    "description": "Uma janela abriu para iniciar sessão no {{provider}}. Conclua o início de sessão lá e esta ligação continuará automaticamente.",
-    "failed": "Falha no início de sessão. Tente novamente.",
-    "reopen": "Reabrir janela de início de sessão"
+    "title": "Autenticação Necessária",
+    "providerTitle": "Autenticação {{provider}} Necessária",
+    "description": "Complete a autenticação no seu navegador para continuar. O certificado permanece válido enquanto o seu signatário permitir.",
+    "openBrowser": "Abrir Navegador para Autenticar",
+    "waiting": "À espera de autenticação no navegador...",
+    "failed": "Falha no início de sessão. Tente novamente."
   },
   "permissions": {
     "use": {

@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault 또는 OpenBao"
   },
   "dialog": {
-    "title": "로그인 필요",
-    "description": "{{provider}}에 로그인하기 위한 창이 열렸습니다. 해당 창에서 로그인을 완료하면 연결이 자동으로 계속됩니다.",
-    "failed": "로그인에 실패했습니다. 다시 시도해 주세요.",
-    "reopen": "로그인 창 다시 열기"
+    "title": "인증 필요",
+    "providerTitle": "{{provider}} 인증 필요",
+    "description": "계속하려면 브라우저에서 인증을 완료하세요. 서명자가 허용하는 동안 인증서는 유효합니다.",
+    "openBrowser": "브라우저를 열어 인증하기",
+    "waiting": "브라우저에서 인증을 기다리는 중...",
+    "failed": "로그인에 실패했습니다. 다시 시도해 주세요."
   },
   "permissions": {
     "use": {

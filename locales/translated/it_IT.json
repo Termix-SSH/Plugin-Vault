@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault o OpenBao"
   },
   "dialog": {
-    "title": "Accesso richiesto",
-    "description": "È stata aperta una finestra per accedere a {{provider}}. Completa l'accesso lì e questa connessione proseguirà automaticamente.",
-    "failed": "Accesso non riuscito. Riprova.",
-    "reopen": "Riapri finestra di accesso"
+    "title": "Autenticazione richiesta",
+    "providerTitle": "Autenticazione {{provider}} richiesta",
+    "description": "Completa l'autenticazione nel browser per continuare. Il certificato rimane valido finché il firmatario lo consente.",
+    "openBrowser": "Apri il browser per autenticarti",
+    "waiting": "In attesa dell'autenticazione nel browser...",
+    "failed": "Accesso non riuscito. Riprova."
   },
   "permissions": {
     "use": {

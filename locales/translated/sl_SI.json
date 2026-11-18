@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault ali OpenBao"
   },
   "dialog": {
-    "title": "Zahtevana je prijava",
-    "description": "Odprlo se je okno za prijavo v {{provider}}. Končajte prijavo tam, povezava pa bo samodejno nadaljevala.",
-    "failed": "Prijava ni uspela. Poskusite znova.",
-    "reopen": "Ponovno odprite okno za prijavo"
+    "title": "Potrebna je avtentikacija",
+    "providerTitle": "Potrebna je avtentikacija za ponudnika {{provider}}",
+    "description": "Za nadaljevanje dokončajte avtentikacijo v brskalniku. Potrdilo ostane veljavno, dokler to dovoli vaš podpisovalec.",
+    "openBrowser": "Odpri brskalnik za avtentikacijo",
+    "waiting": "Čakanje na avtentikacijo v brskalniku...",
+    "failed": "Prijava ni uspela. Poskusite znova."
   },
   "permissions": {
     "use": {

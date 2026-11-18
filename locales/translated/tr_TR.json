@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault veya OpenBao"
   },
   "dialog": {
-    "title": "Giriş gerekli",
-    "description": "{{provider}}'a giriş yapmak için bir pencere açıldı. Girişi orada tamamlayın, bağlantı kendiliğinden devam edecek.",
-    "failed": "Giriş başarısız oldu. Lütfen tekrar deneyin.",
-    "reopen": "Giriş penceresini yeniden aç"
+    "title": "Kimlik Doğrulama Gerekli",
+    "providerTitle": "{{provider}} Kimlik Doğrulaması Gerekli",
+    "description": "Devam etmek için tarayıcınızda kimlik doğrulamayı tamamlayın. Sertifika, imzalayıcınız izin verdiği sürece geçerli kalır.",
+    "openBrowser": "Kimlik Doğrulama İçin Tarayıcıyı Aç",
+    "waiting": "Tarayıcıda kimlik doğrulama bekleniyor...",
+    "failed": "Giriş başarısız oldu. Lütfen tekrar deneyin."
   },
   "permissions": {
     "use": {

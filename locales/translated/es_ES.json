@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault u OpenBao"
   },
   "dialog": {
-    "title": "Se requiere inicio de sesión",
-    "description": "Se ha abierto una ventana para iniciar sesión en {{provider}}. Finaliza el inicio de sesión allí y esta conexión continuará automáticamente.",
-    "failed": "Error al iniciar sesión. Inténtalo de nuevo.",
-    "reopen": "Reabrir ventana de inicio de sesión"
+    "title": "Se requiere autenticación",
+    "providerTitle": "Se requiere autenticación de {{provider}}",
+    "description": "Completa la autenticación en tu navegador para continuar. El certificado permanece válido mientras tu firmante lo permita.",
+    "openBrowser": "Abrir navegador para autenticarse",
+    "waiting": "Esperando autenticación en el navegador...",
+    "failed": "Error al iniciar sesión. Inténtalo de nuevo."
   },
   "permissions": {
     "use": {

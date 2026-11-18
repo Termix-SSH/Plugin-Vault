@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault nebo OpenBao"
   },
   "dialog": {
-    "title": "Vyžadováno přihlášení",
-    "description": "Otevřelo se okno pro přihlášení do {{provider}}. Dokončete přihlášení tam a toto připojení se automaticky obnoví.",
-    "failed": "Přihlášení selhalo. Zkuste to prosím znovu.",
-    "reopen": "Znovu otevřít okno pro přihlášení"
+    "title": "Je vyžadováno ověření",
+    "providerTitle": "Je vyžadováno ověření prostřednictvím {{provider}}",
+    "description": "Pro pokračování dokončete ověření ve svém prohlížeči. Certifikát zůstává platný po celou dobu, kterou vám to umožňuje váš podpisový server.",
+    "openBrowser": "Otevřít prohlížeč pro ověření",
+    "waiting": "Čeká se na ověření v prohlížeči...",
+    "failed": "Přihlášení selhalo. Zkuste to prosím znovu."
   },
   "permissions": {
     "use": {

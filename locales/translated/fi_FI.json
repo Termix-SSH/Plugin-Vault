@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault tai OpenBao"
   },
   "dialog": {
-    "title": "Kirjautuminen vaaditaan",
-    "description": "Ikkuna on avattu kirjautumista varten palveluun {{provider}}. Suorita kirjautuminen siellä, ja yhteys jatkuu automaattisesti.",
-    "failed": "Kirjautuminen epäonnistui. Yritä uudelleen.",
-    "reopen": "Avaa kirjautumisikkuna uudelleen"
+    "title": "Todennus vaaditaan",
+    "providerTitle": "{{provider}}-todennus vaaditaan",
+    "description": "Suorita todennus selaimessasi jatkaaksesi. Sertifikaatti pysyy voimassa niin kauan kuin allekirjoittaja sallii.",
+    "openBrowser": "Avaa selain todennusta varten",
+    "waiting": "Odottaa todennusta selaimessa...",
+    "failed": "Kirjautuminen epäonnistui. Yritä uudelleen."
   },
   "permissions": {
     "use": {

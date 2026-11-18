@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault ou OpenBao"
   },
   "dialog": {
-    "title": "Connexion requise",
-    "description": "Une fenêtre s'est ouverte pour vous connecter à {{provider}}. Terminez la connexion dans cette fenêtre, puis la connexion se poursuivra automatiquement.",
-    "failed": "Échec de la connexion. Veuillez réessayer.",
-    "reopen": "Rouvrir la fenêtre de connexion"
+    "title": "Authentification requise",
+    "providerTitle": "Authentification {{provider}} requise",
+    "description": "Complétez l'authentification dans votre navigateur pour continuer. Le certificat reste valide tant que votre signataire l'autorise.",
+    "openBrowser": "Ouvrir le navigateur pour s'authentifier",
+    "waiting": "En attente de l'authentification dans le navigateur...",
+    "failed": "Échec de la connexion. Veuillez réessayer."
   },
   "permissions": {
     "use": {

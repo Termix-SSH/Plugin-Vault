@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault or OpenBao"
   },
   "dialog": {
-    "title": "Sign-in required",
-    "description": "A window has opened to sign in to {{provider}}. Finish the sign-in there and this connection will carry on by itself.",
-    "failed": "Sign-in failed. Please try again.",
-    "reopen": "Reopen sign-in window"
+    "title": "Authentication Required",
+    "providerTitle": "{{provider}} Authentication Required",
+    "description": "Complete authentication in your browser to continue. The certificate stays valid for as long as your signer allows.",
+    "openBrowser": "Open Browser to Authenticate",
+    "waiting": "Waiting for authentication in browser...",
+    "failed": "Sign-in failed. Please try again."
   },
   "permissions": {
     "use": {

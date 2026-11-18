@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault o OpenBao"
   },
   "dialog": {
-    "title": "Cal iniciar sessió",
-    "description": "S'ha obert una finestra per iniciar sessió a {{provider}}. Finalitzeu l'inici de sessió allà i aquesta connexió continuarà automàticament.",
-    "failed": "L'inici de sessió ha fallat. Torneu-ho a provar.",
-    "reopen": "Tornar a obrir la finestra d'autenticació"
+    "title": "S'ha de verificar la identitat",
+    "providerTitle": "S'ha de verificar la identitat amb {{provider}}",
+    "description": "Completa la verificació de la identitat al navegador per continuar. El certificat romandrà vàlid mentre el signant ho permeti.",
+    "openBrowser": "Obre el navegador per verificar la identitat",
+    "waiting": "S'està esperant la verificació de la identitat al navegador...",
+    "failed": "L'inici de sessió ha fallat. Torneu-ho a provar."
   },
   "permissions": {
     "use": {

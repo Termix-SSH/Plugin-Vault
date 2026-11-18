@@ -43,9 +43,11 @@
   },
   "dialog": {
     "title": "Autentificare necesară",
-    "description": "S-a deschis o fereastră pentru autentificare în {{provider}}. Finalizați autentificarea acolo și conexiunea va continua automat.",
-    "failed": "Autentificarea a eșuat. Vă rugăm să încercați din nou.",
-    "reopen": "Redeschide fereastra de autentificare"
+    "providerTitle": "Autentificare necesară pentru {{provider}}",
+    "description": "Finalizați autentificarea în browser pentru a continua. Certificatul rămâne valabil atât timp cât semnatarul permite.",
+    "openBrowser": "Deschideți browserul pentru autentificare",
+    "waiting": "Se așteaptă autentificarea în browser...",
+    "failed": "Autentificarea a eșuat. Vă rugăm să încercați din nou."
   },
   "permissions": {
     "use": {

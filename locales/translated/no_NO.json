@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault eller OpenBao"
   },
   "dialog": {
-    "title": "Innlogging kreves",
-    "description": "Et vindu har åpnet for å logge inn på {{provider}}. Fullfør innloggingen der, og denne tilkoblingen fortsetter automatisk.",
-    "failed": "Innloggingen mislyktes. Vennligst prøv igjen.",
-    "reopen": "Åpne innloggingsvinduet på nytt"
+    "title": "Autentisering påkrevd",
+    "providerTitle": "Autentisering påkrevd for {{provider}}",
+    "description": "Fullfør autentiseringen i nettleseren din for å fortsette. Sertifikatet er gyldig så lenge signeringsmyndigheten tillater det.",
+    "openBrowser": "Åpne nettleser for autentisering",
+    "waiting": "Venter på autentisering i nettleser...",
+    "failed": "Innloggingen mislyktes. Vennligst prøv igjen."
   },
   "permissions": {
     "use": {

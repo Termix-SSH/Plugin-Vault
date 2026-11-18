@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0
+
+### Changed
+
+- Runs in its own process on Termix 26.11.2 and later, with no access to the server beyond what Termix allows it
+- Terminals load its sign in part only for hosts that use it or go through a jump host, so they open faster and use less memory
+- The terminal sign in looks like the Step CA and OPKSSH ones: an Open Browser to Authenticate button opens the sign in page, instead of a popup that opened by itself
+- Form fields use the same background as the rest of Termix
+
 ## 1.1.0
 
 ### Added

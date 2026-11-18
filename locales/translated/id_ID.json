@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault atau OpenBao"
   },
   "dialog": {
-    "title": "Masuk diperlukan",
-    "description": "Jendela telah terbuka untuk masuk ke {{provider}}. Selesaikan proses masuk di sana dan koneksi ini akan berlanjut secara otomatis.",
-    "failed": "Proses masuk gagal. Silakan coba lagi.",
-    "reopen": "Buka ulang jendela masuk"
+    "title": "Autentikasi Diperlukan",
+    "providerTitle": "Autentikasi {{provider}} Diperlukan",
+    "description": "Selesaikan autentikasi di browser Anda untuk melanjutkan. Sertifikat tetap valid selama penandatangan mengizinkannya.",
+    "openBrowser": "Buka Browser untuk Autentikasi",
+    "waiting": "Menunggu autentikasi di browser...",
+    "failed": "Proses masuk gagal. Silakan coba lagi."
   },
   "permissions": {
     "use": {

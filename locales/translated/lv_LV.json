@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault vai OpenBao"
   },
   "dialog": {
-    "title": "Nepieciešama pieteikšanās",
-    "description": "Ir atvērts logs, lai pieteiktos pakalpojumā {{provider}}. Pabeidziet pieteikšanos tur, un šī savienojuma turpinājums notiks automātiski.",
-    "failed": "Pieteikšanās neizdevās. Lūdzu, mēģiniet vēlreiz.",
-    "reopen": "Atkārtoti atvērt autorizācijas logu"
+    "title": "Nepieciešama autentifikācija",
+    "providerTitle": "Nepieciešama {{provider}} autentifikācija",
+    "description": "Lai turpinātu, pabeidziet autentifikāciju savā pārlūkprogrammā. Sertifikāts paliek derīgs tik ilgi, cik to atļauj jūsu parakstītājs.",
+    "openBrowser": "Atvērt pārlūkprogrammu autentifikācijai",
+    "waiting": "Gaida autentifikāciju pārlūkprogrammā...",
+    "failed": "Pieteikšanās neizdevās. Lūdzu, mēģiniet vēlreiz."
   },
   "permissions": {
     "use": {

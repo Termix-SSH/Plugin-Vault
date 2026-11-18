@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault ou OpenBao"
   },
   "dialog": {
-    "title": "Login necessário",
-    "description": "Uma janela foi aberta para fazer login no {{provider}}. Conclua o login lá e esta conexão continuará automaticamente.",
-    "failed": "Falha no login. Tente novamente.",
-    "reopen": "Reabrir janela de login"
+    "title": "Autenticação necessária",
+    "providerTitle": "Autenticação necessária para {{provider}}",
+    "description": "Conclua a autenticação no navegador para continuar. O certificado permanece válido enquanto seu assinador permitir.",
+    "openBrowser": "Abrir navegador para autenticar",
+    "waiting": "Aguardando autenticação no navegador...",
+    "failed": "Falha no login. Tente novamente."
   },
   "permissions": {
     "use": {

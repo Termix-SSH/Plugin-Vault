@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault 或 OpenBao"
   },
   "dialog": {
-    "title": "需要登录",
-    "description": "已打开一个窗口以登录到 {{provider}}。请在那里完成登录，连接将自动继续。",
-    "failed": "登录失败。请重试。",
-    "reopen": "重新打开登录窗口"
+    "title": "需要身份验证",
+    "providerTitle": "需要 {{provider}} 身份验证",
+    "description": "请在浏览器中完成身份验证以继续。证书在签名者允许的有效期内保持有效。",
+    "openBrowser": "打开浏览器进行身份验证",
+    "waiting": "正在等待浏览器中的身份验证...",
+    "failed": "登录失败。请重试。"
   },
   "permissions": {
     "use": {

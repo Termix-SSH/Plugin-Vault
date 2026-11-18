@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault または OpenBao"
   },
   "dialog": {
-    "title": "サインインが必要です",
-    "description": "{{provider}} にサインインするためのウィンドウが開きました。そこでサインインを完了すると、この接続は自動的に続行されます。",
-    "failed": "サインインに失敗しました。もう一度お試しください。",
-    "reopen": "サインインウィンドウを再表示"
+    "title": "認証が必要です",
+    "providerTitle": "{{provider}} 認証が必要です",
+    "description": "続行するには、ブラウザで認証を完了してください。証明書は、署名者が許可している間有効です。",
+    "openBrowser": "ブラウザを開いて認証する",
+    "waiting": "ブラウザでの認証を待機中...",
+    "failed": "サインインに失敗しました。もう一度お試しください。"
   },
   "permissions": {
     "use": {

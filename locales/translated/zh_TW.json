@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault 或 OpenBao"
   },
   "dialog": {
-    "title": "需要登入",
-    "description": "已開啟視窗以登入 {{provider}}。請在該視窗完成登入，連線將自動繼續。",
-    "failed": "登入失敗。請再試一次。",
-    "reopen": "重新開啟登入視窗"
+    "title": "需要驗證",
+    "providerTitle": "需要 {{provider}} 驗證",
+    "description": "請在瀏覽器中完成驗證以繼續。憑證在簽署者允許的期間內保持有效。",
+    "openBrowser": "開啟瀏覽器進行驗證",
+    "waiting": "等待瀏覽器中的驗證...",
+    "failed": "登入失敗。請再試一次。"
   },
   "permissions": {
     "use": {

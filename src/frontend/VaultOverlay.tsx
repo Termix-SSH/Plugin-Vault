@@ -1,25 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-import { AlertCircle, KeyRound, Loader2 } from "lucide-react";
 import { useTranslation } from "@termix-ssh/plugin-sdk/frontend";
-import { PanePrompt, PROMPT_BUTTON } from "@termix-ssh/plugin-sdk/ui";
+import { VaultDialog, type SignInStage } from "./VaultDialog";
 
 /** What the ssh-terminal plugin hands a "terminal.overlay" component. */
 export interface TerminalOverlayProps {
   host: { id: number | string; [key: string]: unknown } | undefined;
   backgroundColor?: string;
+  // In a frame this call crosses to the shell, so it answers with a Promise.
   subscribe: (
     listener: (message: { type: string; [key: string]: unknown }) => void,
-  ) => () => void;
+  ) => (() => void) | Promise<() => void>;
   holdConnectTimeout: (held: boolean) => void;
   fail: (message: string) => void;
   disconnect: () => void;
   send: (type: string, data?: unknown) => void;
-  connectPayload: () => Record<string, unknown>;
+  connectPayload: () =>
+    Record<string, unknown> | Promise<Record<string, unknown>>;
 }
 
 interface DialogState {
-  stage: "waiting" | "error";
+  stage: SignInStage;
   provider?: string;
+  authUrl?: string;
   error?: string;
   hostId?: unknown;
   requestId?: string;
@@ -30,8 +32,8 @@ const DIALOG_TIMEOUT_MS = 300_000;
 
 /**
  * Runs the OIDC sign-in for a terminal: asks the server to start it, opens
- * the signer's auth URL in a popup, and reconnects once the certificate is
- * signed.
+ * the signer's auth URL when the user asks, and reconnects once the
+ * certificate is signed.
  */
 export function VaultOverlay({
   subscribe,
@@ -45,23 +47,16 @@ export function VaultOverlay({
   const { t } = useTranslation();
   const [dialog, setDialog] = useState<DialogState | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const popupRef = useRef<Window | null>(null);
   const heldRef = useRef(false);
   // A second "auth required" after a sign-in means the certificate did not work.
   const failedRef = useRef(false);
+  // The terminal replays what a late overlay missed, so skip repeats.
+  const seenSeqRef = useRef(0);
 
   useEffect(() => {
     const clearTimer = () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       timerRef.current = null;
-    };
-    const closePopup = () => {
-      try {
-        popupRef.current?.close();
-      } catch {
-        // already closed
-      }
-      popupRef.current = null;
     };
     const hold = (held: boolean) => {
       if (heldRef.current === held) return;
@@ -69,7 +64,11 @@ export function VaultOverlay({
       holdConnectTimeout(held);
     };
 
-    const unsubscribe = subscribe((message) => {
+    const subscribed = subscribe((message) => {
+      if (typeof message.seq === "number") {
+        if (message.seq <= seenSeqRef.current) return;
+        seenSeqRef.current = message.seq;
+      }
       switch (message.type) {
         case "vault_auth_required":
           hold(true);
@@ -84,17 +83,9 @@ export function VaultOverlay({
           }
           break;
         case "vault_auth_url":
-          try {
-            popupRef.current = window.open(
-              String(message.url ?? ""),
-              "termix-vault-oidc",
-              "width=540,height=720",
-            );
-          } catch {
-            popupRef.current = null;
-          }
           setDialog({
-            stage: "waiting",
+            stage: "chooser",
+            authUrl: String(message.url ?? ""),
             provider:
               typeof message.provider === "string"
                 ? message.provider
@@ -114,16 +105,21 @@ export function VaultOverlay({
           break;
         case "vault_completed":
           clearTimer();
-          closePopup();
           setDialog(null);
-          send("vault_auth_completed", connectPayload());
+          // In a frame this call crosses to the terminal and answers later.
+          void Promise.resolve(connectPayload()).then((payload) =>
+            send("vault_auth_completed", payload),
+          );
           break;
         case "vault_error":
           failedRef.current = true;
           clearTimer();
-          closePopup();
           hold(false);
-          setDialog({ stage: "error", error: String(message.error ?? "") });
+          setDialog((current) => ({
+            ...current,
+            stage: "error",
+            error: String(message.error ?? ""),
+          }));
           break;
         case "connected":
         case "sessionAttached":
@@ -139,7 +135,11 @@ export function VaultOverlay({
     });
 
     return () => {
-      unsubscribe();
+      void Promise.resolve(subscribed)
+        .then((unsubscribe) => {
+          if (typeof unsubscribe === "function") unsubscribe();
+        })
+        .catch(() => {});
       clearTimer();
       if (heldRef.current) {
         heldRef.current = false;
@@ -161,12 +161,7 @@ export function VaultOverlay({
   const close = () => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = null;
-    try {
-      popupRef.current?.close();
-    } catch {
-      // already closed
-    }
-    if (dialog.stage === "waiting") {
+    if (dialog.stage !== "error") {
       send("vault_cancel", {
         hostId: dialog.hostId,
         requestId: dialog.requestId,
@@ -180,56 +175,19 @@ export function VaultOverlay({
   };
 
   return (
-    <PanePrompt
-      open
-      layer="connection"
+    <VaultDialog
+      stage={dialog.stage}
+      provider={dialog.provider}
+      error={dialog.error}
+      onCancel={close}
+      onOpenUrl={() => {
+        if (!dialog.authUrl) return;
+        window.open(dialog.authUrl, "_blank", "noopener,noreferrer");
+        setDialog((current) =>
+          current ? { ...current, stage: "waiting" } : null,
+        );
+      }}
       backgroundColor={backgroundColor}
-      tone={dialog.stage === "error" ? "destructive" : "default"}
-      icon={<KeyRound className="size-4" />}
-      title={dialog.stage === "error" ? t("dialog.failed") : t("dialog.title")}
-      className="max-w-md"
-      actions={
-        <>
-          {dialog.stage === "waiting" && (
-            <button
-              type="button"
-              className={PROMPT_BUTTON}
-              onClick={() => {
-                try {
-                  popupRef.current?.focus();
-                } catch {
-                  // popup gone
-                }
-              }}
-            >
-              {t("dialog.reopen")}
-            </button>
-          )}
-          <button type="button" className={PROMPT_BUTTON} onClick={close}>
-            {dialog.stage === "error" ? t("common.close") : t("common.cancel")}
-          </button>
-        </>
-      }
-    >
-      {dialog.stage === "waiting" ? (
-        <div className="flex items-center gap-3 py-1">
-          <Loader2 className="size-4 animate-spin text-accent-brand shrink-0" />
-          <p className="text-xs text-muted-foreground">
-            {t("dialog.description", {
-              provider: t(
-                `profiles.providers.${dialog.provider === "openbao" ? "openbao" : "vault"}`,
-              ),
-            })}
-          </p>
-        </div>
-      ) : (
-        <div className="flex items-start gap-3 p-3 border border-destructive/20 bg-destructive/10">
-          <AlertCircle className="size-4 text-destructive shrink-0 mt-0.5" />
-          <p className="text-xs text-destructive/90 whitespace-pre-wrap break-words">
-            {dialog.error || t("dialog.failed")}
-          </p>
-        </div>
-      )}
-    </PanePrompt>
+    />
   );
 }

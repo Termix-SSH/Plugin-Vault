@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault of OpenBao"
   },
   "dialog": {
-    "title": "Aanmelden vereist",
-    "description": "Er is een venster geopend om je aan te melden bij {{provider}}. Voltooi het aanmeldproces daar en deze verbinding gaat automatisch verder.",
-    "failed": "Aanmelden mislukt. Probeer het opnieuw.",
-    "reopen": "Aanmeldingsvenster opnieuw openen"
+    "title": "Authenticatie vereist",
+    "providerTitle": "Authenticatie vereist voor {{provider}}",
+    "description": "Voltooi de authenticatie in uw browser om door te gaan. Het certificaat blijft geldig zolang uw ondertekenaar dit toestaat.",
+    "openBrowser": "Browser openen om te authenticeren",
+    "waiting": "Wachten op authenticatie in browser...",
+    "failed": "Aanmelden mislukt. Probeer het opnieuw."
   },
   "permissions": {
     "use": {

@@ -209,34 +209,62 @@ describe("VaultOverlay", () => {
     expect(props.fail).toHaveBeenCalledWith("dialog.failed");
   });
 
-  it("opens Vault's sign-in, waits, and reconnects once signed", () => {
-    const close = vi.fn();
-    const open = vi
-      .spyOn(window, "open")
-      .mockReturnValue({ close, focus: vi.fn() } as unknown as Window);
+  it("waits for the reconnect details when they come from another frame", async () => {
+    const { props, emit } = setup();
+    props.connectPayload.mockReturnValue(
+      Promise.resolve({ hostId: 7, hostConfig: { username: "me" } }) as never,
+    );
+    emit({ type: "vault_completed", hostId: 7, requestId: "req-9" });
+    await vi.waitFor(() =>
+      expect(props.send).toHaveBeenCalledWith("vault_auth_completed", {
+        hostId: 7,
+        hostConfig: { username: "me" },
+      }),
+    );
+  });
+
+  it("skips a message the terminal replays after a resubscribe", () => {
+    const { props, emit } = setup();
+    emit({ type: "vault_auth_required", hostId: 7, seq: 1 });
+    emit({ type: "vault_auth_required", hostId: 7, seq: 1 });
+    expect(props.send).toHaveBeenCalledTimes(1);
+    expect(props.fail).not.toHaveBeenCalled();
+  });
+
+  it("opens the sign-in on a click, waits, and reconnects once signed", async () => {
+    const open = vi.spyOn(window, "open").mockReturnValue(null);
     const { props, emit } = setup();
     emit({ type: "vault_auth_required", hostId: 7 });
     emit({
       type: "vault_auth_url",
       hostId: 7,
       requestId: "st-1",
+      provider: "openbao",
       url: "https://idp.test/authorize",
     });
-    expect(open).toHaveBeenCalledWith(
-      "https://idp.test/authorize",
-      "termix-vault-oidc",
-      "width=540,height=720",
-    );
+    // A sandboxed frame only opens windows on a click, so nothing opens yet.
+    expect(open).not.toHaveBeenCalled();
+    expect(screen.getByText("dialog.providerTitle")).toBeTruthy();
     expect(screen.getByText("dialog.description")).toBeTruthy();
 
+    fireEvent.click(screen.getByText("dialog.openBrowser"));
+    expect(open).toHaveBeenCalledWith(
+      "https://idp.test/authorize",
+      "_blank",
+      "noopener,noreferrer",
+    );
+    expect(screen.getByText("dialog.waiting")).toBeTruthy();
+    expect(screen.queryByText("dialog.openBrowser")).toBeNull();
+
     emit({ type: "vault_completed", hostId: 7 });
-    expect(close).toHaveBeenCalled();
-    expect(props.send).toHaveBeenCalledWith("vault_auth_completed", {
-      hostId: 7,
-      cols: 80,
-      rows: 24,
-    });
-    expect(screen.queryByText("dialog.title")).toBeNull();
+    await vi.waitFor(() =>
+      expect(props.send).toHaveBeenCalledWith("vault_auth_completed", {
+        hostId: 7,
+        cols: 80,
+        rows: 24,
+      }),
+    );
+    expect(screen.queryByText("dialog.providerTitle")).toBeNull();
     open.mockRestore();
   });
 

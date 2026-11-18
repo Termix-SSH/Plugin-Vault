@@ -253,7 +253,7 @@ export function VaultProfileManager({
                 onChange={(e) =>
                   setField("provider", e.target.value as SignerProvider)
                 }
-                className="flex h-8 w-full border border-border bg-background px-3 py-1 text-xs outline-none focus:ring-1 focus:ring-ring"
+                className="flex h-8 w-full border border-border bg-(--field) px-3 py-1 text-xs outline-none focus:ring-1 focus:ring-ring"
               >
                 <option value="vault">{t("profiles.providers.vault")}</option>
                 <option value="openbao">
@@ -284,7 +284,7 @@ export function VaultProfileManager({
             <Select2
               value={form.keyType}
               onChange={(e) => setField("keyType", e.target.value)}
-              className="flex h-8 w-full border border-border bg-background px-3 py-1 text-xs outline-none focus:ring-1 focus:ring-ring"
+              className="flex h-8 w-full border border-border bg-(--field) px-3 py-1 text-xs outline-none focus:ring-1 focus:ring-ring"
             >
               <option value="ssh-ed25519">Ed25519</option>
               <option value="ecdsa-sha2-nistp256">ECDSA (nistp256)</option>

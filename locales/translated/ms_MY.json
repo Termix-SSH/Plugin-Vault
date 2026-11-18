@@ -42,10 +42,12 @@
     "filterAuthVault": "Vault atau OpenBao"
   },
   "dialog": {
-    "title": "Log masuk diperlukan",
-    "description": "Tetingkap telah dibuka untuk log masuk ke {{provider}}. Selesaikan log masuk di sana dan sambungan ini akan diteruskan secara automatik.",
-    "failed": "Log masuk gagal. Sila cuba lagi.",
-    "reopen": "Buka semula tetingkap log masuk"
+    "title": "Pengesahautan Diperlukan",
+    "providerTitle": "Pengesahautan {{provider}} Diperlukan",
+    "description": "Lengkapkan pengesahautan dalam pelayar web anda untuk meneruskan. Sijil ini kekal sah selama yang dibenarkan oleh penandatangan anda.",
+    "openBrowser": "Buka Pelayar Web untuk Mengesahautkan",
+    "waiting": "Menunggu pengesahautan dalam pelayar web...",
+    "failed": "Log masuk gagal. Sila cuba lagi."
   },
   "permissions": {
     "use": {
